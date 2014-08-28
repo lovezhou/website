@@ -1,6 +1,6 @@
-package ${baseServicePackage};
+package ${basePath}.service;
 
-import ${baseDomainPackage}.${className};
+import ${basePath}.domain.${className};
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import java.util.List;
 import java.util.Map;

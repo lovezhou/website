@@ -40,6 +40,7 @@ public class CodeGeneratorController {
         List<ColumnAndType> list = codeGeneratorService.getListColumnAndType(tableName.toUpperCase());
         ModelAndView mav = new ModelAndView("/codegenerator/codegenerator");
         mav.addObject("voList", list);
+        mav.addObject("tableName",tableName);
         mav.addObject("className",codeGeneratorService.convertTableNameToClassName(tableName));
         return mav;
     }
@@ -51,11 +52,13 @@ public class CodeGeneratorController {
         @SuppressWarnings("all")
         Map<String,String[]> map =( Map<String,String[]>)  req.getParameterMap();
       
-        ModelAndView mav = new ModelAndView("service.ftl");
+        Map<String,Object> data = codeGeneratorService.codeGenerator(map);
+        ModelAndView mav = new ModelAndView("mapperXml.ftl");
         //视图名称
-        mav.addObject("baseServicePackage", "com.jessrun.system.service");
-        mav.addObject("baseDomainPackage", "com.jessrun.system.domain");
+        mav.addObject("basePath", "com.jessrun.system");
         mav.addObject("className", "SysDict");
+        mav.addObject("tableName", "t_sys_dict");
+        mav.addAllObjects(data);
         return mav;
     }
 

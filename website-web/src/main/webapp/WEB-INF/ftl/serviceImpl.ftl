@@ -1,7 +1,7 @@
-package ${baseServiceImplPackage};
+package ${basePath}.service.impl;
 
-import ${baseDomainPackage}.${className};
-import ${baseServicePackage}.${className}Service;
+import ${basePath}.domain.${className};
+import ${basePath}.service.${className}Service;
 import java.util.List;
 import java.util.Map;
 

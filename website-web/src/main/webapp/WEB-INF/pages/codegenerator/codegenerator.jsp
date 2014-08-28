@@ -66,7 +66,8 @@
 				</c:forEach>
 				</table>
 				<div style="width:80%">
-				                            类名称：<input type="text" name="className" value="${className }"></br>
+						<input type="hidden" name="tableName" value="${tableName }"     style="width:80px">
+				                 类名称：<input type="text" name="className" value="${className }"></br>
 						前台js，jspBasePath:<input type="text"  required="true" name="jspPath" style="width:300px" >
 						是否生成jsp，js<input type="checkbox" name="jsp" checked="checked" value="1" ></br>
 						后台BasePath:<input type="text" name="basePath"  required="true" style="width:300px"  >

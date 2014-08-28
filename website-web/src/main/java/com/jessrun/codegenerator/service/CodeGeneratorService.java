@@ -19,8 +19,10 @@ public interface CodeGeneratorService {
 
     /**
      * 根据传递的参数生成代码
-     * @param map
+     * 使用freemark解析文件
+     * 
+     * @param map 使用key-value形式返回到页面，共freemark调用
      * @return
      */
-    public String codeGenerator(Map<String, String[]> map)throws IOException;
+    public  Map<String,Object> codeGenerator(Map<String, String[]> map)throws IOException;
 }

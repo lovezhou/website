@@ -1,8 +1,8 @@
-package ${baseMapperPackage};
+package ${basePath}.dao;
 
 import org.springframework.stereotype.Repository;
 import com.jessrun.common.dao.mybatis.OracleMapper;
-import ${baseDomainPackage}.${className};
+import ${basePath}.domain.${className};
 import java.util.List;
 import java.util.Map;
 

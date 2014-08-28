@@ -85,10 +85,11 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
     }
 
     /**
-     * 解析前台闯过来的参数
+     * 解析前台传过来的参数
      */
     @Override
-    public String codeGenerator(Map<String, String[]> map) throws IOException {
+    public Map<String,Object> codeGenerator(Map<String, String[]> map) throws IOException {
+    	Map<String,Object> params= new HashMap<String,Object>();
         //参数过滤
         Map<String,String>  paramMap = new HashMap<String,String>();
         Map<String,String[]> arrayMap = new HashMap<String,String[]>();
@@ -113,6 +114,15 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         String[]   nullable = arrayMap.get("nullable");
         String[]   chk_code = arrayMap.get("chk_code");
         String[]   chk_cond= arrayMap.get("chk_cond");
+        
+        params.put("columnNames", columnName);
+        params.put("propertyNames", propertyName);
+        params.put("dataTypes", dataType);
+        params.put("comments", comments);
+        params.put("nullable", nullable);
+        params.put("chkCode", chk_code);
+        params.put("chkCond", chk_cond);
+        
         //类名称
         String  className = paramMap.get("className");
         //前台js，jsp  基路径:
@@ -129,20 +139,31 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         String  dao = paramMap.get("dao");
         //数据库类型
         String  databaseType= paramMap.get("databaseType");
-        System.out.println("jspPath"+jspPath+"--------basePath="+basePath);
+        
+        String tableName = paramMap.get("tableName");
+        
+        params.put("className", className);
+        params.put("jspPath",jspPath );
+        params.put("isJsp",jsp );
+        params.put("basePath",basePath );
+        params.put("isController",controller );
+        params.put("isService",service );
+        params.put("isDao",dao );
+        params.put("databaseType",databaseType );
+        params.put("tableName",tableName);
+        
+        
+     //   System.out.println("jspPath"+jspPath+"--------basePath="+basePath);
+        
         //X:\source\website-web\src\main\java\com\jessrun\system
-        
-        
-        if(EmptyUtils.isNotEmptyArray(columnName)){
-             for (int i = 0; i < columnName.length; i++) {
-                 System.out.println(columnName[i]+"--"+propertyName[i]+"--"+dataType[i]+
-                                    "--"+comments[i]+"--"+nullable[i]+"--"+chk_code[i]+"--"+chk_cond[i]);
-                 
-             }           
-        }
-        generatorDomain(basePath,className,propertyName,dataType,comments);
-        generatorDao(dao,basePath,className,databaseType);
-        return null;
+//        if(EmptyUtils.isNotEmptyArray(columnName)){
+//             for (int i = 0; i < columnName.length; i++) {
+//                 System.out.println(columnName[i]+"--"+propertyName[i]+"--"+dataType[i]+
+//                                    "--"+comments[i]+"--"+nullable[i]+"--"+chk_code[i]+"--"+chk_cond[i]);
+//                 
+//             }           
+//        }
+        return params;
     }
         
     
