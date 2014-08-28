@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.web.system.dao.CompanyConfMapper" >
+	<resultMap id="ConfCompany" type="com.jessrun.web.system.domain.ConfCompany" >
+    	<result column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+    	<result column="CONF_NAME" property="confName" jdbcType="VARCHAR" />
+    	<result column="CONF_KEY" property="confKey" jdbcType="VARCHAR" />
+    	<result column="CONF_VAL" property="confVal" jdbcType="VARCHAR" />
+  	</resultMap>
+  	
+  	<select id="selectByCompanyId" parameterType="java.lang.Integer" resultMap="ConfCompany">
+  		select * from TB_CONF_COMPANY t where t.COMPANY_ID = #{companyId}
+  	</select>
+  	
+  	<update id="update">
+  		update TB_CONF_COMPANY t set t.CONF_KEY = #{confKey} , t.CONF_VAL = #{confVal}  where t.COMPANY_ID = #{companyId}
+  	</update>
+  	
+  	<delete id="delete">
+  		delete TB_CONF_COMPANY t where t.COMPANY_ID = #{companyId} and t.CONF_KEY = #{confKey}
+  	</delete>
+  	
+  	<insert id="insert">
+  		insert into TB_CONF_COMPANY(COMPANY_ID,CONF_NAME,CONF_KEY,CONF_VAL) values(#{companyId},#{confName},#{confKey},#{confVal})
+  	</insert>
+
+</mapper>

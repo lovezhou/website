@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<classPathEntry location="D:/mvn_repository/com/oracle/ojdbc14/10.2.0.4.0/ojdbc14-10.2.0.4.0.jar" />
+		
+	<context id="resource" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />   
+		</commentGenerator>
+
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@192.168.3.99:1521:xe" userId="zmy" password="123456" />
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.jessrun.security.domain"
+			targetProject="jessrun-security\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.jessrun.security.dao.conf"
+			targetProject="jessrun-security\src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator targetPackage="com.jessrun.security.dao"
+			targetProject="jessrun-security\src\main\java" type="XMLMAPPER">
+			<property name="enableSubPackages" value="true" />
+			<property name="methodNameCalculator" value="extended" />
+		</javaClientGenerator>
+		<table tableName="tb_se_user_role" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+		<!-- 
+		<table tableName="tb_se_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="ROLE_ID" sqlStatement="SELECT SEQ_SE_ROLE.NEXTVAL AS id FROM DUAL" identity="true" />			
+		</table>
+		 -->
+		<table tableName="tb_se_role_resource" domainObjectName="RoleResource" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		</table>
+		<!-- 
+		<table tableName="tb_se_resource" domainObjectName="Resource" enableCountByExample="false" enableUpdateByExample="false" 
+			enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="RESOURCE_ID" sqlStatement="SELECT SEQ_SE_RESOURCE.NEXTVAL AS id FROM DUAL" identity="true" />
+		</table>
+		 -->
+	</context>
+</generatorConfiguration>

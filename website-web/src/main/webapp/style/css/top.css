@@ -1,0 +1,72 @@
+/*
+Author: Freedom Xiao
+Email: kevin_218@163.com
+Web:www.bluekevin.com
+*/
+html{color:#000;background:#fff;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+audio,canvas,video {display: inline-block;*display: inline;*zoom: 1;}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53;}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+fieldset,img{border:0;}
+iframe{display:block;}
+abbr,acronym{border:0;font-variant:normal;}
+del {text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
+q:before,q:after {content:'';}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+a:hover {text-decoration:underline;}
+ins,a {text-decoration:none;}
+.clear:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear {zoom:1;}
+body .none {display:none;}
+button {cursor:pointer;border:none;}
+.word-break{word-break:break-all;word-wrap:break-word;overflow:hidden}
+html,body {overflow:hidden;height:70px;}
+.top {width:100%;height:70px;background:url(../images/jessrun_bg_top.jpg) repeat-x left top;}
+.jessrun-top{width:100%;position:relative;height:70px;background:url(../images/jessrun_top.jpg) no-repeat left top;}
+.jessrun-top h1 {width:48px;float:left;height:48px;padding:11px 16px;}
+.jessrun-top h1 a {width:48px;height:48px;display:block;}
+.jessrun-top h1 a:hover {text-decoration:none;}
+.jessrun-top h1 a span {display:none;}
+.jessrun-top h2 ,
+.jessrun-top h3 ,
+.jessrun-top h2 span,
+.jessrun-top h3 span ,
+.jessrun-top h3 em {float:left;text-shadow:1px 1px 1px #fff;}
+.jessrun-top h2 span,
+.jessrun-top h3 span {padding-top:15px;display:block;font-size:24px;color:#1E337E;font-family:"黑体","Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;}
+.jessrun-top h3 em {padding-top:15px;font-size:24px;font-family:"黑体","Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;}
+.jessrun-top .user-top {position:absolute;right:10px;bottom:10px;color:#888;}
+.jessrun-top .user-top p em {color:#000;}
+.jessrun-top .user-top p a {color:#20347E;}
+.jessrun-top .user-top #userCompanyName em {color:#1D2F79;font-weight:bold;}
+
+/*
+	lixinghe
+*/
+#wl-lxhLogo {width:100%;position:relative;height:70px;background:url(../wl-logo/logo.jpg) no-repeat left top;}
+#wl-lxhLogo h3 {margin-left:290px}
+
+#wl-lxhLogo h1 a span {display:none;}
+#wl-lxhLogo h2 ,
+#wl-lxhLogo h3 ,
+#wl-lxhLogo h2 span,
+#wl-lxhLogo h3 span ,
+#wl-lxhLogo h3 em {float:left;text-shadow:1px 1px 1px #fff;}
+#wl-lxhLogo h2 span,
+#wl-lxhLogo h3 span {padding-top:15px;display:block;font-size:24px;color:#1E337E;font-family:"黑体","Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;}
+#wl-lxhLogo h3 em {padding-top:15px;font-size:24px;font-family:"黑体","Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;}
+#wl-lxhLogo .user-top {position:absolute;right:10px;bottom:10px;color:#888;}
+#wl-lxhLogo .user-top p em {color:#000;}
+#wl-lxhLogo .user-top p a {color:#20347E;}
+#wl-lxhLogo .user-top #userCompanyName em {color:#1D2F79;font-weight:bold;}
+

@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+ <title>好运通物流业务管理系统</title>
+ <script src="../style/js/jquery.js"></script>
+ <script src="../style/js/jqueryPage.js"></script>
+ <link rel="stylesheet" href="../style/css/print_view.css" type="text/css" media="screen" />
+ <link rel="stylesheet" href="../style/css/print.css" type="text/css" media="print" />
+<!--[if IE 6]><script type="text/javascript">try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}</script><![endif]-->
+ <script>
+
+function  jessrunPrint()
+{
+	var printOpen;
+	var bdhtml="";
+	while(bdhtml.length == 0)
+	{
+		bdhtml=document.getElementById("printDoc").innerHTML;
+	}
+	bdhtml=document.getElementById("printDoc").innerHTML;
+    printOpen=window.open('print.html','printWindow','width=1024,height=710,top=0,left=0,status=yes,resizable=yes,scrollbars=yes');
+	while(printOpen.document.body == null)
+	  {
+		;
+	  }
+     if($.browser.msie) {
+     	printOpen.document.body.innerHTML = bdhtml;
+     }else{
+    	printOpen.document.write("<link rel='stylesheet' href='../style/css/print_view.css' type='text/css' media='screen' />");
+    	printOpen.document.write(bdhtml);
+     }
+    printOpen.focus();
+	printOpen.window.print();
+    printOpen.close();
+}
+</script>
+</head>
+<body>
+<div  class="guildNav noprint">
+	<div class="guild">
+		<p>您所在的位置： 业务管理 &gt; 承运管理 &gt; 承运单打印</p>
+	</div>
+	<iframe class="overFast" src="about:blank"></iframe>
+</div>
+<div class="doc" id="printDoc">
+	<div id="printPage">
+		<!--startprint-->
+		<div class="list-doc">
+			<div  class="list-table">
+				<div class="table">
+					<div  class="print-head"><h1>捷信运货物清单表</h1></div>
+					<div class="print-head_info">
+						<table>
+							<tr>
+								<th>收货站点：</th>
+								<td colspan="8">武汉站点</td>
+								<th>开单时间：</th>
+								<td colspan="6">2013-12-12</td>
+							</tr>
+						</table>
+					</div>
+					<div class="mod_table">
+						<table id="userTable">
+							<thead>
+								<tr class="thead">
+									<th>序号</th>
+									<th>承运日期</th>
+									<th>目的地</th>
+									<th>承运单号</th>
+									<th>货物名称</th>
+									<th>发货部门</th>
+									<th>数量</th>
+									<th>发货人</th>
+									<th>收货人</th>
+									<th>现收</th>
+									<th>提收</th>
+									<th>回收</th>
+									<th>月结</th>
+									<th>运从代扣</th>
+									<th>代收货款</th>
+									<th>信息费</th>
+									<th>运费合计</th>
+									<th>备注</th>
+								</tr>
+							</thead>
+							<tbody id="tb_list" class="tbody mod_table_bd">
+								<tr>
+									<td>1</td>
+									<td>2012-12-12</td>
+									<td>武汉</td>
+									<td>12321313223</td>
+									<td>13123</td>
+									<td>武汉</td>
+									<td>111</td>
+									<td>肖凯明</td>
+									<td>收货人</td>
+									<td>现收</td>
+									<td>提收</td>
+									<td>回收</td>
+									<td>月结</td>
+									<td>运从代扣</td>
+									<td>代收货款</td>
+									<td>信息费</td>
+									<td>运费合计</td>
+									<td>备注</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>2012-12-12</td>
+									<td>武汉</td>
+									<td>12321313223</td>
+									<td>13123</td>
+									<td>武汉</td>
+									<td>111</td>
+									<td>肖凯明</td>
+									<td>收货人</td>
+									<td>现收</td>
+									<td>提收</td>
+									<td>回收</td>
+									<td>月结</td>
+									<td>运从代扣</td>
+									<td>代收货款</td>
+									<td>信息费</td>
+									<td>运费合计</td>
+									<td>备注</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>2012-12-12</td>
+									<td>武汉</td>
+									<td>12321313223</td>
+									<td>13123</td>
+									<td>武汉</td>
+									<td>111</td>
+									<td>肖凯明</td>
+									<td>收货人</td>
+									<td>现收</td>
+									<td>提收</td>
+									<td>回收</td>
+									<td>月结</td>
+									<td>运从代扣</td>
+									<td>代收货款</td>
+									<td>信息费</td>
+									<td>运费合计</td>
+									<td>备注</td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>2012-12-12</td>
+									<td>武汉</td>
+									<td>12321313223</td>
+									<td>13123</td>
+									<td>武汉</td>
+									<td>111</td>
+									<td>肖凯明</td>
+									<td>收货人</td>
+									<td>现收</td>
+									<td>提收</td>
+									<td>回收</td>
+									<td>月结</td>
+									<td>运从代扣</td>
+									<td>代收货款</td>
+									<td>信息费</td>
+									<td>运费合计</td>
+									<td>备注</td>
+								</tr>
+								<tr>
+									<td>5</td>
+									<td>2012-12-12</td>
+									<td>武汉</td>
+									<td>12321313223</td>
+									<td>13123</td>
+									<td>武汉</td>
+									<td>111</td>
+									<td>肖凯明</td>
+									<td>收货人</td>
+									<td>现收</td>
+									<td>提收</td>
+									<td>回收</td>
+									<td>月结</td>
+									<td>运从代扣</td>
+									<td>代收货款</td>
+									<td>信息费</td>
+									<td>运费合计</td>
+									<td>备注</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="jessrun-print-area noprint">
+				<p>
+					<span class="jessrun-btn noprint" ><button  onclick="jessrunPrint()">确认打印</button></span>
+				</p>
+			</div>
+		</div>
+		<!--endprint-->
+		</div>
+	</div>
+	<script type="">
+
+
+</script>
+<script language="javascript" type="text/javascript">
+	$("#userTable").tablePaging({
+		pageSize: 1
+	});
+</script>
+</body>
+</html>

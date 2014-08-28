@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jessrun</groupId>
+		<artifactId>website-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+ 
+	<artifactId>website-common</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.jessrun</groupId>
+			<artifactId>website-platform</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- spring -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>3.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>3.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>3.0.5.RELEASE</version>
+		</dependency>
+		 <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>3.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.0.5.RELEASE</version>
+		</dependency>
+		
+		<!-- mybatis -->
+		<dependency>
+			 <groupId>org.mybatis</groupId>
+			 <artifactId>mybatis</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.caches</groupId>
+			<artifactId>mybatis-ehcache</artifactId>
+			<version>1.0.0-RC1</version>
+		</dependency>
+		
+		<!-- memcached start -->
+        <dependency>
+            <groupId>com.danga</groupId>
+            <artifactId>java_memcached</artifactId>
+            <version>2.0.1</version>
+        </dependency>   
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>2.3.16</version>
+		</dependency>
+		
+		<!-- search start -->
+		<dependency>
+		  <groupId>com.jzt</groupId>
+		  <artifactId>solr-solrj</artifactId>
+		  <version>4.0.0</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.jzt</groupId>
+		  <artifactId>httpclient</artifactId>
+		  <version>4.1.3</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.jzt</groupId>
+		  <artifactId>httpmime</artifactId>
+		  <version>4.1.3</version>
+		</dependency>
+
+	</dependencies>
+</project>

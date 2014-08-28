@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+<!-- 
+      timeID = null;
+      timeRunning = false;
+function stop () {
+      if(timeRunning)
+            clearTimeout(timeID);
+      timeRunning = false;
+}
+function time () {
+      tick = new Date();
+      hours = tick.getHours();
+      minutes = tick.getMinutes();
+      seconds = tick.getSeconds();
+      day = tick.getDay();
+      month = tick.getMonth();
+	  month2 = month +1;
+      date = tick.getDate();
+      year = tick.getFullYear();
+	  current = "" + year + "年" + month2+"月" + date + "日 "
+      current += ((hours >12) ? hours -12 :hours)
+      current += ((minutes < 10) ? ":0" : ":") + minutes
+      current += ((seconds < 10) ? ":0" : ":") + seconds
+      current += (hours >= 12) ? " P.M." : " A.M."
+      if(day==0){var weekday = " 星期日"}
+      if(day==1){var weekday = " 星期一"}
+      if(day==2){var weekday = " 星期二"}
+      if(day==3){var weekday = " 星期三"}
+      if(day==4){var weekday = " 星期四"}
+      if(day==5){var weekday = " 星期五"}
+      if(day==6){var weekday = " 星期六"}
+      current +=(weekday);
+      var times = document.getElementById("times");
+      times.value=current;
+      timeID = setTimeout("time()",1000);
+      timeRunning = true;
+}
+function run(){
+      stop();
+      time();
+}
+
+var native ='当前位置 ：首页';
+$("div[region='center']",parent.document).prev(".panel-header").find(".panel-title").text(native);
+//-->
+</script>
+<style type="text/css">
+	html, body{
+		width:100%;
+		height:98%;
+	}
+</style>
+</head>
+<BODY onLoad="run(); timerONE=window.setTimeout" leftmargin="0" topmargin="0">
+<table width='100%' height='90%'>
+<tr height='95%'>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td align='right'><input id="times" type="text" readonly="readonly" name='times' value=''   size='34' style="font-size:20px;border:0px" ></td>
+</tr>
+</table>
+</body>
+</html>

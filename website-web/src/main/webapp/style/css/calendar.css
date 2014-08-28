@@ -1,0 +1,48 @@
+/*calendar*/
+.calendar_txt {background:#fff url(../images/calendar.png) no-repeat 70px -25px;width:95px;border:1px solid #ddd;height:24px;line-height:24px;padding-left:5px;}
+.calendar_txt_arr {background:#fff url(../images/calendar.png) no-repeat 75px top;width:95px;border:1px solid #ddd;height:24px;line-height:24px;padding-left:5px;}
+.calendar_table ,
+..calendar_table table  {width:154px;}
+.cal_iframe {width:156px;}
+.cal_iframe {position: absolute;left:0;top:0px;border:none;z-index:-1;height:192px;}
+.calendar_table {background:#fff;border:1px solid #eee;}
+.calendar_table table td,
+.calendar_table table th {font-size:12px;text-align:center;display:block;float:left;}
+.calendar_table table th {height:26px;}
+.calendar_table table .curShowToday {height:24px;background-color:#FFFFD9;}
+.calendar_table table .category td,
+.calendar_table table .cal_tr td {width:22px;height:20px;line-height:22px;}
+.calendar_table table .cal_tr td a {display:block;width:22px;height:20px;line-height:20px;text-align:center;overflow:hidden;}
+
+.calendar_hd {color:#154BA0;background:#C2DEED;height:26px;line-height:26px;}
+.calendar_right,
+.calendar_left {width:22px;}
+.calendar_right a,
+.calendar_left a {width:22px;text-align:center;display:block;color:#000;font-size:11px;}
+.calendar_right a:hover,
+.calendar_left a:hover {background-color:#fff;color:#000;}
+.calendar_yymm {width:110px;}
+.calendar_yymm a {color:#000;}
+.calendar_yymm a:hover {background-color:#fff;}
+.calendar_yymm a ,
+.calendar_yymm span {float:left;}
+.calendar_yymm #year {width:60px;}
+.calendar_yymm #month {width:40px;}
+.calendar_yymm .cal_spl {width:10px;line-height:26px;text-align:center;}
+
+.calendar_table table .category td {color: #92A05A;background-color: #FFFFD9;border-bottom:1px solid #eee;}
+.calendar_table table .curShowToday a {border-top:1px solid #eee;display:block;width:154px;height:22px;line-height:22px;overflow:hidden;color:#000;}
+.calendar_table table .curShowToday a:hover {color:#fff;background-color:#5792DC;}
+
+.cal_expire, .cal_expire a:link, .cal_expire a:visited {color: #ccc;}
+.cal_default, .cal_default a:link, .cal_default a:visited {color: #000000;}
+.cal_checked, .cal_checked a:link, .cal_checked a:visited,
+.cal_today,.cal_today a:link,.cal_today a:visited {color:#fff;background-color:#E2AD44;}
+.cal_expire a:hover {background-color:#eee;}
+.cal_today a:hover,.cal_checked a:hover,.cal_default a:hover {background-color:#5792DC;color:#fff;}
+#calendar_year {display:none;background:#FFF;position: absolute;z-index: 10;padding:2px;border: 1px solid #86B9D6;width:160px;}
+#calendar_month {display: none;background:#FFF;position: absolute;z-index: 11;padding: 2px;border: 1px solid #86B9D6;width:64px;}
+.calendar_select .col {float: left;}
+.calendar_select a {color:#999;display:block;padding:1px;float:left;height:16px;line-height:16px;width:30px;text-align:center;}
+.calendar_select a:hover {background-color:#C2DEED;text-decoration:none;}
+

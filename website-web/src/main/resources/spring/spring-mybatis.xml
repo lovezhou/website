@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-lazy-init="true">
+
+	<!--  oracle数据库的连接配置      数据源定义,使用Apache DBCP 连接池 -->
+	<bean id="OracledataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<!-- 初始化连接数 -->
+		<property name="initialSize" value="4" />
+		<!-- 最大活动连接数 -->
+		<property name="maxActive" value="10" />
+		<!-- 最大空闲连接数 -->
+		<property name="maxIdle" value="8" />
+		<!-- 最小空闲连接数 -->
+		<property name="minIdle" value="2" />
+		<!-- 获取连接超时等待时间(毫秒) -->
+		<property name="maxWait" value="10000" />
+		<!-- 空闲池空闲连接激活线程的运行间隔时间（毫秒） -->
+		<property name="timeBetweenEvictionRunsMillis" value="10000" />
+		<!-- 空闲池中空闲连接能够被激活前的最小空闲时间（毫秒） -->
+		<property name="minEvictableIdleTimeMillis" value="200000" />
+	</bean>
+	<!-- 处理oracle lob类型的数据保存的问题 -->
+	<bean id="oracleLobHandler" class="org.springframework.jdbc.support.lob.OracleLobHandler" >
+		<property name="nativeJdbcExtractor">
+			<bean
+				class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor" />
+		</property>
+	</bean>
+	
+    <bean id="OracletransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="OracledataSource"/>
+    </bean>	
+	 
+	<bean id="OracletransactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="OracletransactionManager"/>
+    </bean>	 	
+    
+	<!-- spring SqlSessionFactoryBean 创建 sessionFactory -->
+	<bean id="OraclesqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="OracledataSource" />
+		<property name="configLocation" value="classpath:mybaits/mybaits.xml" />
+		<property name="mapperLocations">
+            <list>
+                <value>classpath*:com/jessrun/web/basic/dao/conf/*.xml</value>
+		        <value>classpath*:com/jessrun/web/business/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/web/cost/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/certify/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/web/system/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/web/report/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/codegenerator/dao/conf/*.xml</value>
+			</list>  
+		</property>
+		<property name="plugins">
+			<list>
+				<bean class="com.jessrun.common.dao.mybatis.interceptor.PagePlugin">
+					<property name="dataDialect" value="oracle" />
+					<property name="pageSqlId" value=".*ByPage.*" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+    <!-- SqlSessionTemplate 负责创建mybatis sqlSession  该类实际上为mybatis SqlSession的实现模板类-->  
+	<bean id="OraclesqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+		<constructor-arg index="0" ref="OraclesqlSessionFactory"/>
+	</bean>
+	
+	<!--配置mybatis映射器的扫描路径和接口,映射器接口必须实现 markerInterface指向的接口-->
+	<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
+		<property name="basePackage" value="com.jessrun" />
+		<property name="sqlSessionTemplateBeanName" value="OraclesqlSession"/>
+		<property name="markerInterface" value="com.jessrun.common.dao.mybatis.OracleMapper"/>
+	</bean>
+
+	
+	<tx:annotation-driven transaction-manager="OracletransactionManager"/>
+</beans>

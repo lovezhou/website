@@ -1,0 +1,7 @@
+html#switchbarSkin,html#switchbarSkin body  { width:7px;height:100%; }
+html#switchbarSkin .switch {width:7px; height:100%;background:#5D7888 url(../images/bg-swich-bg.png) repeat-y right top;cursor:pointer; }
+html#switchbarSkin a {outline:none;width:7px; height:100%; display:block;}
+
+
+#switchbar.current {background:url(../images/bg-swich.gif) no-repeat -7px 250px;}
+#switchbar {background:url(../images/bg-swich.gif) no-repeat 0 250px;}

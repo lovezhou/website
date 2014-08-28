@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.web.system.dao.ConfCostCompanyMapper" >
+  
+	<resultMap id="ConfCostCompany" type="com.jessrun.web.system.domain.ConfCostCompany" >
+	  	<result column="IDX" property="idx" jdbcType="INTEGER" />
+	    <result column="COST_NAME" property="costName" jdbcType="VARCHAR" />
+	    <result column="COST_CODE" property="costCode" jdbcType="VARCHAR" />
+	    <result column="COST_TYPE" property="costType" jdbcType="VARCHAR" />
+	    <result column="COST_VAL" property="costVal" jdbcType="VARCHAR" />
+	    <result column="SORT" property="sort" jdbcType="INTEGER" />
+	    <result column="COMPANY_ID" property="companyId" jdbcType="INTEGER" />
+	    <result column="alias_name" property="aliasName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+  	<select id="getCompanyConfByCompanyId" parameterType="java.lang.Integer" resultMap="ConfCostCompany">
+  		select * from  TB_CONF_COST_COMPANY t, Tb_Conf_Cost_Item i
+		       	 left join TB_CONF_COST_ITEM_ALIAS a
+		       	 on i.idx = a.item_id
+  				 where t.cost_code = i.cost_code and t.COMPANY_ID = #{companyId} 
+  				 order by t.sort
+  	</select>
+ 
+	<delete id="deleteByCompanyId">
+  		delete TB_CONF_COST_COMPANY t where t.COMPANY_ID = #{companyId} 
+  	</delete>
+
+  	<insert id="insert" parameterType="com.jessrun.web.system.domain.ConfCostCompany">
+  		insert into TB_CONF_COST_COMPANY(IDX,COST_NAME,COST_CODE,COST_TYPE,COST_VAL,SORT,COMPANY_ID
+  		) 
+  		values(#{idx,jdbcType=INTEGER},#{costName,jdbcType=VARCHAR},#{costCode,jdbcType=VARCHAR},
+  		#{costType,jdbcType=VARCHAR},#{costVal,jdbcType=VARCHAR},#{sort,jdbcType=INTEGER},#{companyId,jdbcType=INTEGER}
+  		)
+  	</insert>                          
+  	
+  	
+  	                                                
+  
+</mapper>

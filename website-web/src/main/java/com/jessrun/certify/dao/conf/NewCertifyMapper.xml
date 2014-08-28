@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.certify.dao.NewCertifyMapper" >
+  
+  <resultMap id="UserInfo" type="com.jessrun.certify.vo.UserInfo" >
+  	<id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT" property="accountNum" jdbcType="VARCHAR" />
+    <result column="LOGIN_TIME" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_IP" property="loginIP" jdbcType="VARCHAR" />
+    <result column="LOGIN_ID" property="loginId" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="deptId" jdbcType="INTEGER" />
+    <result column="TYPE" property="orgaType" jdbcType="DECIMAL" />
+    <result column="RECORD_ID" property="orgaId" jdbcType="DECIMAL" />
+    <result column="COMPANY_ID" property="defaultCompanyId" jdbcType="INTEGER" />
+    <result column="COMPANY_NAME" property="defaultCompanyName" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME_SIM" property="defaultCompanyNameSIM" jdbcType="VARCHAR" />
+    <result column="COMPANY_NAME_SIM_CN" property="defaultCompanyNameSIMCN" jdbcType="VARCHAR" />
+    <result column="STATE_ID" property="defaultStateId" jdbcType="INTEGER" />
+    <result column="STATE_NAME" property="defaultStateName" jdbcType="VARCHAR" />
+    <result column="DEPT_ID" property="defaultDeptId" jdbcType="INTEGER" />
+    <result column="DEPT_NAME" property="defaultDeptName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectUserInfoByLogin" resultMap="UserInfo" >
+
+    select a.id,c.id user_id,c.name user_name,a.ACCOUNT,a.LOGIN_TIME,a.LOGIN_IP,a.LOGIN_ID,b.id ORG_ID,b.TYPE,b.RECORD_ID,b.COMPANY_ID,b.COMPANY_NAME,b.COMPANY_NAME_SIM,b.COMPANY_NAME_SIM_CN,b.STATE_ID,b.STATE_NAME,b.DEPT_ID,b.DEPT_NAME
+  from tb_certify_account a, tb_certify_dept b,tb_certify_user c
+ where a.dept_id = b.id and a.user_id = c.id and a.status = 1 and c.status = 1
+   and a.account = #{account,jdbcType=VARCHAR}
+
+   <choose>
+   	<when test="companySIM == null or companySIM == ''">
+   	and b.company_name_sim is null
+   	</when>
+   	<otherwise>
+   	and b.company_name_sim = #{companySIM,jdbcType=VARCHAR}
+   	</otherwise>
+   </choose>
+
+   and a.password = #{pw,jdbcType=VARCHAR}
+
+  </select>
+  
+  <update id="updateLoginInfo">
+  <![CDATA[
+  update tb_certify_account t
+   set t.login_id = #{loginID,jdbcType=VARCHAR},
+       t.login_time = sysdate,
+       t.modify_time = sysdate,
+       t.modify_id = #{userID,jdbcType=INTEGER},
+       t.modify_name = #{userName,jdbcType=VARCHAR},
+       t.login_ip = #{loginIP,jdbcType=VARCHAR}
+ 	where t.id = #{id,jdbcType=VARCHAR}
+   ]]>
+  </update>
+  
+  <insert id="insertLoginLog" parameterType="com.jessrun.certify.vo.UserInfo">
+  <![CDATA[
+  insert into tb_certify_login_log
+  (id, login_id, account_num, user_id, user_name, login_time, login_ip)
+values
+  (SEQ_tb_certify_login_log.Nextval, #{loginId,jdbcType=VARCHAR}, #{accountNum,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, SYSDATE, #{loginIP,jdbcType=VARCHAR})
+  ]]>
+  </insert>
+  
+  <select id="exisAccount" resultType="java.lang.Integer">
+  <![CDATA[
+  select count(1) result_count
+  from tb_certify_account a, tb_certify_dept b
+ where a.dept_id = b.id
+   and a.account = #{account,jdbcType=VARCHAR}
+   and b.company_name_sim = #{companySIM,jdbcType=VARCHAR}
+  ]]>
+  </select>
+  
+  <select id="exisCompanySIM" resultType="java.lang.Integer">
+  <![CDATA[
+  select count(1) from tb_certify_dept t where t.company_name_sim = #{companySIM,jdbcType=VARCHAR}
+  ]]>
+  </select>
+  
+  <update id="updatePassword">
+  <![CDATA[
+  update tb_certify_account t
+   set t.password = #{newpass,jdbcType=VARCHAR},
+       t.modify_time = sysdate,
+       t.modify_id = #{userID,jdbcType=INTEGER},
+       t.modify_name = #{userName,jdbcType=VARCHAR}
+ 	where t.id = #{id,jdbcType=INTEGER} and t.password = #{oldpass,jdbcType=VARCHAR}
+  ]]>
+  </update>
+  
+  <select id="validateAccount" resultType="java.lang.Integer">
+  select count(1) result_count
+  from tb_certify_account a, tb_certify_dept b
+ where a.dept_id = b.id
+   and a.account = #{account,jdbcType=VARCHAR}
+   <choose>
+   	<when test="companySIM == null or companySIM == ''">
+   	and b.company_name_sim is null
+   	</when>
+   	<otherwise>
+   	and b.company_name_sim = #{companySIM,jdbcType=VARCHAR}
+   	</otherwise>
+   </choose>
+   and a.login_id = #{loginId,jdbcType=VARCHAR}
+  </select>
+  
+  <resultMap id="MenuItem" type="com.jessrun.certify.vo.ResourceItem" >
+  	<id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PID" property="pid" jdbcType="INTEGER" />
+    <result column="TYPE" property="type" jdbcType="INTEGER" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectResourceItemByAccountId" parameterType="java.lang.Integer" resultMap="MenuItem">
+  select q.id,q.name,q.type,q.val url,q.parent_id pid from (select * from tb_certify_resource p where p.id in (
+select distinct t.id
+from tb_certify_resource t   
+connect by prior t.parent_id = t.id   
+start with t.id in (
+select distinct b.id from tb_certify_reso_acco a, tb_certify_resource b where a.account_id = #{id,jdbcType=INTEGER} and a.resource_id = b.id))) q 
+connect by prior q.id = q.parent_id
+start with q.parent_id = 0 order siblings by q.sort asc
+  </select>
+  
+</mapper>

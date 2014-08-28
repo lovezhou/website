@@ -1,0 +1,422 @@
+@charset "utf-8";
+
+html,BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #3c3c3c; PADDING-TOP: 0px; FONT-FAMILY: "", Arial, Geneva, Helvetica, sans-serif; 
+	BACKGROUND-COLOR: #fff;
+	scrollbar-3dlight-color:#D4D0C8; /*- 最外左 -*/  
+	scrollbar-highlight-color:#fff; /*- 左二 -*/  
+	scrollbar-face-color:#E4E4E4; /*- 面子 -*/  
+	scrollbar-arrow-color:#666; /*- 箭头 -*/  
+	scrollbar-shadow-color:#808080; /*- 右二 -*/  
+	scrollbar-darkshadow-color:#D7DCE0; /*- 右一 -*/  
+	scrollbar-base-color:#D7DCE0; /*- 基色 -*/  
+	scrollbar-track-color:#;/*- 滑道 -*/  
+}
+
+a:link{text-decoration:none;color:#296087;}
+a:visited {text-decoration:none;color:#296087;}
+a:hover {text-decoration:none;color:#cc0033;}
+a:active {text-decoration:none;color:#296087;}
+.checkbox{vertical-align: middle;margin-right: 2px;}
+.center {margin: 0px auto;}/*火狐中表格居中*/
+
+.page{
+background:#efefef;border:1px solid #ccc;
+text-align: center;
+}
+
+.page tr td{
+	text-align: center;
+	}
+
+.table02 tr td {/*Ĭ��������е���ʾ*/
+	color: #000000;
+	padding:3px;
+}
+.table02 tr td.left{
+	text-align:left;}
+	
+.table02 tr td.center{
+	text-align:center}
+	
+.table02 tr td.right{
+	text-align:right}
+	
+.table02 tr.alt {
+	 background:#F8FCFE; 
+}
+.table02 tr.over {
+	background:#F4FAFF;
+	
+}
+.table02 th {
+	text-align:center;
+	padding:2px 10px;
+    font-weight:bold;
+	color: #144B74;
+	height:26px;
+	line-height:26px;
+	cursor:default;
+}
+.table02 tfoot td{
+	padding-top:4px;
+	height:26px;
+	text-align:center;}
+
+.table02 A:link{
+ COLOR:#163E97;font-weight:normal; TEXT-DECORATION: none;}
+.table02 A:visited{
+ COLOR: #163E97;font-weight:normal; TEXT-DECORATION: none;}
+.table02 A:hover {
+ color:#A4BBF2;font-weight:normal; TEXT-DECORATION: none;}
+.table02 A:active {
+ COLOR: #163E97;font-weight:normal; TEXT-DECORATION: none;}
+ 
+/*table03样式开始*/
+.table03 {
+	border: 1px solid #99BBE8;
+	border-collapse: collapse;
+}
+.table03 th {
+	height:26px;
+	line-height:26px;
+	text-align:center;
+	color:#000;
+	padding-left:5px;
+	font-weight:bold;
+	font-size:12px;
+	background:url('images/panel_title.gif') repeat-x;
+	border-bottom: 1px solid #b5b5b5;
+	border-left: 1px solid #b5b5b5;
+}
+
+
+.table03 tr td {/*默认情况下行的显示*/
+	color: #000;
+	height:22px;
+	line-height:22px;
+	padding-left:5px;
+	text-align:center;
+	padding-left:5px;
+	border-bottom: 1px dotted #ccc;
+	border-left: 1px dotted #ccc;
+}
+
+.table03 tr.alt {
+	 background:#f3f3f3; /*交替行颜色定义*/
+}
+.table03 tr.over {
+	background:#d0e5f5;
+	cursor:default;/*当前行颜色*/
+}
+
+
+/*显示表格的左边和下边的线段和table样式结束*/
+.table03 A:link{
+ COLOR:#48737c; TEXT-DECORATION: none;}
+.table03 A:visited{
+ COLOR: #48737c; TEXT-DECORATION: none;}
+.table03 A:hover {
+ color:#444;text-decoration:underline;}
+.table03 A:active {
+ COLOR: #48737c; TEXT-DECORATION: none;}
+/*table03样式结束*/
+
+.table06 {
+	border:1px solid #99BBE8;
+	border-collapse: collapse;
+}
+/*显示表格的左边和下边的线段和table样式开始*/
+.table06 th {
+	height:26px;
+	line-height:26px;
+	text-align:center;
+	color:#000;
+	padding-left:5px;
+	font-weight:bold;
+	font-size:12px;
+	background:url('images/panel_title.png') repeat-x;
+	border-bottom: 1px solid #b5b5b5;
+	border-left: 1px solid #b5b5b5;
+}
+.table06 tr td {/*默认情况下行的显示*/
+	color: #000;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	padding-left:5px;
+	border-bottom: 1px dotted #C1C1C1;
+	border-left: 1px dotted #C1C1C1;
+}
+.table06 tr td.color {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px dotted #b5b5b5;
+	border-left: 1px dotted #b5b5b5;
+	background-image:url(images/datagrid_header_bg.gif);
+	background-repeat:repeat-x;
+}
+
+.table06  tr  td.price{   /* 费用合计*/
+	font-weight: bold;
+	color:red;
+	}   
+
+.table06 tr td.bz {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px dotted #b5b5b5;
+	border-left: 1px dotted #b5b5b5;
+	height:40px;
+	background-image:url(images/datagrid_header_bg1.gif);
+	background-repeat:repeat-x;
+}
+
+
+.table06 tr.alt {
+	 background:#E7F4FD; /*交替行颜色定义*/
+}
+.table06 tr.over {
+	background:#d8f79d;
+	cursor:hand;/*当前行颜色*/
+}
+.table07 tr td {/*默认情况下行的显示*/
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	padding-left:5px;
+	border-width:1;
+    border:1px solid;
+    border-collapse:collapse;
+}
+.table07{/*默认情况下行的显示*/
+	border-width:1;
+    border:1px solid;
+    border-collapse:collapse;
+}
+.table08 tr td {/*默认情况下行的显示*/
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	padding-left:5px;
+	font-size: 15px;
+}
+
+/*显示表格的左边和下边的线段和table样式结束*/
+.table06 A:link{
+ COLOR:#48737c; TEXT-DECORATION: none;}
+.table06 A:visited{
+ COLOR: #48737c; TEXT-DECORATION: none;}
+.table06 A:hover {
+ color:#444;text-decoration:underline;}
+.table06 A:active {
+ COLOR: #48737c; TEXT-DECORATION: none;}
+/*显示表格的左边和下边的线段和table样式结束*/
+
+/*弹出层table样式开始*/
+.table-tcc {
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-collapse: collapse;
+}
+
+.table-tcc th {
+	padding:5px;
+	line-height:15px;
+	color:#333;
+	font-weight:bold;
+	font-size:12px;
+	background:url('images/panel_title.gif') repeat-x;
+	position:relative;
+	border-bottom:1px solid #ccc;
+}
+
+.table-tcc tr td {/*默认情况下行的显示*/
+	color: #000;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	padding-left:5px;
+	border-bottom: 1px solid #C1C1C1;
+	border-left: 1px solid #C1C1C1;
+}
+.table-tcc tr td.color {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px solid #C1C1C1;
+	border-left: 1px solid #C1C1C1;
+	background-image:url(images/datagrid_header_bg.gif);
+	background-repeat:repeat-x;}
+.table-tcc tr td.bz {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px solid #b5b5b5;
+	border-left: 1px solid #b5b5b5;
+	height:40px;
+	background-image:url(images/datagrid_header_bg1.gif);
+	background-repeat:repeat-x;
+}
+
+/*弹出层table样式结束*/
+td{
+font-size:12px;
+}
+.pgremark{
+  background:url('images/panel_title.png') repeat-x;
+  border:0px;
+}
+//排序
+.tablesorter {
+	
+	
+}
+.tablesorter th {
+	background-color: #e6EEEE;
+	
+}
+
+.input-def {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #ECF6FC;background-image:url(images/form/input_bg.png);background-repeat:repeat-x;
+}
+	
+
+.fieldset-info{
+	background:#E6EFFE;
+	//color:#8F5700;
+	width: 97%;
+	padding:5px;height:auto;
+	line-height:18px;font-size:12px;color:#333;
+}
+
+.fieldset-line{
+	 border:1px  solid #9a9a9a;
+	 padding:5px;
+	 }
+.fieldset-tip{
+	width: 99%;
+	height:6px;
+	margin-right:8px;
+	float:left;
+	background: #FFFFFF;
+}
+.input{
+	background:#CCE8CF;
+}
+.select{
+	background:#CCE8CF;
+}
+.table-left{
+	text-align:left;}
+.table-center{
+	text-align:center;}
+.table-right{
+	text-align:right;}
+.textarea {
+  height:3.6em;
+  width:500px;  
+  COLOR: balck;
+  BORDER: #4C9DC5 1px solid; 
+  //BACKGROUND-COLOR: #CCE8CF;
+  overflow:visible;
+}
+
+
+.table_bottom {
+	border:1px solid #99BBE8;
+	border-collapse: collapse;
+}
+/*显示表格的左边和下边的线段和table样式开始*/
+.table_bottom th {
+	padding:5px;
+	line-height:15px;
+	color:#15428b;
+	font-weight:bold;
+	font-size:12px;
+	background:url('images/panel_title.png') repeat-x;
+	position:relative;
+	border-bottom:1px solid #99BBE8;
+}
+.table_bottom tr td {/*默认情况下行的显示*/
+	color: #000;
+	height:22px;
+	line-height:22px;
+	text-align:left;
+	padding-left:5px;
+	border-bottom: 1px dotted #C1C1C1;
+	border-left: 1px dotted #C1C1C1;
+}
+.table_bottom tr td.color {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px dotted #b5b5b5;
+	border-left: 1px dotted #b5b5b5;
+	background-image:url(images/datagrid_header_bg.gif);
+	background-repeat:repeat;
+}
+.table_bottom tr td.bz {/*默认情况下行的显示*/
+	color: #000;
+	padding:0px 10px;
+	text-align:center;
+	border-bottom: 1px dotted #b5b5b5;
+	border-left: 1px dotted #b5b5b5;
+	//height:40px;
+	background-image:url(images/datagrid_header_bg1.gif);
+	background-repeat:repeat-x;
+}
+
+.table_bottom tr.alt {
+	 background:#E7F4FD; /*交替行颜色定义*/
+}
+.table_bottom tr.over {
+	background:#d8f79d;
+	cursor:hand;/*当前行颜色*/
+}
+
+/*显示表格的左边和下边的线段和table样式结束*/
+.table_bottom A:link{
+ COLOR:#48737c; TEXT-DECORATION: none;}
+.table_bottom A:visited{
+ COLOR: #48737c; TEXT-DECORATION: none;}
+.table_bottom A:hover {
+ color:#444;text-decoration:underline;}
+.table_bottom A:active {
+ COLOR: #48737c; TEXT-DECORATION: none;}
+ 
+ }.pagination{
+	zoom:1;
+}
+.pagination table{
+	float:left;
+	height:30px;
+}
+.pagination-btn-separator{
+	float:left;
+	height:24px;
+	border-left:1px solid #ccc;
+	border-right:1px solid #fff;
+	margin:3px 1px;
+}
+.pagination-num{
+	border:1px solid #ccc;
+	margin:0 2px;
+}
+.pagination-page-list{
+  position: relative;
+  left: 1px;
+  top: 6px;
+}
+.pagination-info{
+	float:right;
+	padding-right:6px;
+	padding-top:8px;
+	font-size:12px;
+}
+ /* 费用合计*/
+ 

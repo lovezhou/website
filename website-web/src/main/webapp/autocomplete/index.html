@@ -1,0 +1,97 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+ <meta name="author" content="KevinXiao Email:kevin_218@163.com" />
+ <title>Kevin's demo</title>
+
+<!--[if IE 6]><script type="text/javascript">try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}</script><![endif]-->
+</head>
+
+<body >
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.bgiframe.min.js"></script>
+<script type="text/javascript" src="jquery.autocomplete.js"></script>
+<style type="text/css">
+/*
+Author: Freedom Xiao
+*/
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td {margin: 0;padding: 0;}
+body,button,input,select,textarea {font:12px/1.5 tahoma,arial,simsun,sans-serif,\5b8b\4f53;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%;}
+address,cite,dfn,em,var {font-style: normal;}
+code,kbd,pre,samp {font-family: courier new,courier,monospace;}
+small{font-size: 12px;}
+ul,ol{list-style: none;}
+a {text-decoration: none;outline:none;}
+a: hover{text-decoration: underline;}
+sup{vertical-align: text-top;}
+sub{vertical-align: text-bottom;}
+legend{color: #000;}
+fieldset,img {border: 0;}
+table{	border-collapse: collapse;border-spacing: 0;}
+fieldset,img {border: none;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style: normal;font-weight: normal;}
+button {cursor:pointer;}
+.word-break{word-break:break-all;word-wrap:break-word;overflow:hidden}
+.clearfix:after{content:"";display:block;clear:both;}.clearfix{zoom:1;}.clear{clear:both;}
+
+.autoTable {}
+.autoTable td {padding:0 5px;}
+</style>
+<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" />
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	function parseFn(data) {
+		 var rows = [];
+		 for(var i=0; i<data.length; i++){
+			rows[rows.length] = {
+				data:data[i],      　　　　　　 //下拉框显示数据格式
+				value:data[i].linkmanName,      //选定后实际数据格式
+				result:data[i].linkmanName//选定后输入框显示数据格式
+			};
+		  }
+		 return rows;
+	  }
+	$("#customerName").autocomplete("/jessrun/bic/custlinkmn/search.act", {
+		minChars:0, 　　　　　　　　//激活自动完成的输入字符数
+		width: 150,
+		matchContains:false,　　  //只要包含输入字符就会显示提示
+		autoFill: false,　　　　　　　　//自动填充输入框
+		dataType: 'json', 　　　　　　//数据格式
+		parse: parseFn,
+
+		//formatItem: function(row, i, max) {
+		//	return row.linkmanName;
+		//}
+		 formatItem: function(row, i, max) {
+			var item="<table id='auto"+i+"' class='autoTable'><tr><td>"+row.linkmanName+"</td></table>" ;
+		 return item;
+		}
+	}).result(function(event, data, formatted){
+		$("#linkmanName").val(data.linkmanName);
+		$("#linkmanTel").val(data.linkmanTel);
+		$("#customerAddress").val(data.customerAddress);
+	});
+})
+</script>
+联系人：
+<input type="text" name="customerName" value="" id="customerName"  autocomplete="off"/>
+<br />
+<br />
+<br />
+<p><input type="text" name="" value="" id="linkmanName"/></p>
+<p><input type="text" name="" value="" id="linkmanTel"/></p>
+<p><input type="text" name="" value="" id="customerAddress"/></p>
+<br />
+<br />
+<br />
+</div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+@charset "utf-8";
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: #3c3c3c; PADDING-TOP: 0px; FONT-FAMILY: "", Arial, Geneva, Helvetica, sans-serif; BACKGROUND-COLOR: #fff
+}
+div,ul,ol,form {margin:0;padding:0;}
+img {border:0;}
+li {list-style:none;}
+table {font-size:12px;}
+input {font-family:tahoma,Arial,Helvetica,sans-serif;font-size:12px;vertical-align:middle;}
+h1,h2,h3,h4,h5,h6,h7 {margin:0;padding:0;text-align:left;font-size:12px;font-weight:400;}
+p {margin:0;}
+
+/*html {overflow:hidden!important;overflow:auto;*height:100%;}*/
+
+a:link{text-decoration:none;color:#42414A;}
+a:visited {text-decoration:none;color:#42414A;}
+a:hover {text-decoration:none;color:#999;}
+a:active {text-decoration:none;color:#999;}
+
+/* ============常用============ */
+.left {float:left;}
+.right {float:right;}
+.clear {clear:both;}
+.block {display:block;}
+.none {display:none;}
+.current a{ background:#99ccff url("images/left/arrow.gif") no-repeat 8px center;}
+
+/* ============布局============ */
+/* 头部 */
+
+/* 内容 */
+#contents {clear:both;*height:100%;width:auto;margin:0px;}
+/* 内容左层 */
+#contents .left {
+	margin:0px;width:165px;*height:98%;/* IE6.IE7支持 */
+}
+/* 左测菜单 */
+/*#contents .menu_top {height:4px!important;width:165px;
+margin-top:0px!important;*margin-top:-10px;background:#ACD5F2 url("images/left/left_tabid_cnt_top.gif") no-repeat right bottom;}
+*/
+#contents .menu_top 
+{height:4px!important;width:165px;
+margin-top:0px!important;*margin-top:-10px;background:url("images/left/bg04.jpg") repeat-y left top;}
+
+#contents .menu_end {height:7px;width:165px;background:#48A3E6 url("images/left/border_end.gif") no-repeat left top;}
+
+.sidebar {
+	OVERFLOW-X: hidden; WIDTH: 170px
+}
+.menu {
+	OVERFLOW: visible; WIDTH: 170px
+}
+.menu LI {
+	FONT-WEIGHT: normal; BACKGROUND: url(images/left/menu.gif) no-repeat left top; FLOAT: left; MARGIN: 1px 0px 0px; OVERFLOW: hidden; WIDTH: 100%; TEXT-INDENT: 35px; LINE-HEIGHT: 28px; TEXT-ALIGN: left;font-weight:bold;
+}
+.menu LI.on {
+	BACKGROUND: url(images/left/menu.gif) no-repeat left -28px; COLOR: #0a4f86; font-weight:bold; LINE-HEIGHT: 28px
+}
+.menu LI.on A {
+	BACKGROUND: url(images/left/menu.gif) no-repeat left -28px; COLOR: #0a4f86;  LINE-HEIGHT: 28px
+}
+.menu LI A {
+	FLOAT: left; WIDTH: 100%; COLOR: #0a4f86; TEXT-DECORATION: none
+}
+.menu LI A:hover {
+	BACKGROUND: url(images/left/menu.gif) no-repeat left -28px; COLOR: #0a4f86; LINE-HEIGHT: 28px
+}
+.menu LI.on LI {
+	FONT-WEIGHT: normal; BACKGROUND: url(images/left/menu_li.gif) no-repeat left top; MARGIN: 0px; COLOR: #296087; TEXT-INDENT: 30px; LINE-HEIGHT: 30px; HEIGHT: 30px
+}
+.menu LI.on LI.on {
+	BACKGROUND: url(images/left/menu_li.gif) no-repeat left -30px
+}
+.menu LI.on LI.on A {
+	BACKGROUND: url(images/left/menu_li.gif) no-repeat left top; COLOR: #333333
+}
+.menu LI.on LI A {
+	BACKGROUND: url(images/left/menu_li.gif) no-repeat left top; COLOR: #296087; LINE-HEIGHT: 30px
+}
+.menu LI.on LI A:hover {
+	FONT-WEIGHT: normal; BACKGROUND: url(images/left/menu_li.gif) no-repeat left -30px; COLOR: #333333; LINE-HEIGHT: 30px
+}
+
+

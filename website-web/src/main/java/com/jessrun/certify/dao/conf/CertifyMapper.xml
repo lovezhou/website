@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.certify.dao.CertifyMapper" >
+  
+  <resultMap id="UserInfo" type="com.jessrun.certify.vo.UserInfo" >
+    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_NUM" property="accountNum" jdbcType="VARCHAR" />
+    <result column="LOGIN_TIME" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_IP" property="loginIP" jdbcType="VARCHAR" />
+    <result column="LOGIN_ID" property="loginId" jdbcType="VARCHAR" />
+    <result column="ORGA_TYPE" property="orgaType" jdbcType="DECIMAL" />
+    <result column="ORGA_ID" property="orgaId" jdbcType="DECIMAL" />
+    <result column="DEFAULT_COMPANY_ID" property="defaultCompanyId" jdbcType="DECIMAL" />
+    <result column="DEFAULT_COMPANY_NAME_SIM" property="defaultCompanyNameSIM" jdbcType="VARCHAR" />
+    <result column="DEFAULT_STATE_ID" property="defaultStateId" jdbcType="DECIMAL" />
+  </resultMap>
+  
+ <resultMap type="com.jessrun.certify.vo.Role" id="Role">
+	  	<id column="ROLE_ID" property="roleID" jdbcType="INTEGER"></id>
+	  	<result column="ROLE_NAME" property="roleName" jdbcType="VARCHAR"/>
+	  	<result column="DESCRIPTION" property="description" jdbcType="VARCHAR"/>
+  </resultMap>
+  
+  <sql id="where_role_column_list">
+  	<if test="roleID != null">
+  		and ROLE_ID = ${roleID}
+  	</if>
+  	<if test="roleName != null">
+  		and ROLE_NAME like '%${roleName}%'
+  	</if>
+  	<if test="description != null">
+  		and DESCRIPTION like '%${description}%'
+  	</if>
+  </sql>
+  
+  <select id="getAllRole" resultMap="Role">
+  	select * from TB_CERTIFY_ROLE
+  	where 1=1
+  	<include refid="where_role_column_list"/>
+  </select>
+  
+  
+
+  
+  
+  <insert id="insertCertifyAccount" parameterType="com.jessrun.certify.vo.CertifyAccount">
+		insert into TB_CERTIFY_ACCOUNT (ACCOUNT_NUM, PASSWORD,LOGIN_TIME,LOGIN_IP,LOGIN_ID,IS_ONLINE,SORT,CREATED_TIME, CREATED_USER_ID,
+		CREATED_USER_NAME, ORGA_TYPE, ORGA_ID,
+		ACCOUNT_STATE,DEFAULT_COMPANY_ID,DEFAULT_STATE_ID,DEFAULT_COMPANY_NAME,DEFAULT_COMPANY_NAME_SIM,DEFAULT_STATE_NAME)
+		values(
+		#{accountNum,jdbcType=VARCHAR}, 
+		#{password,jdbcType=VARCHAR},
+		#{loginTime,jdbcType=DATE},
+		#{loginIP,jdbcType=VARCHAR},
+		#{loginID,jdbcType=VARCHAR},
+		#{isOnline,jdbcType=INTEGER},
+		0,
+		sysdate,
+		#{createdUserID,jdbcType=INTEGER},
+		#{createdUserName,jdbcType=VARCHAR},
+		#{orgaType,jdbcType=INTEGER},
+		#{orgaID,jdbcType=INTEGER},
+		1,
+		#{defaultCompanyId,jdbcType=INTEGER},
+		#{defaultStateId,jdbcType=INTEGER},
+		#{defaultCompanyName,jdbcType=VARCHAR},
+		#{defaultCompanyNameSim,jdbcType=VARCHAR},
+		#{defaultStateName,jdbcType=VARCHAR})
+	</insert>
+  
+  <insert id="addRoleAccount" parameterType="com.jessrun.certify.vo.RoleAccount">
+  		insert into TB_CERTIFY_ROLE_ACCOUNT (ACCOUNT_NUM, ROLE_ID,
+		 CREATED_TIME, CREATED_USER_ID,
+		CREATED_USER_NAME, MODIFY_TIME, MODIFY_USER_ID,
+		MODIFY_USER_NAME)
+		values (#{accountNum,jdbcType=VARCHAR}, 
+		#{roleID,jdbcType=INTEGER},
+		sysdate,
+		#{createdUserID,jdbcType=INTEGER},
+		#{createdUserName,jdbcType=VARCHAR},
+		sysdate,
+		#{createdUserID,jdbcType=INTEGER},
+		#{createdUserName,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="addCertifyUserByStaff" parameterType="com.jessrun.certify.vo.User">
+  		insert into TB_CERTIFY_USER(USER_ID,USER_NAME,ID_NUM,BIRTHDAY,NATION,
+  		MOBILE_NUM1,MOBILE_NUM2,PHONE_NUM,ADDRESS,NOW_ADDRESS,CREATED_TIME,CREATED_USER_ID,
+  		CREATED_USER_NAME,MODIFY_TIME,MODIFY_USER_ID,MODIFY_USER_NAME,STAFF_ID)
+  		values (#{userID,jdbcType=INTEGER},
+  		#{userName,jdbcType=VARCHAR},#{iDNum,jdbcType=VARCHAR},
+  		#{birthday,jdbcType=VARCHAR},#{nation,jdbcType=VARCHAR},#{mobileNum1,jdbcType=VARCHAR},
+  		#{mobileNum2,jdbcType=VARCHAR},#{phoneNum,jdbcType=VARCHAR},
+  		#{address,jdbcType=VARCHAR},#{nowAddress,jdbcType=VARCHAR},
+  		sysdate,#{createdUserID,jdbcType=INTEGER},
+  		#{createdUserName,jdbcType=VARCHAR},sysdate,
+  		#{createdUserID,jdbcType=INTEGER},
+		#{createdUserName,jdbcType=VARCHAR},#{staffId,jdbcType=INTEGER})
+  </insert>
+  
+  <insert id="addCertifyUser" parameterType="com.jessrun.certify.vo.User">
+  		<selectKey resultType="java.lang.Integer" keyProperty="userID" order="BEFORE" >
+          select seq_tb_certify_user_custom.nextval as  userID from  dual 
+    	</selectKey>
+  		insert into TB_CERTIFY_USER(USER_ID,USER_NAME,ID_NUM,BIRTHDAY,NATION,
+  		MOBILE_NUM1,MOBILE_NUM2,PHONE_NUM,ADDRESS,NOW_ADDRESS,CREATED_TIME,CREATED_USER_ID,
+  		CREATED_USER_NAME,MODIFY_TIME,MODIFY_USER_ID,MODIFY_USER_NAME,STAFF_ID)
+  		values (#{userID,jdbcType=INTEGER},
+  		#{userName,jdbcType=VARCHAR},#{iDNum,jdbcType=VARCHAR},
+  		#{birthday,jdbcType=VARCHAR},#{nation,jdbcType=VARCHAR},#{mobileNum1,jdbcType=VARCHAR},
+  		#{mobileNum2,jdbcType=VARCHAR},#{phoneNum,jdbcType=VARCHAR},
+  		#{address,jdbcType=VARCHAR},#{nowAddress,jdbcType=VARCHAR},
+  		sysdate,#{createdUserID,jdbcType=INTEGER},
+  		#{createdUserName,jdbcType=VARCHAR},sysdate,
+  		#{createdUserID,jdbcType=INTEGER},
+		#{createdUserName,jdbcType=VARCHAR},#{staffId,jdbcType=INTEGER})
+  </insert>
+  
+  <insert id="addCertifyAccountUser" parameterType="com.jessrun.certify.vo.AccoUser"> 
+  		insert into TB_CERTIFY_ACCO_USER(USER_ID,ACCOUNT_NUM,CREATED_TIME,CREATED_USER_ID
+  		,CREATED_USER_NAME,MODIFY_TIME,MODIFY_USER_ID,MODIFY_USER_NAME)
+  		values(#{userID,jdbcType=INTEGER},
+  		#{accountNum,jdbcType=VARCHAR},
+  		sysdate,#{createdUserID,jdbcType=INTEGER},
+  		#{createdUserName,jdbcType=VARCHAR},sysdate,#{modifyUserID,jdbcType=INTEGER},#{modifyUserName,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
+  		select 
+		    count(1) result
+		 from TB_CERTIFY_ACCOUNT 
+		  <where>
+	           <if test="accountNum!=null">
+	              ACCOUNT_NUM =#{accountNum}              
+	           </if>
+	           <if test="defaultCompanyNameSim!=null">
+	              AND DEFAULT_COMPANY_NAME_SIM =#{defaultCompanyNameSim}              
+	           </if>
+	    </where>
+  </select>
+  
+  
+  
+  <select id="getUserInfoByLoginId" resultMap="UserInfo" parameterType="com.jessrun.certify.vo.UserInfo" >
+  	<![CDATA[
+    select 
+    USER_ID, USER_NAME, ACCOUNT_NUM, LOGIN_TIME, LOGIN_ID, LOGIN_IP, ORGA_TYPE,ORGA_ID,DEFAULT_COMPANY_ID,DEFAULT_STATE_ID
+    from v_certify_useraccount
+    where ACCOUNT_NUM = #{accountNum,jdbcType=VARCHAR} and USER_ID = #{userId,jdbcType=INTEGER} and LOGIN_ID = #{loginId,jdbcType=VARCHAR} and rownum < 2
+  	]]>
+  </select>
+  
+  <update id="updateUserInfoForLogin" parameterType="com.jessrun.certify.vo.UserInfo">
+    update tb_certify_account
+    set LOGIN_ID = #{loginId,jdbcType=VARCHAR},
+    LOGIN_TIME = #{loginTime,jdbcType=DATE},
+    LOGIN_IP = #{loginIP,jdbcType=VARCHAR}
+    where ACCOUNT_NUM = #{accountNum,jdbcType=VARCHAR}
+  </update>
+  
+  <insert id="insertLoginLog" parameterType="com.jessrun.certify.vo.UserInfo" >
+    insert into tb_certify_login_log (LOGIN_ID, ACCOUNT_NUM, USER_ID,USER_NAME,LOGIN_TIME,LOGIN_IP)
+    values (#{loginId,jdbcType=VARCHAR}, #{accountNum,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, #{loginIP,jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="getUserInfoByUserId" resultMap="UserInfo" parameterType="java.lang.Integer" >
+  <![CDATA[
+    select 
+    USER_ID, USER_NAME, ACCOUNT_NUM, LOGIN_TIME, LOGIN_ID, LOGIN_IP, ORGA_TYPE,ORGA_ID,DEFAULT_COMPANY_ID,DEFAULT_STATE_ID,DEFAULT_COMPANY_NAME_SIM
+    from v_certify_useraccount
+    where USER_ID = #{userId,jdbcType=INTEGER}  and rownum < 2
+    ]]>
+  </select>
+  
+  <select id="getUserInfoByPassword" resultMap="UserInfo" >
+  <![CDATA[
+    select 
+    USER_ID, USER_NAME, ACCOUNT_NUM, LOGIN_TIME, LOGIN_ID, LOGIN_IP, ORGA_TYPE,ORGA_ID,DEFAULT_COMPANY_ID,DEFAULT_STATE_ID,DEFAULT_COMPANY_NAME_SIM
+    from v_certify_useraccount
+    where ACCOUNT_NUM = #{accountNum,jdbcType=VARCHAR} and PASSWORD = #{password,jdbcType=VARCHAR}  and DEFAULT_COMPANY_NAME_SIM = #{companyNameSIM,jdbcType=VARCHAR} and rownum < 2
+    ]]>
+  </select>
+  
+  
+  <resultMap id="Page" type="com.jessrun.certify.vo.Page" >
+    <id column="PAGE_ID" property="pageId" jdbcType="INTEGER" />
+    <result column="PAGE_NAME" property="pageName" jdbcType="VARCHAR" />
+    <result column="DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="URL" property="url" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="INTEGER" />
+    <result column="SORT" property="sort" jdbcType="INTEGER" />
+  </resultMap>
+  
+   <resultMap id="UserMap" type="com.jessrun.certify.vo.User" >
+    	<id column="user_ID" property="userID" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="selectTitleItemsByUserId" resultMap="Page" parameterType="java.lang.Integer" >
+select page_id, parent_id, page_name, url, description
+  from (select page_id, parent_id, page_name, url, description
+          from tb_certify_page
+         start with page_id in (select a.page_id
+                                  from (select page_id
+                                          from tb_certify_page t
+                                         where not exists
+                                         (select 1
+                                                  from tb_certify_page p
+                                                 where p.parent_id = t.page_id)) a,
+                                       tb_certify_acco_user b,
+                                       tb_certify_role_account c,
+                                       tb_certify_role_act d,
+                                       tb_certify_page_act e
+                                 where b.user_id = #{userId,jdbcType=INTEGER}
+                                   and b.is_valid = 1
+                                   and b.account_num = c.account_num
+                                   and c.is_valid = 1
+                                   and c.role_id = d.role_id
+                                   and d.action_id = e.action_id
+                                   and e.page_id = a.page_id)
+        connect by prior parent_id = page_id
+         group by page_id, parent_id, page_name, url, description)
+ start with parent_id is null
+connect by prior page_id = parent_id
+  </select>
+  
+  <select id="selectTitleItemsByURL" resultMap="Page">
+select page_id, parent_id, page_name, url, description
+          from tb_certify_page where instr(#{url},url) > 0
+         start with page_id in (select a.page_id
+                                  from (select page_id
+                                          from tb_certify_page t
+                                         where not exists
+                                         (select 1
+                                                  from tb_certify_page p
+                                                 where p.parent_id = t.page_id)) a,
+                                       tb_certify_acco_user b,
+                                       tb_certify_role_account c,
+                                       tb_certify_role_act d,
+                                       tb_certify_page_act e
+                                 where b.user_id = #{userId}
+                                   and b.is_valid = 1
+                                   and b.account_num = c.account_num
+                                   and c.is_valid = 1
+                                   and c.role_id = d.role_id
+                                   and d.action_id = e.action_id
+                                   and e.page_id = a.page_id)
+        connect by prior parent_id = page_id 
+         group by page_id, parent_id, page_name, url, description
+  </select>
+  
+  <update id="modifyPW">
+    update tb_certify_account
+    set PASSWORD = #{newPW}
+    where ACCOUNT_NUM in (select account_num from tb_certify_acco_user where user_id = #{userId} and IS_VALID = 1) and PASSWORD = #{oldPW}
+  </update>
+  
+  <sql id="where_column_list">
+  	<if test="userName != null">
+  		and USER_NAME = '%${userName}%'
+  	</if>
+  	<if test="accountNum != null">
+  		and ACCOUNT_NUM like '%${accountNum}%'
+  	</if>
+
+  	<if test="orgaType != null">
+  		<![CDATA[
+  		and ORGA_TYPE = ${orgaType}
+  		 ]]>
+  	</if>
+  	<if test="orgaType == null">
+	  	<if test="maxOrgaType != null">
+	  		<![CDATA[
+	  		and ORGA_TYPE >= ${maxOrgaType}
+	  		 ]]>
+	  	</if>
+  	</if>
+  	<if test="defaultStateId != null">
+  		AND DEFAULT_STATE_ID = ${defaultStateId}
+  	</if>
+  	<if test="defaultCompanyId != null">
+  		and DEFAULT_COMPANY_ID like '%${defaultCompanyId}%'
+  	</if>
+  </sql>
+  
+  <select id="selectUserByStaffId" parameterType="Integer" resultMap="UserMap">
+    	select user_Id from tb_certify_user where staff_Id=#{staffId}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="Integer">
+      delete from tb_certify_user where user_Id=#{userID}
+  </delete>
+  
+  <select id="getAllAdminListByPage" resultMap="UserInfo" parameterType="java.util.Map" >
+    select 
+    USER_ID, USER_NAME, ACCOUNT_NUM, LOGIN_TIME, LOGIN_ID, LOGIN_IP, ORGA_TYPE,ORGA_ID,DEFAULT_COMPANY_ID,DEFAULT_STATE_ID,DEFAULT_COMPANY_NAME_SIM
+    from v_certify_useraccount where 1 = 1 
+    <include refid="where_column_list" />
+  </select>
+  
+  <sql id="where_certify_dept_list">
+  	<if test="type == 2">
+  		and TYPE = 2 and COMPANY_ID=#{id}
+  	</if>
+  	<if test="type == 3">
+  		and TYPE = 3 and STATE_ID=#{id}
+  	</if>
+  	<if test="type == 4">
+  		and TYPE = 4 and DEPT_ID=#{id}
+  	</if>
+  </sql>
+  <select id="getCertifyDeptIdByTypeAndTypeId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+	  select ID from tb_certify_dept where 1 = 1
+	  <include refid="where_certify_dept_list" />
+  </select>
+  
+</mapper>

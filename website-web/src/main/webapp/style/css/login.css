@@ -1,0 +1,60 @@
+html{-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+audio,canvas,video {display: inline-block;*display: inline;*zoom: 1;}
+body,button,input,select,textarea{font:12px/1.5 \5b8b\4f53,tahoma,arial}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+fieldset,img{border:0;}
+iframe{display:block;}
+abbr,acronym{border:0;font-variant:normal;}
+del {text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
+q:before,q:after {content:'';}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+a {color:#000;}
+a:hover {text-decoration:none;}
+ins,a {text-decoration:none;}
+.clear:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear {zoom:1;}
+.word-break{word-break:break-all;word-wrap:break-word;overflow:hidden}
+html,body {background:#DEEEFC;}
+
+.loginBox {width:600px;height:380px;overflow:hidden;position:absolute;left:50%;top:50%;margin-left:-300px;margin-top:-190px;background:#DEEEFC url(../images/jessrun_bg_login.jpg) no-repeat left top;}
+.loginBox h1 {display:none;}
+.loginBox .form {height:82px;padding:242px 10px 0 10px;overflow:hidden;}
+.loginBox .form .form_tip {color:#ddd;height:30px;line-height:40px;overflow:hidden;}
+.loginBox .form .form_tip em {color:#ff6600;}
+.loginBox .form .form_lis,
+.loginBox .form .form_lis .n ,
+.loginBox .form .form_lis .v ,
+.loginBox .form .form_btn {float:left;height:26px;line-height:26px;}
+
+.loginBox .form .form_lis {width:230px;height:26px;}
+.loginBox .form .form_lis,
+.loginBox .form .form_btn {padding:13px 0;}
+.loginBox .form .form_lis .n {width:60px;color:#fff;text-align:right;}
+.loginBox .form .form_lis .v {width:170px;position:relative;}
+.loginBox .form .form_btn {width:120px;}
+.txt {width:138px;padding:0 4px;height:24px;line-height:24px;border:1px solid #164781;background:#F5F5F5;}
+.btn {display:block;width:75px;height:26px;line-height:26px;text-align:center;color:#1862A5;font-size:14px;font-weight:bold;background:#DEEEFC url(../images/jessrun_bg_login.jpg) no-repeat left -380px;}
+.welcome,
+.copyright{height:28px;line-height:28px;color:#ececec;padding:0 10px;font-family:arial;}
+.form-error {position:absolute;top:-22px;left:5px;color:#ff6600;}
+.txt-error{background:#F7E3C1;border:1px solid #ff6600;}
+.loadFormSubmit {background:url(../images/jessrun_bg_btn.png) no-repeat left top;margin-right:10px;display:inline-block;height:24px;line-height:24px;float:left;}
+.loadFormSubmit span {background:url(../images/jessrun_bg_btn.png) no-repeat right top;padding-right:10px;}
+
+.loadFormSubmit,
+.loadFormSubmit span {display:inline-block;height:24px;line-height:24px;}
+
+.loadFormSubmit {float:left;padding-left:10px;background:url(../images/jessrun_bg_btn.png) no-repeat left top;}
+.loadFormSubmit span {padding-right:10px;background:url(../images/jessrun_bg_btn.png) no-repeat right top;}
+
+.loadFormSubmit em{background:url(../images/formLoading.gif) no-repeat left center;padding-left:20px;display:inline-block;height:24px;line-height:24px;}

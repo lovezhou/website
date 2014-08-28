@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.web.system.dao.CertifyDeptMapper" >
+	<resultMap id="BaseResultMap" type="com.jessrun.web.system.domain.CertifyDept" >
+    	<id column="id" property="id" jdbcType="INTEGER" />
+    	<result column="name" property="name" jdbcType="VARCHAR"/>
+    	<result column="type" property="type" jdbcType="INTEGER"/>
+    	<result column="record_id" property="recordId" jdbcType="INTEGER"/>
+    	<result column="company_id" property="companyId" jdbcType="INTEGER"/>
+    	<result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+    	<result column="company_name_sim" property="companyNameSim" jdbcType="VARCHAR"/>
+    	<result column="company_name_sim_cn" property="companyNameSimCn" jdbcType="VARCHAR"/>
+    	<result column="state_id" property="stateId" jdbcType="INTEGER"/>
+    	<result column="state_name" property="stateName" jdbcType="VARCHAR"/>
+    	<result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+    	<result column="dept_id" property="deptId" jdbcType="INTEGER"/>
+    	<result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+    	<result column="status" property="status" jdbcType="INTEGER"/>
+  	</resultMap>
+  	
+  	<sql id="Base_column_list">
+  		id,name,type,record_id,company_id,company_name,company_name_sim,company_name_sim_cn,
+  		state_id,state_name,parent_id,dept_id,dept_name,status
+  	</sql>
+  	
+  	<select id="getCertifyDeptList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  		select * from tb_certify_dept t where t.status = 1 start with t.id = #{deptId} connect by prior t.id = t.parent_id
+  	</select>
+  	
+  	<select id="getDeptList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  		 select * from 
+  		 	tb_certify_user b 
+  		 		where b.dept_id in 
+  		 		(select t.id from tb_certify_dept t start with t.id = #{id,jdbcType=INTEGER} connect by prior t.id = t.parent_id) and b.status = 1      
+  	</select>
+  	
+  	<select id="getCertifyDeptById" parameterType="java.lang.Integer" resultType="com.jessrun.web.system.domain.CertifyDept">
+  		select 
+  		<include refid="Base_column_list"/>
+  		from tb_certify_dept where id = #{id,jdbcType=INTEGER} and status = 1
+  	</select>
+  	
+  	<insert id="addCertifyDept" parameterType="com.jessrun.web.system.domain.CertifyDept">
+  		<selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+          	select SEQ_tb_certify_dept.nextval as id from dual 
+    	</selectKey>
+    	insert into tb_certify_dept (id,name,type,record_id,company_id,company_name,
+    	company_name_sim,company_name_sim_cn,state_id,state_name,parent_id,dept_id,dept_name,
+    	status)
+    	values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{type,jdbcType=INTEGER},#{recordId,jdbcType=INTEGER},
+    	#{companyId,jdbcType=INTEGER},#{companyName,jdbcType=VARCHAR},#{companyNameSim,jdbcType=VARCHAR},#{companyNameSimCn,jdbcType=VARCHAR},
+    	#{stateId,jdbcType=INTEGER},#{stateName,jdbcType=VARCHAR},#{parentId,jdbcType=INTEGER},#{deptId,jdbcType=INTEGER},#{deptName,jdbcType=VARCHAR},
+    	#{status,jdbcType=INTEGER})
+  	</insert>
+  	
+  	
+  	<update id="updateCertifyDept" parameterType="com.jessrun.web.system.domain.CertifyDept">
+  		 update tb_certify_dept
+  		 set name = #{name,jdbcType=VARCHAR},
+  		 	 type = #{type,jdbcType=INTEGER},
+  		 	 record_id = #{recordId,jdbcType=INTEGER},
+  		 	 company_id = #{companyId,jdbcType=INTEGER},
+  		 	 company_name = #{companyName,jdbcType=VARCHAR},
+  		 	 company_name_sim = #{companyNameSim,jdbcType=VARCHAR},
+  		 	 company_name_sim_cn = #{companyNameSimCn,jdbcType=VARCHAR},
+  		 	 state_id = #{stateId,jdbcType=INTEGER},
+  		 	 state_name = #{stateName,jdbcType=VARCHAR},
+  		 	 parent_id = #{parentId,jdbcType=INTEGER},
+  		 	 dept_id = #{deptId,jdbcType=INTEGER},
+  		 	 dept_name = #{deptName,jdbcType=VARCHAR},
+  		 	 status = #{status,jdbcType=INTEGER}
+  		 where id = #{id,jdbcType=INTEGER}
+  	</update>
+  	
+  	<delete id="deleteCertifyDept" parameterType="java.lang.Integer">
+  		delete from tb_certify_dept where id = #{id,jdbcType=INTEGER}
+  	</delete>
+  	
+</mapper>

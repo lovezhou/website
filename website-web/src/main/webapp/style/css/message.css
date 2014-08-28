@@ -1,0 +1,47 @@
+/*
+Author: Freedom Xiao
+*/
+/*
+	提示信息
+*/
+.siteMsgBox {width:698px;height:280px;position:absolute;left:50%;top:50%;margin-left:-350px;margin-top:-150px;}
+.siteMsgHd,
+.siteMsgBd,
+.siteMsgFt {background-image:url(../images/siteSys.gif);}
+
+.siteMsgBd {}
+.siteMsg {padding:10px 30px;}
+
+.siteMsgHd,
+.siteMsgFt {height:70px;overflow:hidden;}
+
+
+.siteMsgBd {background-position:-698px 0;height:140px;}
+.siteMsgHd {background-position:0 0;}
+.siteMsgFt {background-position:0 -70px;}
+
+.siteMsgmain {}
+.siteMsgmain .msgIco {width:64px;height:64px;padding:10px 32px;display:block;float:left;}
+.siteMsgmain .msgIco span {width:64px;height:64px;display:block;background-image:url(../images/msgIco.png);background-repeat:no-repeat;}
+.waringIco {background-position:0 0;}
+.wrongIco {background-position:-64px 0;}
+.forbidIco {background-position:-128px 0;}
+.correctIco {background-position:-192px 0;}
+.helpIco {background-position:-256px 0;}
+.infoIco {background-position:-320px 0;}
+
+
+.syswaring,
+.syswrong,
+.sysforbid {color:#B93636;}
+.syscorrect {color:#75AA19;}
+.syshelp,
+.sysinfo {color:#3271A4;}
+.msgCount {font-size:14px;color:#ff6600;padding:0 5px;}
+.siteMsgmain .msgMain {padding-left:140px;}
+
+.siteMsgmain .msgMain h4 {font-size:14px;font-weight:bold;line-height:32px;height:32px;}
+.siteMsgmain .msgMain p {padding:5px 0;}
+.siteMsgmain .msgMain p em {font-weight:bold;color:#ff6600;}
+.siteMsgmain .msgMain div {padding-top:10px;}
+.siteMsgmain .msgMain div a {margin-right:20px;}

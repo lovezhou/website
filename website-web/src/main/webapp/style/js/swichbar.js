@@ -1,0 +1,30 @@
+$(function(){
+	$('#switchbar').click(function(){
+	if ($("#wapFrame",parent.document.body).attr("cols")=="180,7,*"){
+			$("#switchbar").removeClass("current");
+			$("#switchbar").attr("title","展开左侧菜单");
+			$("#wapFrame",parent.document.body).attr("cols","0,7,*");
+		}
+		else{
+			$("#switchbar").addClass("current");
+			$("#switchbar").attr("title","关闭左侧菜单");
+			$("#wapFrame",parent.document.body).attr("cols","180,7,*");
+		}
+	})
+})
+/*
+$(function(){
+	$('#topSwitchbar').click(function(){
+	if ($("#wapFrame",parent.document.body).attr("cols")=="210,9,*"){
+			$("#topSwitchbar").addClass("current");
+			$("#topSwitchbar").attr("title","展开左侧菜单");
+			$("#wapFrame",parent.document.body).attr("cols","0,9,*");
+		}
+		else{
+			$("#topSwitchbar").removeClass("current");
+			$("#topSwitchbar").attr("title","关闭左侧菜单");
+			$("#wapFrame",parent.document.body).attr("cols","210,9,*");
+		}
+	})
+})
+*/

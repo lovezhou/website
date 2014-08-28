@@ -1,0 +1,141 @@
+@charset "utf-8";
+
+.toplogo{
+	background-image:url(../images/logo_new.jpg);
+	background-repeat:no-repeat;
+    background-position:left;
+    width:400px;
+    height:60px;
+}
+.topbg{
+    background-image:url(images/logo-bg.gif);
+    background-repeat:repeat-x;
+    height:69px;
+}
+.top_right {
+	BACKGROUND: url(images/top/cn_headerright.gif) no-repeat left top; FLOAT: right; COLOR: #c9eefb
+}
+.top-user{
+	color:blank;
+	font-size:14px;
+	font-family:'黑体';
+	font-weight:bold;
+	height:22px;
+	width:540px;
+	line-height:22px;
+	padding-top:38px;
+	padding-left:2px;
+	}
+.top-user-icon{
+	vertical-align:bottom;
+	background-image:url(images/user-black.gif);
+	background-repeat:no-repeat;
+	width:16px;
+	height:16px;
+	margin-right:8px;}
+.top-right-img {
+	background-image:url(images/top/top_right.jpg);
+	width:379px;
+	height:70px;
+	background-repeat:no-repeat;}
+.top-right{
+	margin-top:2px;
+	padding:2px 0px;
+	color:#FFF;
+	text-align:center;
+	font-size:12px;
+	width:280px;
+	background-repeat:no-repeat;
+	height:26px;}
+.top-right span{
+		padding:0px 4px;}
+.top-right A:link{
+ COLOR:#fff; TEXT-DECORATION: none;}
+.top-right A:visited{
+ COLOR: #fff; TEXT-DECORATION: none;}
+.top-right A:hover {
+ color: red; text-decoration:none;}
+.top-right A:active {
+ COLOR: #fff; TEXT-DECORATION: none;}
+
+.top-right img{
+	margin:0px;
+	padding:0px;
+	}
+.top-right-icon{
+	vertical-align: middle;
+	background-image:url(images/ico/home.gif);
+	background-repeat:no-repeat;
+	width:16px;
+	height:16px;}
+.left {
+	FLOAT: left
+}
+.right {
+	FLOAT: right
+}
+
+
+h2 {
+        font: bold 12px Verdana, Arial, Helvetica, sans-serif;
+        color: #000;
+        margin: 0px;
+        padding: 0px 0px 0px 15px;
+}
+
+/*- Menu Tabs J--------------------------- */
+
+    .tabsJ {
+      float:left;
+      width:100%;
+      background-color:#014f8d;
+      font-size:12px;
+      line-height:normal;
+      border-bottom:2px solid #66AAE6;
+	  background-image:url(images/top-menu-bg.jpg);
+	  background-repeat:repeat-x;
+	  height:31px;
+      }
+    .tabsJ ul {
+        margin:0;
+        padding:0px 12px 0 0px;
+        list-style:none;
+      }
+    .tabsJ li {
+      display:inline;
+      margin:0;
+      padding:0;
+      }
+    .tabsJ a {
+      float:left;
+      background:url("images/top/tableftJ0.gif") no-repeat left top;
+      margin:0;
+      padding:0 0 0 8px;
+      text-decoration:none;
+      }
+    .tabsJ a span {
+      float:left;
+      display:block;
+      background:url("images/top/tabrightJ0.gif") no-repeat right top;
+      padding:6px 12px 4px 6px;
+	  letter-spacing:0.2em;
+	  line-height:18px;
+      color:#fff;
+      }
+    /* Commented Backslash Hack hides rule from IE5-Mac \*/
+    .tabsJ a span {float:none;}
+
+        .tabsJ .current a {
+                background-position:0% -30px;
+        }
+        .tabsJ .current a span {
+                background-position:100% -30px;
+                color:#33CC00;
+                font-weight: bold;
+        }
+	.kong{
+	float:left;
+	background-image:url(images/kong.gif);
+	background-repeat:no-repeat;
+	width:2px;
+	height:31px;}

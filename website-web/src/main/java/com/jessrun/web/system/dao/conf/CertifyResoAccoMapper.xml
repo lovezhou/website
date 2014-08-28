@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.web.system.dao.CertifyResoAccoMapper" >
+	<resultMap id="BaseResultMap" type="com.jessrun.web.system.domain.CertifyResoAcco" >
+    	<result column="resource_id" property="resourceId" jdbcType="INTEGER"/>
+    	<result column="account_id" property="accountId" jdbcType="INTEGER"/>
+  	</resultMap>
+  	
+  	<sql id="Base_column_list">
+  		resource_id,account_id
+  	</sql>
+  	
+  	<select id="getCertifyResoAccoListByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select * from tb_certify_reso_acco
+  		<where>
+  			<if test="ResourceId!= null">
+  				resource_id = #{resourceId,jdbcType=INTEGER}
+  			</if>
+  			<if test="AccountId != null">
+  				account_id = #{accountId,jdbcType=INTEGER}
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<select id="getCertifyResoAccoById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  		select 
+  		<include refid="Base_column_list"/>
+  		from tb_certify_reso_acco where account_id = #{accountId,jdbcType=INTEGER}
+  	</select>
+  	
+  	
+  	<insert id="addCertifyResoAcco" parameterType="com.jessrun.web.system.domain.CertifyResoAcco">
+    	insert into tb_certify_reso_acco (resource_id,account_id)
+    	values (#{resourceId,jdbcType=INTEGER},#{accountId,jdbcType=INTEGER})
+  	</insert>
+  	
+  	
+  	<update id="updateCertifyResoAcco" parameterType="com.jessrun.web.system.domain.CertifyResoAcco">
+  		 update tb_certify_reso_acco
+  		 set resource_id = #{resourceId,jdbcType=INTEGER},
+  		 	 account_id = #{accountId,jdbcType=INTEGER}
+  		 where resource_id = #{resourceId,jdbcType=INTEGER}
+  	</update>
+  	
+  	<delete id="deleteCertifyResoAcco" parameterType="java.lang.Integer">
+  		delete from tb_certify_reso_acco  where resource_id = #{resourceId,jdbcType=INTEGER}
+  	</delete>
+  	
+  	<delete id="deleteCertifyResoAccoByAccountId" parameterType="java.lang.Integer">
+  		delete tb_certify_reso_acco t where t.account_id = #{accountId,jdbcType=INTEGER}
+  	</delete>
+</mapper>

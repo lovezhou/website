@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-autowire="byName" default-lazy-init="true">
+ <context:annotation-config /> 
+
+ <context:component-scan base-package="com.jessrun.*" >
+
+  <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> 
+
+  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" /> 
+  </context:component-scan>
+  
+	
+	<!-- 配置freeMarker的模板路径   如果 templateLoaderPath配置的value 就是路径 ，在FreeMarkerViewResolver视图解析中不需要配置路径prefix-->
+<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <property name="templateLoaderPath">
+        <value>/WEB-INF/ftl/</value>
+    </property>
+    <property name="freemarkerSettings">
+	    	<props>
+	    		<prop key="locale">zh_CN</prop>
+				<prop key="defaultEncoding">UTF-8</prop>
+				<prop key="date_format">yyyy-MM-dd</prop>
+				<prop key="time_format">HH:mm:ss</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="number_format">0.################</prop>
+	    	</props>
+	    </property>
+    <property name="freemarkerVariables">
+        <map>
+            <entry key="xml_escape" value-ref="fmXmlEscape" />
+        </map>
+    </property>
+</bean>
+ 
+<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+<!-- 上传 -->
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="maxUploadSize" value="10485760" />
+	<property name="maxInMemorySize" value="4096" />
+</bean>
+
+<!-- velocity环境配置 -->  
+<bean id="velocityConfig"   class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">  
+    <!-- velocity配置文件路径 -->  
+    <property name="configLocation" value="/WEB-INF/velocity.properties"/>  
+    <!-- velocity模板路径 -->  
+    <property name="resourceLoaderPath" value="/WEB-INF/velocity/"/>  
+</bean>  
+
+<!--配置多视图解析器-->
+<bean id="viewResolver"  
+     class="com.jessrun.common.support.spring.view.MultiViewResolver">  
+        <property name="resolvers">  
+            <map>  
+                <entry key="jsp">  
+                    <bean  
+                     class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
+                        <property name="viewClass"  
+                         value="org.springframework.web.servlet.view.JstlView"/>  
+                        <property name="prefix" value="/WEB-INF/pages/"/>  
+                        <property name="suffix" value=".jsp"/>  
+                    </bean>  
+                </entry>  
+                <entry key="ftl">  
+                    <bean  
+                     class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+                        <property name="cache" value="true"/>  
+                        <property name="prefix" value=""/>  
+                        <property name="suffix" value=".ftl"/>    
+                    </bean>  
+                </entry>  
+                <entry key="vm">  
+                    <bean  
+                     class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
+                        <property name="cache" value="true"/>  
+                        <property name="prefix" value=""/>  
+                        <property name="suffix" value=".vm"/>  
+                    </bean>  
+                </entry>  
+            </map>  
+        </property>  
+    </bean>  
+
+	
+	<!--
+	<bean class="com.jessrun.common.support.spring.view.support.JsonConfigHandler" init-method="init" lazy-init="false">
+		<constructor-arg index="0" value="/json/json_root.xml"/>
+		<constructor-arg index="1">
+			<bean class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+				<property name="staticField">
+					<value>com.jessrun.platform.util.ConfigUtils.JSON_VIEW_DEV_MODE</value>
+				</property>
+			</bean>
+		</constructor-arg>
+	</bean>
+   -->
+	<!-- json view -->
+	<bean class="com.jessrun.common.support.spring.view.JsonView"/>
+	<bean class="com.jessrun.common.support.spring.view.XlsView"/>
+	<bean class="com.jessrun.common.support.spring.view.XmlView"/>
+	<bean class="com.jessrun.common.support.spring.view.ExcelView"/>
+	
+	<!--
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="com.jzt.common.support.spring.vaildator.exception.JsonValidatorException">
+					/validator_error.htm?resultType=json
+				</prop>
+				<prop key="com.jzt.common.support.spring.vaildator.exception.XmlValidatorException">
+					/validator_error.htm?resultType=xml
+				</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+	<bean class="com.jessrun.exception.resolver.GlobalExceptionResolver"> 
+	 	<property name="errorPage" value="/common/error.jsp" />
+	</bean> 
+	<!-- spring拦截器配置 -->
+	<bean name="requestMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name ="interceptors"> 
+	        <list> 
+				<bean class="com.jessrun.certify.interceptor.NewCertifyInterceptor">
+					<property name="loginPage" value="/newlogout.do" />
+		        </bean>
+		        <bean class="com.jessrun.common.support.interceptor.LoadGlobalParamsInterceptor">
+		        </bean>
+	        </list>
+        </property>
+	</bean>
+</beans>

@@ -1,0 +1,88 @@
+article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video{ display: block; }
+mark, rp, rt, ruby, summary, time{ display: inline }
+figure,body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td {margin:0;padding:0;font-size:100%;}
+body,button,input,select,textarea {font:12px/1.5 \5b8b\4f53,"Microsoft YaHei",微软雅黑,tahoma,arial,simsun,sans-serif;}
+h1,h2,h3,h4,h5,h6 {font-size: 100%;}
+address,cite,dfn,em,var {font-style: normal;}
+code,kbd,pre,samp {font-family: courier new,courier,monospace;}
+small{font-size: 12px;}
+ul,ol{list-style: none;}
+a {text-decoration: none;outline:none;}
+a:hover{text-decoration: underline;}
+sup{vertical-align: text-top;}
+sub{vertical-align: text-bottom;}
+legend{color: #000;}
+fieldset,img {border: 0;}
+table{	border-collapse: collapse;border-spacing: 0;}
+fieldset,img {border: none;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style: normal;font-weight: normal;}
+button {cursor:pointer;border:none;}
+.clear{clear:both;}
+.none {display:none;}
+a {color:#235991;text-decoration:none;}
+a:hover {color:#000;text-decoration:underline;}
+body {color:#000;background:#FBFBFC;text-shadow: 0px 1px 1px #fff;}
+html{overflow:-moz-scrollbars-vertical;overflow-y:scroll;}
+.clear:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear {zoom:1;}
+.word-break{word-break:break-all;word-wrap:break-word;overflow:hidden;}
+
+/*
+	登录
+*/
+
+.loginBox {width:702px;height:452px;position:absolute;left:50%;top:50%;margin-left:-351px;margin-top:-226px;background:url(../images/loginbg.jpg) no-repeat left top;}
+.loginBox h1 {height:54px;padding:1px 10px 0 10px;overflow:hidden;}
+.loginBox h1 span {display:none;}
+.loginBox h1 em {padding:0 10px;display:block;line-height:55px;color:#283A7C;font-size:24px;font-family:"黑体","Microsoft YaHei",微软雅黑,"Microsoft JhengHei",华文细黑,STHeiti,MingLiu;}
+.loginBox h2 {padding:0 20px;height:37px;line-height:37px;color:#D1D5E4;font-size:16px;font-family:"Microsoft YaHei","微软雅黑";text-shadow: 0px 1px 1px #235991;}
+.loginBox .form {height:286px;padding-top:30px;padding-left:50px;}
+.loginBox .form {width:280px;}
+
+
+#form-text-userName,
+#form-text-userPassword,
+#form-text-userCode {border:1px solid #BAC0D6;width:278px;height:32px;overflow:hidden;background-image:url(../images/loginform.png);background-repeat:no-repeat;}
+
+#form-text-userName {background-position:0 0;}
+#form-text-userPassword {background-position:0 -32px;}
+#form-text-userCode {background-position:0 -64px;}
+
+.text-userName,
+.text-userPassword,
+.text-userCode ,
+.form-text-userCode-img {float:left;}
+.form-text-userCode-img {display:block;padding:4px 0;height:24px;line-height:24px;overflow:hidden;}
+.img-userMsg {float:left;}
+.imgCode-change {float:left;}
+.text-userName {width:178px;}
+.text-userPassword {width:178px;}
+.text-userCode {width:60px;}
+
+.loadFormSubmit {width:280px;height:31px;line-height:31px;text-align:center;display:inline-block;}
+.loadFormSubmit span {display:inline-block;height:32px;line-height:31px;text-align:center;}
+.loadFormSubmit em{background:url(../images/formLoading.gif) no-repeat left center;padding-left:20px;display:inline-block;height:31px;line-height:31px;margin:0 auto;}
+
+.btn-login {width:280px;height:31px;display:inline-block;overflow:hidden;background:url(../images/loginform.png) no-repeat 0 -97px;}
+.btn-login:hover {background:url(../images/loginform.png) no-repeat 0 -128px;}
+.btn-login span {display:none;}
+.form-tips {line-height:20px;height:20px;}
+.form-tips span {color:#ff6600;}
+.form-lis {height:54px;}
+.form-lis:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.form-lis {zoom:1;}
+.form-lis .form-lab {width:88px;height:32px;line-height:32px;text-align:right;display:block;float:left;border-right:1px solid #BAC0D6;color:#666;}
+.form-lis .form-text {float:left;}
+.form-text {background-color:transparent;padding:0 5px;border:none;height:32px;line-height:32px;}
+.form-service {text-align:right;height:22px;line-height:22px;padding-top:10px;}
+.qq-service {margin-left:10px;width:74px;height:22px;display:inline-block;background:url(../images/qqservice.gif) no-repeat left top;color:#888;}
+.qq-service:hover {text-decoration:none;}
+.copyright {text-align:center;padding-top:10px;font-family:tahoma;color:#666;text-shadow: 0px 1px 1px #fff;}
+
+/*
+	验证样式
+*/
+.form-lis .tip-error {padding-left:88px;}
+.tip-error {color:#ff6600;}
+
+

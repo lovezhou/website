@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.web.system.dao.CertifyUserMapper" >
+	<resultMap id="BaseResultMap" type="com.jessrun.web.system.domain.CertifyUser" >
+    	<id column="id" property="id" jdbcType="INTEGER" />
+    	<result column="name" property="name" jdbcType="VARCHAR"/>
+    	<result column="id_num" property="idNum" jdbcType="VARCHAR"/>
+    	<result column="phone_num1" property="phoneNum1" jdbcType="VARCHAR"/>
+    	<result column="phone_num2" property="phoneNum2" jdbcType="VARCHAR"/>
+    	<result column="created_time" property="createdTime" jdbcType="DATE"/>
+    	<result column="created_id" property="createdId" jdbcType="INTEGER"/>
+    	<result column="created_name" property="createdName" jdbcType="VARCHAR"/>
+    	<result column="modify_time" property="modifyTime" jdbcType="DATE"/>
+    	<result column="modify_id" property="modifyId" jdbcType="INTEGER"/>
+    	<result column="modify_name" property="modifyName" jdbcType="VARCHAR"/>
+    	<result column="dept_id" property="deptId" jdbcType="INTEGER"/>
+  	</resultMap>
+  	
+  	<sql id="Base_column_list">
+  		id,name,id_num,phone_num1,phone_num2,created_time,created_id,created_name,
+  		modify_time,modify_id,modify_name,dept_id
+  	</sql>
+  	
+  	<select id="getCertifyUserListByPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+  		select * from tb_certify_user
+  		<where>
+  			<if test="Name != null">
+  				name = #{name,jdbcType=VARCHAR}
+  			</if>
+  			<if test="IdNum != null">
+  				id_num = #{idNum,jdbcType=VARCHAR}
+  			</if>
+  			<if test="PhotoNum1 != null">
+  				photo_num1 = #{phoneNum1,jdbcType=VARCHAR}
+  			</if>
+  			<if test="PhotoNum2 != null">
+  				photo_num2 = #{phoneNum2,jdbcType=VARCHAR}
+  			</if>
+  			<if test="CreatedTime != null">
+  				created_time = #{createdTime,jdbcType=DATE}
+  			</if>
+  			<if test="CreatedId != null">
+  				created_id = #{createdId,jdbcType=INTEGER}
+  			</if>
+  			
+  			<if test="CreatedName != null">
+  				created_name = #{createdName,jdbcType=VARCHAR}
+  			</if>
+  			<if test="ModifyTime != null">
+  				modify_time = #{modifyTime,jdbcType=DATE}
+  			</if>
+  			<if test="ModifyId != null">
+  				modify_id = #{modifyId,jdbcType=INTEGER}
+  			</if>
+  			<if test="ModifyName != null">
+  				modify_name = #{modifyName,jdbcType=VARCHAR}
+  			</if>
+  			<if test="DeptId != null">
+  				dept_id = #{deptId,jdbcType=INTEGER}
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<select id="getCertifyUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  		select 
+  		<include refid="Base_column_list"/>
+  		from tb_certify_user where id = #{id,jdbcType=INTEGER}
+  	</select>
+  	
+  	<insert id="addCertifyUser" parameterType="com.jessrun.web.system.domain.CertifyUser">
+  		<selectKey resultType="java.lang.Integer" keyProperty="id" order="BEFORE" >
+          	select SEQ_tb_certify_user.nextval as id from dual 
+    	</selectKey>
+    	insert into tb_certify_user (id,name,id_num,photo_num1,photo_num2,created_time,
+    	created_id,created_name,modify_time,modify_id,modify_name,dept_id)
+    	values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{idNum,jdbcType=VARCHAR},#{phoneNum1,jdbcType=VARCHAR},
+    	#{phoneNum2,jdbcType=VARCHAR},#{createdTime,jdbcType=DATE},#{createdId,jdbcType=INTEGER},#{createdName,jdbcType=VARCHAR},
+    	#{modifyTime,jdbcType=DATE},#{modifyId,jdbcType=INTEGER},#{modifyName,jdbcType=VARCHAR},#{deptId,jdbcType=INTEGER})
+  	</insert>
+  	
+  	
+  	<update id="updateCertifyUser" parameterType="com.jessrun.web.system.domain.CertifyUser">
+  		 update tb_certify_user
+  		 set name = #{name,jdbcType=VARCHAR},
+  		 	 id_num = #{idNum,jdbcType=VARCHAR},
+  		 	 photo_num1 = #{photoNum1,jdbcType=VARCHAR},
+  		 	 photo_num2 = #{photoNum2,jdbcType=VARCHAR},
+  		 	 created_time = #{createdTime,jdbcType=DATE},
+  		 	 created_id = #{createdId,jdbcType=INTEGER},
+  		 	 created_name = #{createdName,jdbcType=VARCHAR},
+  		 	 modify_time = #{modifyTime,jdbcType=DATE},
+  		 	 modify_id = #{modifyId,jdbcType=INTEGER},
+  		 	 modify_name = #{modifyName,jdbcType=VARCHAR},
+  		 	 dept_id = #{deptId,jdbcType=INTEGER}
+  		  where id = #{id,jdbcType=INTEGER}
+  	</update>
+  	
+  	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  		delete from tb_certify_user where id = #{id,jdbcType=INTEGER}
+  	</delete>
+  	
+</mapper>

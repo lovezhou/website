@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+
+ <title>打印</title>
+ <style type="text/css">
+	@media screen {
+	html{-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {margin:0;padding:0;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+audio,canvas,video {display: inline-block;*display: inline;*zoom: 1;}
+body,button,input,select,textarea{font:12px/1.5 \5b8b\4f53,tahoma,arial}
+input,select,textarea{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+th{text-align:inherit;}
+fieldset,img{border:0;}
+iframe{display:block;}
+abbr,acronym{border:0;font-variant:normal;}
+del {text-decoration:line-through;}
+address,caption,cite,code,dfn,em,th,var {font-style:normal;font-weight:500;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:500;}
+q:before,q:after {content:'';}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+a:hover {text-decoration:underline;}
+ins,a {text-decoration:none;}
+.clear:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
+.clear {zoom:1;}
+body .none {display:none;}
+button {cursor:pointer;border:none;}
+.word-break{word-break:break-all;word-wrap:break-word;overflow:hidden}
+	body {background-image:url(about:blank);background-attachment:scroll;padding-top:32px;}
+	body.no-padding {padding-top:0px;background:#F2F9FD url(../images/bg.gif) repeat-x left -32px;}
+	* html,* html body{background-image:url(about:blank);background-attachment:fixed;}
+	.overFast{display:inline-block;height:32px;overflow:hidden;position:absolute;top:0px;left:0px;z-index:-1;border:none;width:100%;}
+	html  {color:#3F5058;background:#F2F9FD url(../images/bg.gif) repeat-x left top;}
+	* html .guildNav {position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop));z-index:2;}
+	.guildNav {width:100%;position:fixed;bottom:auto;top:0px;height:32px;line-height:32px;border-bottom:1px solid #ccc;overflow:hidden;}
+	.guildNav .guild {padding:0 18px;height:32px;line-height:32px;background:url(../images/bg.gif) repeat-x left top;}
+	.doc {padding:5px;}
+	.list-doc {}
+	.mod_table {background:#fff;}
+	.mod_table table {width:100%;}
+	.mod_table table .chk_no {text-align:center;}
+	.mod_table table .thead th {height:30px;font-weight:bold;text-align:center;white-space:nowrap;}
+	.mod_table table .tbody td {padding:4px 0;text-align:center;white-space:nowrap;}
+	.mod_table table .tfoot td {padding:4px 0;text-align:center;}
+	.mod_table table .tfoot td .cargoPrice {text-align:right;display:inline-block;width:60px;margin-right:5px;}
+	.mod_table table .tfoot td {border-top:1px solid #DADADA;}
+	.mod_table table .tbody td .btn_sml {margin:0 4px;}
+	.mod_table table th,
+	.mod_table table td {border:1px solid #D7D7D7;}
+
+	.mod_table table .thead th {background:url(../images/mod_table.png) repeat-x left top;border-color:#eee;}
+	.mod_table table .tbody td {border-color:#DADADA;}
+	.mod_table table .tbody td a {color:#000;text-decoration:underline;}
+	.jessrun-btn,
+	.jessrun-btn:hover {text-decoration:none;cursor:pointer;overflow:hidden;text-shadow:1px 1px 1px #fff;margin-right:5px;}
+	.jessrun-btn,
+	.jessrun-btn:hover,
+	.jessrun-btn span ,
+	.jessrun-btn button ,
+	.jessrun-btn:hover button ,
+	.jessrun-btn:hover span {display:inline-block;height:24px;line-height:24px;background-image:url(../images/jessrun_bg_btn.png);background-repeat:no-repeat;}
+	.jessrun-btn {background-position:left 0;padding-left:10px;}
+	.jessrun-btn:hover {background-position:left -48px;}
+	.jessrun-btn span,
+	.jessrun-btn button {background-position:right -24px;padding-right:10px;text-align:center;color:#000;}
+	.jessrun-btn:hover span,
+	.jessrun-btn:hover button  {background-position:right -72px;}
+	.print-head {background:#F2F9FD;padding:10px;}
+	.print-head  h1{ text-align:center;height:32px;line-height:32px;font-size:16px;font-weight:bold;}
+	.print-head_info {height:32px;line-height:32px;font-size:14px;margin-bottom:10px;background:#fff;}
+	.print-head_info table {width:100%;border:none;}
+	.print-head_info th {text-align:right; width:120px;font-weight:bold;border:none;}
+	.print-head_info td {text-align:left;border:none;}
+	.jessrun-print-area  {overflow:hidden;text-align:center;}
+	.jessrun-print-area  p {padding:10px 0;height:26px;}
+
+}
+	@media print {
+	   .noprint {
+		display: none;
+	   }
+	   body {
+		width:100% !important;
+		margin:0 !important;
+		padding:0 !important;
+		line-height: 1.4;
+		word-spacing:10px;
+		letter-spacing:0.2px; font-family: "宋体",Helvetica, Arial, sans-serif; color: #000; background: none; font-size: 12pt; }
+		h1,h2,h3,h4,h5,h6 { font-family: "宋体",Helvetica, Arial, sans-serif; }
+		h1{font-size:20px;}
+		h2{font-size:18px;}
+		h3{font-size:16px;}
+		h4,h5,h6{font-size:14px;}
+		code { font: 10pt Courier, monospace; }
+		blockquote { margin: 1.3em; padding: 1em;  font-size: 10pt; }
+		hr { background-color: #ccc; }
+		img { float: left; margin: 1em 1.5em 1.5em 0; }
+		a img { border: none; }
+		a:link, a:visited { background: transparent;  text-decoration: none;color:#000; }
+		a:link[href^="http://"]:after, a[href^="http://"]:visited:after { content: " (" attr(href) ") "; font-size: 12px; }
+		a[href^="http://"] {color:#000; }
+		table { margin:0px auto; text-align:left;border-collapse: collapse;border-spacing: 0;width:100%;}
+		th,
+		td { border: 1px solid #333;}
+		th {font-weight: bold;text-align:center;height:30px;white-space:nowrap;font-size:14px;}
+		td {text-align:center;height:20px;font-size:12px;}
+		caption {text-align:center;margin-borrom:10px;font-weight:700;font-size:14px;}
+		thead {display: table-header-group;}
+		tr {page-break-inside: avoid;}
+		.print-head {background:#F2F9FD;padding:10px;}
+		.print-head  h1{ text-align:center;height:32px;line-height:32px;font-size:16px;font-weight:bold;}
+		.print-head_info {height:32px;line-height:32px;font-size:14px;margin-bottom:10px;background-color:#fff;}
+		.print-head_info table {width:100%;border:none;}
+		.print-head_info th {text-align:right; width:120px;font-weight:bold;border:none;}
+		.print-head_info td {text-align:left;border:none;}
+		.jessrun-print-area  {overflow:hidden;text-align:center;}
+		.jessrun-print-area  p {padding:10px 0;height:26px;}
+		
+	}
+
+ </style>
+<!--[if IE 6]><script type="text/javascript">try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}</script><![endif]-->
+</head>
+
+<body >
+
+</body>
+
+</html>
+

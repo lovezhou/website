@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jspversion>1.1</jspversion>
+  <short-name>jess</short-name>
+  <uri>http://jessrun/jstl/confgrid</uri>
+  <tag>
+    <description>
+    	自定义配置查询表格头标签
+    </description>
+    <name>confGridTitle</name>
+    <tag-class>com.jessrun.common.web.jstl.GridTitleTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+        <name>confList</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>var</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <description>
+    	自定义配置查询表格体标签
+    </description>
+    <name>confGridBody</name>
+    <tag-class>com.jessrun.common.web.jstl.GridBodyTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+        <name>confList</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+        <name>dataObj</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+</taglib>
