@@ -4,13 +4,11 @@
   
   <!-- 实体类映射mapper -->
   <resultMap id="${className}" type="${basePath}.domain.${className}" >
-   
-  	<#list columnNames as columnName>
-  	  
+  	<#list list as vo>
+  	     <result column="${vo.columnName}" property="${vo.propertyName}" jdbcType="<#if ${vo.dataType}=="VARCAHR">VARCHAR</#if>" />
   	</#list>
-    <id column="USER_ID" property="userId" jdbcType="INTEGER" />
   </resultMap>
-
+  
   
   <sql id="where_condition">
  
@@ -19,8 +17,8 @@
  <!--查询单个Object--> 
   <select id="selectById" resultMap="${className}">
   	select 
-	  	<#list propertyNames as propertyName>
-	  	       ${propertyName} <#if  propertyName_has_next>,</#if>       
+	  	<#list list as vo>
+	  	       ${vo.propertyName} <#if  vo_has_next>,</#if>       
 	  	</#list>
 	   from ${tableName}  where 1=1  <include refid="where_condition"/>
   </select>
@@ -34,7 +32,7 @@
 		)
 		values(
 			<#list propertyNames as propertyName>
-	  	       #\{${propertyName},jdbType=VARCHAR \}<#if propertyName_has_next>,</#if>
+	  	       #${r"{"}${propertyName},jdbType=VARCHAR ${r"}"}<#if propertyName_has_next>,</#if>
 	  		</#list>
         )
 	</insert>
@@ -43,7 +41,7 @@
   <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
   		select 
 		    count(1) result
-		 from TB_CERTIFY_ACCOUNT 
+		 from ${tableName}
 		  <where>
 	    </where>
   </select>

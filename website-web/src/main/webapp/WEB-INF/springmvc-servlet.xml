@@ -72,6 +72,7 @@
                 <entry key="ftl">  
                     <bean  
                      class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+                     	<property  name="contentType"  value="text/html;charset=UTF-8"/><!--防止中文乱码-->
                         <property name="cache" value="true"/>  
                         <property name="prefix" value=""/>  
                         <property name="suffix" value=".ftl"/>    
@@ -80,6 +81,7 @@
                 <entry key="vm">  
                     <bean  
                      class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">  
+                        <property name="contentType"   value="text/html;charset=UTF-8"/>
                         <property name="cache" value="true"/>  
                         <property name="prefix" value=""/>  
                         <property name="suffix" value=".vm"/>  

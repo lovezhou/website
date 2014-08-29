@@ -17,5 +17,28 @@ public class ColumnAndType  implements  Serializable  {
     private String dataDefault; //默认值
     private String comments;//注释
     private String  propertyName;//java对应的code
+    private String  chkCode ;
+    private String  chkCond;//作为查询条件
+    
+    
+    
+	public ColumnAndType(String columnName, String dataType, int dataLength, int dataPrecision, int dataScale, String nullable,
+						 String dataDefault, String comments, String propertyName, String chkCode, String chkCond) {
 
+		super();
+		this.columnName = columnName;
+		this.dataType = dataType;
+		this.dataLength = dataLength;
+		this.dataPrecision = dataPrecision;
+		this.dataScale = dataScale;
+		this.nullable = nullable;
+		this.dataDefault = dataDefault;
+		this.comments = comments;
+		this.propertyName = propertyName;
+		this.chkCode = chkCode;
+		this.chkCond = chkCond;
+	}
+
+    
+    
 }

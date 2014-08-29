@@ -3,8 +3,8 @@ package com.jessrun.codegenerator.service.imp;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Serializable;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -112,17 +112,16 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         String[]   dataType = arrayMap.get("dataType");
         String[]   comments = arrayMap.get("comments");
         String[]   nullable = arrayMap.get("nullable");
-        String[]   chk_code = arrayMap.get("chk_code");
-        String[]   chk_cond= arrayMap.get("chk_cond");
+        String[]   chkCode = arrayMap.get("chk_code");
+        String[]   chkCond= arrayMap.get("chk_cond");
         
-        params.put("columnNames", columnName);
-        params.put("propertyNames", propertyName);
-        params.put("dataTypes", dataType);
-        params.put("comments", comments);
-        params.put("nullable", nullable);
-        params.put("chkCode", chk_code);
-        params.put("chkCond", chk_cond);
+        List<ColumnAndType> list=  new ArrayList<ColumnAndType>();
+        for (int i = 0; i < columnName.length; i++) {
+        	ColumnAndType  tmp = new ColumnAndType(columnName[i],dataType[i],0,0,0,"",nullable[i],comments[i],propertyName[i],chkCode[i],chkCond[i]);
+        	list.add(tmp);
+    	}
         
+    
         //类名称
         String  className = paramMap.get("className");
         //前台js，jsp  基路径:
@@ -151,6 +150,7 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         params.put("isDao",dao );
         params.put("databaseType",databaseType );
         params.put("tableName",tableName);
+        params.put("list",list);
         
         
      //   System.out.println("jspPath"+jspPath+"--------basePath="+basePath);
