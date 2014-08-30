@@ -9,7 +9,7 @@
   	</#list>
   </resultMap>
   
-  
+  <!--查询条件-->
   <sql id="where_condition">
   	<#list list as vo>
   	     <#if vo.chkCond=='1'>
