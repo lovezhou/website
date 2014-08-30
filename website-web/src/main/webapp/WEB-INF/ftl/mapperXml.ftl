@@ -72,6 +72,4 @@
 	  	</#list>
 	   from ${tableName}  where 1=1  <include refid="where_condition"/>
   </select>
-  
-  
 </mapper>
