@@ -12,9 +12,9 @@
 	<!--  oracle数据库的连接配置      数据源定义,使用Apache DBCP 连接池 -->
 	<bean id="OracledataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1/oracle" />
-		<property name="username" value="jxy" />
-		<property name="password" value="jxy" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1/XE" />
+		<property name="username" value="website" />
+		<property name="password" value="website" />
 		<!-- 初始化连接数 -->
 		<property name="initialSize" value="4" />
 		<!-- 最大活动连接数 -->
