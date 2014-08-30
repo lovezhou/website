@@ -19,6 +19,7 @@ public class ColumnAndType  implements  Serializable  {
     private String  propertyName;//java对应的code
     private String  chkCode ;
     private String  chkCond;//作为查询条件
+    private String  isPk ;//是否是主键 ，“1”：是 “0”：不是
     
     
     
@@ -39,6 +40,28 @@ public class ColumnAndType  implements  Serializable  {
 		this.chkCond = chkCond;
 	}
 
+
+
+    public ColumnAndType(String columnName, String dataType, int dataLength, int dataPrecision, int dataScale,
+                         String nullable, String dataDefault, String comments){
+        super();
+        this.columnName = columnName;
+        this.dataType = dataType;
+        this.dataLength = dataLength;
+        this.dataPrecision = dataPrecision;
+        this.dataScale = dataScale;
+        this.nullable = nullable;
+        this.dataDefault = dataDefault;
+        this.comments = comments;
+    }
+
+
+
+    public ColumnAndType(){
+        super();
+    }
+	
+	
     
     
 }

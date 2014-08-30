@@ -5,13 +5,19 @@
   <!-- 实体类映射mapper -->
   <resultMap id="${className}" type="${basePath}.domain.${className}" >
   	<#list list as vo>
-  	     <result column="${vo.columnName}" property="${vo.propertyName}" jdbcType="<#if ${vo.dataType}=="VARCAHR">VARCHAR</#if>" />
+  	     <result column="${vo.columnName}" property="${vo.propertyName}" jdbcType="<#if vo.dataType=="VARCHAR2" >VARCHAR<#elseif vo.dataType=="DATE" >DATE<#elseif vo.dataType=="NUMBER" >DECIMAL</#if>" />
   	</#list>
   </resultMap>
   
   
   <sql id="where_condition">
- 
+  	<#list list as vo>
+  	     <#if vo.chkCond=='1'>
+	  	     <if test="${vo.propertyName} != null">
+	  			and ${vo.columnName} = ${r"${"}${vo.propertyName}}
+	  		</if>
+		</#if>
+  	</#list>
   </sql>
   
  <!--查询单个Object--> 
@@ -26,13 +32,13 @@
    <!--保存单个Object--> 
   <insert id="saveObject" parameterType="${basePath}.domain.${className}">
 		insert into TB_CERTIFY_ACCOUNT (
-			<#list columnNames as columnName>
-	  	       ${columnName} <#if  columnName_has_next>,</#if>       
+			<#list  list as vo >
+	  	       ${vo.columnName} <#if  vo_has_next>,</#if>       
 	  		</#list>
 		)
 		values(
-			<#list propertyNames as propertyName>
-	  	       #${r"{"}${propertyName},jdbType=VARCHAR ${r"}"}<#if propertyName_has_next>,</#if>
+			<#list   list as vo >
+	  	       #${r"{"}${vo.propertyName},jdbType=VARCHAR ${r"}"}<#if vo_has_next>,</#if>
 	  		</#list>
         )
 	</insert>
@@ -46,13 +52,25 @@
 	    </where>
   </select>
   
+  <!--更新单个对象-->
   <update id="updateObject" parameterType="${basePath}.domain.${className}">
-
+		update ${tableName}  set
+		<#list list as vo>
+	  	      ${vo.columnName}=#${r"{"}${vo.propertyName},jdbcType=<#if vo.dataType=="VARCHAR2" >VARCHAR<#elseif vo.dataType=="DATE" >DATE<#elseif vo.dataType=="NUMBER" >DECIMAL</#if>} <#if  vo_has_next>,</#if>       
+	  	</#list>
+	  	where
+	  	<#list list as vo>
+	  	    <#if vo.isPk=="1">${vo.columnName}=#${r"{"}${vo.propertyName},jdbcType=VARCHAR}</#if>
+	  	</#list>
   </update>
   
-  
-  <select id="selectListByPage" resultMap="UserInfo" parameterType="java.lang.Integer" >
-
+  <!--分页查询-->
+  <select id="selectListByPage" resultMap="${className}" parameterType="java.util.Map" >
+	select 
+	  	<#list list as vo>
+	  	       ${vo.propertyName} <#if  vo_has_next>,</#if>       
+	  	</#list>
+	   from ${tableName}  where 1=1  <include refid="where_condition"/>
   </select>
   
   

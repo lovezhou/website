@@ -53,11 +53,8 @@ public class CodeGeneratorController {
         Map<String,String[]> map =( Map<String,String[]>)  req.getParameterMap();
       
         Map<String,Object> data = codeGeneratorService.codeGenerator(map);
-        ModelAndView mav = new ModelAndView("mapperXml.ftl");
+        ModelAndView mav = new ModelAndView("domain.ftl");
         //视图名称
-        mav.addObject("basePath", "com.jessrun.system");
-        mav.addObject("className", "SysDict");
-        mav.addObject("tableName", "t_sys_dict");
         mav.addAllObjects(data);
         return mav;
     }

@@ -46,11 +46,11 @@
 				  <th style="width:10%">序号</th>
 				  <th>字段名</th>
 				  <th>属性名称</th>
-				  <th>类型名</th>
+				  <th>数据库类型</th>
 				  <th>备注</th>
 				  <th>是否为NUll</th>
-				  <th><input id="all_code_chk" type="checkbox" checked="checked"   onclick="selectChkCode()" >生成code</th>
-				  <th><input id="all_cond_chk" type="checkbox" checked="checked"   onclick="selectChkCond()" >查询条件</th>
+				  <th><input id="all_code_chk" type="checkbox" checked="checked"   onclick="selectChkCode()" >是否生成code</th>
+				  <th><input id="all_cond_chk" type="checkbox" checked="checked"   onclick="selectChkCond()" >是否查询条件</th>
 				</tr>
 				<c:forEach  items="${voList}"  var="vo" varStatus="status"> 
 				<tr>
