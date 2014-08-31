@@ -49,7 +49,7 @@ html {
 								<a href="monitoring" target="mainFrame">系统性能监控</a>
 							</li>
 							<li>
-								<a href="" target="mainFrame">数据字典维护</a>
+								<a href="sysDict/toListView.do" target="mainFrame">数据字典维护</a>
 							</li>
 							<li>
 								<a href="codegenerator/codegenerator.do" target="mainFrame">代码自动生成</a>
