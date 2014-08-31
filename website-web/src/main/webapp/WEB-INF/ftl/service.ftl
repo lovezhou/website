@@ -8,14 +8,14 @@ import java.util.Map;
 
 public interface ${className}Service extends JessrunMonitor {
          
-		 int saveObject(${className}  obj); 
+		 public int saveObject(${className}  obj); 
 
-		 int updateObject(${className}  obj); 
+		 public int updateObject(${className}  obj); 
 
-		 int deleteById(String  id);
+		 public int deleteById(String  id);
 
-		 ${className} selectById(String id);
+		 public ${className} selectById(String id);
 
-		 List<${className}> selectListByPage(Map<String,Object> model);
+		 public List<${className}> selectListByPage(Map<String,Object> model);
 
 }
