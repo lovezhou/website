@@ -21,7 +21,7 @@
   <div class="fieldset-tip"></div>
  	 <c:choose>
          <c:when test="${voList==null  }">
-			<form action="codegenerator/toListView.do" name="form0" method="post">
+			<form action="codegenerator/toListView.do" name="form0" method="post" class="table03">
 				<table class="table06 center"  align="left"  border="0" cellspacing="0"  style="width:30%">
 				<tr>
 					<td class="color">请输入表名</td>
@@ -40,7 +40,7 @@
 			</form>
 		</c:when>
 		<c:otherwise>
-		 <form action="codegenerator/codeGenerator.do" name="form0" method="post">
+		 <form action="codegenerator/codeGenerator.do" name="form0" method="post" class="table03">
 				<table class="table06 center"  align="left"  border="0" cellspacing="0"  style="width:80%">
 				<tr> 
 				  <th style="width:10%">序号</th>
@@ -65,6 +65,7 @@
 				</tr>
 				</c:forEach>
 				</table>
+				</br>
 				<div style="width:80%">
 						<input type="hidden" name="tableName" value="${tableName }"     style="width:80px">
 				                 类名称：<input type="text" name="className" value="${className }"></br>
