@@ -7,7 +7,9 @@
 <script type="text/javascript" src="<c:url value="/js/easyui/jquery.easyui.min.js" />" charset="UTF-8"></script>
 <script type="text/javascript" src="<c:url value="/js/easyui/locale/easyui-lang-zh_CN.js" />" charset="UTF-8"></script>
 <script type="text/javascript" src="<c:url value="/js/My97DatePicker/WdatePicker.js"/>" charset="UTF-8"></script>
-<%-- <link href="<c:url value="/static/css/main.css"/>" rel="stylesheet" type="text/css">
+
+ <%--
+  <link href="<c:url value="/css/main.css"/>" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="<c:url value="/static/js/common.js" />" charset="UTF-8"></script>
 <script type="text/javascript" src="<c:url value="/js/util.js"/>" charset="UTF-8"></script>
  --%>

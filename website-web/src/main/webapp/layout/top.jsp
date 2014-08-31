@@ -8,7 +8,7 @@
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
- <title>好运通物流业务管理系统</title>
+ <title>网站后台管理系统v5.0</title>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/top.css" />
 <!--[if IE 6]><script type="text/javascript">try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}</script><![endif]-->
 </head>
@@ -31,7 +31,7 @@
 					</span></h2>
 				</c:otherwise>
 			</c:choose>
-			<h3><em>·</em><span>好运通物流业务管理系统</span></h3>
+			<h3><em>·</em><span>网站后台管理系统v5.0</span></h3>
 			<div class="user-top">
 				<p id="userCompanyName"><em>${userCompanyName}</em></p>
 				<p>

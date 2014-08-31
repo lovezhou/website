@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,21 +9,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <title>信运通物流业务管理系统</title>
     <link id="page_favicon" href="<%=basePath %>images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="<%=basePath %>js/easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="<%=basePath %>js/easyui/themes/icon.css">
+    <%@include file="../head_include.jsp" %>
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/left.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/main.css">
-	<script type="text/javascript" src="<%=basePath %>js/easyui/jquery-1.4.4.min.js"></script>
-	<script type="text/javascript" src="<%=basePath %>js/easyui/jquery.easyui.min.js"></script>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
  <script>
  $(function(){
 	 setTimeout(function(){
