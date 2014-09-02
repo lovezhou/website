@@ -12,4 +12,3 @@
 <script type="text/javascript" src="<%=basePath %>/static/js/common.js" />" charset="UTF-8"></script>
 <script type="text/javascript" src="<%=basePath %>/js/util.js"/>" charset="UTF-8"></script>
  --%>
-

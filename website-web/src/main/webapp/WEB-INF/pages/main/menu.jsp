@@ -15,7 +15,7 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 		<meta http-equiv="description" content="This is my page">
-		<script type="text/javascript" src="<%=basePath%>js/jquery.js"></script>
+		<script type="text/javascript" src="/js/jquery.js" charset="UTF-8"></script>
 		<script language="vbscript">
            function toAsc(str)
              toAsc = hex(asc(str))
