@@ -26,7 +26,7 @@
 				<tr>
 					<td class="color">请输入表名</td>
 					<td >
-						<input class="input"  name="tableName" required="true"     style="width:80px">
+						<input class="input"  name="tableName" required="true"     style="width:100px">
 					</td>
 				</tr>
 				<tr><td class="color">
@@ -41,7 +41,7 @@
 		</c:when>
 		<c:otherwise>
 		 <form action="codegenerator/codeGenerator.do" name="form0" method="post" class="table03">
-				<table class="table06 center"  align="left"  border="0" cellspacing="0"  style="width:80%">
+				<table class="table06 center"  align="left"  border="0" cellspacing="0"  style="width:90%">
 				<tr> 
 				  <th style="width:10%">序号</th>
 				  <th>字段名</th>
@@ -54,32 +54,50 @@
 				</tr>
 				<c:forEach  items="${voList}"  var="vo" varStatus="status"> 
 				<tr>
-					<td class="color" width="30%">字段${status.count }</td>
-					<td width="20%"><input class="input"  name="columnName" value="${vo.columnName }" required="true"    style="width:120px">
-					<td width="20%"><input class="input"  name="propertyName" value="${vo.propertyName }" required="true"    style="width:120px">
-					<td width="20%" ><input class="input" name="dataType" value="${vo.dataType }" required="true"    style="width:120px">
-					<td width="20%" ><input class="input" name="comments" value="${vo.comments }" required="true"    style="width:120px">
-					<td width="20%" ><input class="input" name="nullable" value="${vo.nullable }"     style="width:120px">
-					<td width="20%" ><input type="checkbox" id="chk_code_${status.count }" name="chk_code"  value="1"  checked="checked"      style="width:120px">
-					<td width="20%" ><input type="checkbox" id="chk_cond_${status.count }" name="chk_cond"  value="1"  checked="checked"      style="width:120px">
+					<td class="color" width="15%">字段${status.count }</td>
+					<td width="10%"><input class="input"  name="columnName" value="${vo.columnName }" required="true"    style="width:100px">
+					<td width="10%"><input class="input"  name="propertyName" value="${vo.propertyName }" required="true"    style="width:100px">
+					<td width="10%" ><input class="input" name="dataType" value="${vo.dataType }" required="true"    style="width:100px">
+					<td width="10%" ><input class="input" name="comments" value="${vo.comments }" required="true"    style="width:100px">
+					<td width="10%" ><input class="input" name="nullable" value="${vo.nullable }"     style="width:100px">
+					<td width="10%" ><input type="checkbox" id="chk_code_${status.count }" name="chk_code"  value="1"  checked="checked"      style="width:100px">
+					<td width="10%" ><input type="checkbox" id="chk_cond_${status.count }" name="chk_cond"  value="1"  checked="checked"      style="width:100px">
 				</tr>
 				</c:forEach>
 				</table>
-				</br>
-				<div style="width:80%">
-						<input type="hidden" name="tableName" value="${tableName }"     style="width:80px">
-				                 类名称：<input type="text" name="className" value="${className }"></br>
-						前台js，jspBasePath:<input type="text"  required="true" name="jspPath" style="width:300px" >
-						是否生成jsp，js<input type="checkbox" name="jsp" checked="checked" value="1" ></br>
-						后台BasePath:<input type="text" name="basePath"  required="true" style="width:300px"  >
-						是否生成controller<input type="checkbox" name="controller" checked="checked" value="1" >
-						是否生成service<input type="checkbox" name="service" checked="checked" value="1">
-						是否生成dao<input type="checkbox" name="dao" checked="checked" value="1"></br>
-						数据库类型 MySQL：<input type="radio" name="databaseType"  required="true" value="mysql" /> ORACLE：<input type="radio" name="databaseType" value="oracle" ></br>
-						<input type="submit" id="generatorCode"  target="mainFrame" style="float: left;" value="生成code">
-						<input type="reset"  id="generatorReset"  target="mainFrame"  style="float: left;" value="清空">
-				</div>
-				
+				<table class="table06"   border="0" cellspacing="0"  style="width:90%">
+					<tr>
+							<td class="color" width="10%">类名：</td>
+							<td class="color" width="20%"><input type="text" name="className" value="${className }"></td>
+							<td class="color" width="10%">前台js,jspBasePath:</td>
+					        <td class="color" width="20%"><input type="text"  required="true" name="jspPath"  ></td>              
+							<td class="color" width="10%">后台PackagePath:</td>
+					        <td class="color" width="20%"><input type="text" name="basePath"  required="true"  ></td>              
+				   </tr>
+				   <tr>
+				   			<td class="color" width="10%">数据库类型：</td>
+				   			<td class="color" width="20%">MySQL：<input type="radio" name="databaseType"  required="true" value="mysql" /></td>
+				   			<td class="color" width="20%">ORACLE：<input type="radio" name="databaseType" value="oracle" ></td>
+							<td class="color" width="10%">生成jsp,js：</td>
+							<td class="color" width="30%" colspan="2"><input type="checkbox" name="jsp" checked="checked" value="1" ></td>
+					                      
+				   </tr>			
+					<tr>
+					 		<td class="color" width="10%">生成controller：</td>
+					 		<td class="color" width="20%"><input type="checkbox" name="controller" checked="checked" value="1" ></td>
+					 		<td class="color" width="10%">生成service：</td>
+							<td class="color" width="20%"><input type="checkbox" name="service" checked="checked" value="1"></td>
+							<td class="color" width="10%">生成dao：</td>
+							<td class="color" width="20%"><input type="checkbox" name="dao" checked="checked" value="1"><td>
+				   </tr>		
+					<tr>
+						<td  colspan ="6">
+								<input type="hidden" name="tableName" value="${tableName }">
+								<input type="submit" id="generatorCode"  target="mainFrame" style="float: left;" value="生成code">
+								<input type="reset"  id="generatorReset"  target="mainFrame"  style="float: left;" value="清空">
+						</td>		
+					 </tr>		
+				</table>
 			</form>
 		</c:otherwise>
 		</c:choose>

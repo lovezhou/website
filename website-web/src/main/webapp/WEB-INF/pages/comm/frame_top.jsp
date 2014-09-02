@@ -1,5 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -9,37 +8,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>顶部</title>
-		<link href="<%=basePath %>css/styletop.css" rel="stylesheet" type="text/css">
-		<link href="<%=basePath %>css/reset.css" rel="stylesheet" type="text/css">
-		<script language="javascript">
-var object;
-function changeStyle(obj){
-	if(object!=null)
-	{
-		object.removeAttribute('style');
-		object.removeAttribute('class');
-		object.removeAttribute("className");
-		object.parentNode.removeAttribute('style');
-		object.parentNode.removeAttribute('class');
-		object.parentNode.removeAttribute("className");
-	}
-	object=obj;
-	obj.parentNode.className="current";
-	obj.className="current";  /*连接效果*/
-	obj.style.color="#33CC00";
-}
-function change(obj,leftUrl,mainUrl){
-changeStyle(obj);
-//找到region
-$("div[region='west'] iframe").attr("src",leftUrl);
-$("div[region='center'] iframe").attr("src",mainUrl);
-}
-
-	
-</script>
-
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	<body>
 		<div class="topbg">
@@ -120,17 +90,16 @@ $("div[region='center'] iframe").attr("src",mainUrl);
 				
 	</body>
 	 <SCRIPT>
-					var enabled = 0;
-					today = new Date();
-					if(today.getDay()==0) day = "星期日";
-					if(today.getDay()==1) day = "星期一";
-					if(today.getDay()==2) day = "星期二";
-					if(today.getDay()==3) day = "星期三";
-					if(today.getDay()==4) day = "星期四";
-					if(today.getDay()==5) day = "星期五";
-					if(today.getDay()==6) day = "星期六";
-					date = "今天是："+(today.getFullYear())  + "年" + (today.getMonth() + 1 ) + "月" + today.getDate() + "日  " + " " + day;
-					document.getElementById("vartime").innerHTML=date;
-				</SCRIPT>
-				
+		var enabled = 0;
+		today = new Date();
+		if(today.getDay()==0) day = "星期日";
+		if(today.getDay()==1) day = "星期一";
+		if(today.getDay()==2) day = "星期二";
+		if(today.getDay()==3) day = "星期三";
+		if(today.getDay()==4) day = "星期四";
+		if(today.getDay()==5) day = "星期五";
+		if(today.getDay()==6) day = "星期六";
+		date = "今天是："+(today.getFullYear())  + "年" + (today.getMonth() + 1 ) + "月" + today.getDate() + "日  " + " " + day;
+		document.getElementById("vartime").innerHTML=date;
+	</SCRIPT>
 </html>

@@ -18,9 +18,6 @@ import com.jessrun.certify.service.NewCertifyService;
 @Controller
 public class MainController {
 
-    @Autowired
-    private NewCertifyService certifyService;
-
     @RequestMapping(value = { "/top.do" }, method = RequestMethod.GET)
     public ModelAndView top() throws Exception {
         return new ModelAndView("/comm/frame_top");
