@@ -9,7 +9,7 @@
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>代码生成器</title>
+    <title>数据字典维护</title>
      <%@include file="../head_include.jsp" %>
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,9 +19,8 @@
   </head>
   <body  style="margin: 0px">
 	<table class="easyui-datagrid" style="width:100%;height:100%"
-			url="data/datagrid_data.json" 
-			title="数据字典维护" toolbar="#tb"
-			singleSelect="true" fitColumns="true">
+			url="sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageSize:10"
+			title="数据字典维护" toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>
 				<th field="itemid" width="60">Item ID</th>
@@ -57,35 +56,5 @@
   </body>
 </html>
 <script type="text/javascript">
- //选中所以行
- function selectChkCode(){
-	 var flag= false; 
-	 if($("#all_code_chk").attr("checked")){
-		 $("#all_code_chk").attr("checked",true);
-		 flag=true;
-	 }else{
-		 $("#all_code_chk").attr("checked",false);
-		 flag=false;
-	 }
-	 $("input[id^='chk_code_']").each(function(){
-		 $(this).attr("checked",flag);
-	 });
-	 
- }
- 
- //选中所以行
- function selectChkCond(){
-	 var flag= false; 
-	 if($("#all_cond_chk").attr("checked")){
-		 $("#all_cond_chk").attr("checked",true);
-		 flag=true;
-	 }else{
-		 $("#all_cond_chk").attr("checked",false);
-		 flag=false;
-	 }
-	 $("input[id^='chk_cond_']").each(function(){
-		 $(this).attr("checked",flag);
-	 });
-	 
- }
+
 </script>
