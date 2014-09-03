@@ -8,8 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <title>信运通物流业务管理系统</title>
-    <link id="page_favicon" href="<%=basePath %>images/favicon.ico" rel="icon" type="image/x-icon" />
     <%@include file="../head_include.jsp" %>
+    <link id="page_favicon" href="<%=basePath %>images/favicon.ico" rel="icon" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/left.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/main.css">
 	<meta http-equiv="pragma" content="no-cache">

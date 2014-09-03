@@ -1,5 +1,4 @@
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -9,11 +8,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>顶部</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
 		<link href="<%=basePath %>css/styletop.css" rel="stylesheet" type="text/css">
 		<link href="<%=basePath %>css/reset.css" rel="stylesheet" type="text/css">
-		<script language="javascript">
+		<%@include file="../head_include.jsp" %>
+<script language="javascript">
 var object;
 function changeStyle(obj){
 	if(object!=null)
