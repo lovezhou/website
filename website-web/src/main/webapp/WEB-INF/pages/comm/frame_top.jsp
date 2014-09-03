@@ -10,37 +10,6 @@
 	<head>
 		<title>顶部</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		
-		<link href="<%=basePath %>css/styletop.css" rel="stylesheet" type="text/css">
-		<link href="<%=basePath %>css/reset.css" rel="stylesheet" type="text/css">
-		<%@include file="../head_include.jsp" %>
-<script language="javascript">
-var object;
-function changeStyle(obj){
-	if(object!=null)
-	{
-		object.removeAttribute('style');
-		object.removeAttribute('class');
-		object.removeAttribute("className");
-		object.parentNode.removeAttribute('style');
-		object.parentNode.removeAttribute('class');
-		object.parentNode.removeAttribute("className");
-	}
-	object=obj;
-	obj.parentNode.className="current";
-	obj.className="current";  /*连接效果*/
-	obj.style.color="#33CC00";
-}
-function change(obj,leftUrl,mainUrl){
-changeStyle(obj);
-//找到region
-$("div[region='west'] iframe").attr("src",leftUrl);
-$("div[region='center'] iframe").attr("src",mainUrl);
-}
-
-	
-</script>
-
 	</head>
 	<body>
 		<div class="topbg">
@@ -121,17 +90,16 @@ $("div[region='center'] iframe").attr("src",mainUrl);
 				
 	</body>
 	 <SCRIPT>
-					var enabled = 0;
-					today = new Date();
-					if(today.getDay()==0) day = "星期日";
-					if(today.getDay()==1) day = "星期一";
-					if(today.getDay()==2) day = "星期二";
-					if(today.getDay()==3) day = "星期三";
-					if(today.getDay()==4) day = "星期四";
-					if(today.getDay()==5) day = "星期五";
-					if(today.getDay()==6) day = "星期六";
-					date = "今天是："+(today.getFullYear())  + "年" + (today.getMonth() + 1 ) + "月" + today.getDate() + "日  " + " " + day;
-					document.getElementById("vartime").innerHTML=date;
-				</SCRIPT>
-				
+		var enabled = 0;
+		today = new Date();
+		if(today.getDay()==0) day = "星期日";
+		if(today.getDay()==1) day = "星期一";
+		if(today.getDay()==2) day = "星期二";
+		if(today.getDay()==3) day = "星期三";
+		if(today.getDay()==4) day = "星期四";
+		if(today.getDay()==5) day = "星期五";
+		if(today.getDay()==6) day = "星期六";
+		date = "今天是："+(today.getFullYear())  + "年" + (today.getMonth() + 1 ) + "月" + today.getDate() + "日  " + " " + day;
+		document.getElementById("vartime").innerHTML=date;
+	</SCRIPT>
 </html>

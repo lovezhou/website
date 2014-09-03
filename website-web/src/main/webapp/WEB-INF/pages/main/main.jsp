@@ -12,24 +12,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link id="page_favicon" href="<%=basePath %>images/favicon.ico" rel="icon" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/left.css">
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/main.css">
+	<link href="<%=basePath %>css/styletop.css" rel="stylesheet" type="text/css">
+	<link href="<%=basePath %>css/reset.css" rel="stylesheet" type="text/css">
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
- <script>
- $(function(){
-	 setTimeout(function(){
-			//$('body').layout('collapse','east');
-			 $("div[region='west']").html('<iframe  frameborder="0" name="leftFrame" id="leftFrame"  src="menu.do" style="width:100%;height:100%;"></iframe>');
-			 $("div[region='center']").html('<iframe scrolling="yes" frameborder="0" name="mainFrame" id="mainFrame" src="layout/main.html" style="width:100%;height:100%;"></iframe>');
-			// $("div[region='south']").html('<iframe scrolling="no" id="buttomFrame" name="buttomFrame" frameborder="0"  src="top-buttom.xhtml" style="width:100%;height:100%;"></iframe>');
-		 },0);
-	 
-		
-	});
-
-	</script>
+<script  type="text/javascript">
+$(function(){
+ 	setTimeout(function(){
+		//$('body').layout('collapse','east');
+		 $("div[region='west']").html('<iframe  frameborder="0" name="leftFrame" id="leftFrame"  src="menu.do" style="width:100%;height:100%;"></iframe>');
+		 $("div[region='center']").html('<iframe scrolling="yes" frameborder="0" name="mainFrame" id="mainFrame" src="layout/main.html" style="width:100%;height:100%;"></iframe>');
+		// $("div[region='south']").html('<iframe scrolling="no" id="buttomFrame" name="buttomFrame" frameborder="0"  src="top-buttom.xhtml" style="width:100%;height:100%;"></iframe>');
+	 },0);
+});
+var object;
+function changeStyle(obj){
+	if(object!=null)
+	{
+		object.removeAttribute('style');
+		object.removeAttribute('class');
+		object.removeAttribute("className");
+		object.parentNode.removeAttribute('style');
+		object.parentNode.removeAttribute('class');
+		object.parentNode.removeAttribute("className");
+	}
+	object=obj;
+	obj.parentNode.className="current";
+	obj.className="current";  /*连接效果*/
+	obj.style.color="#33CC00";
+}
+function change(obj,leftUrl,mainUrl){
+	changeStyle(obj);
+	//找到region
+	$("div[region='west'] iframe").attr("src",leftUrl);
+	$("div[region='center'] iframe").attr("src",mainUrl);
+}
+ </script>
 </head>
 <body class="easyui-layout">
 	<div region="north" border="false" split="false" style="height:100px;background:#B3DFDA;" href="top.do">

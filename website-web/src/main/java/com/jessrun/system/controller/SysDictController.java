@@ -21,7 +21,7 @@ public class SysDictController {
 
     @RequestMapping(value = "/toListView.do", method = RequestMethod.GET)
     public ModelAndView toSysDictPage(HttpServletRequest req)  throws Exception {
-        ModelAndView mav = new ModelAndView("/sysDict_list.jsp");
+        ModelAndView mav = new ModelAndView("/system/sysDict_list");
         return mav;
     }
  

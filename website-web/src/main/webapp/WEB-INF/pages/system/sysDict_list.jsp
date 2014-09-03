@@ -17,11 +17,10 @@
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
   </head>
-  <body>
- <h1>TestDataGrid</h1>
-	<table class="easyui-datagrid" style="width:600px;height:250px"
+  <body  style="margin: 0px">
+	<table class="easyui-datagrid" style="width:100%;height:100%"
 			url="data/datagrid_data.json" 
-			title="DataGrid - Complex Toolbar" toolbar="#tb"
+			title="数据字典维护" toolbar="#tb"
 			singleSelect="true" fitColumns="true">
 		<thead>
 			<tr>
