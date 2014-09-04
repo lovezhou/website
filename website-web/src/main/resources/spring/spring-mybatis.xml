@@ -57,7 +57,7 @@
                 <value>classpath*:com/jessrun/web/cost/dao/conf/*.xml</value>
                 <value>classpath*:com/jessrun/certify/dao/conf/*.xml</value>
                 <value>classpath*:com/jessrun/web/system/dao/conf/*.xml</value>
-                <value>classpath*:com/jessrun/web/report/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/system/dao/conf/*.xml</value>
                 <value>classpath*:com/jessrun/codegenerator/dao/conf/*.xml</value>
 			</list>  
 		</property>
