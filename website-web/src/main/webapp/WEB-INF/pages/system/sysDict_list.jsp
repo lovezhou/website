@@ -40,9 +40,9 @@
 			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
 		</div>
 		<div>
-			字典名称：<input id="txt_dictName" class="easyui-textbox" name="dictName" style="width:15%;height:20px">
-			字典代码：<input id="txt_dictCode" class="easyui-textbox" name="dictCode" style="width:15%;height:20px">
-			<a href="javascript:search();return false;" class="easyui-linkbutton"  iconCls="icon-search">查询</a>
+			字典名称：<input id="txt_dictName" class="easyui-textbox" name="dictName" style="width:10%;height:20px">
+			字典代码：<input id="txt_dictCode" class="easyui-textbox" name="dictCode" style="width:10%;height:20px">
+			<a href="javascript:search();" class="easyui-linkbutton"  iconCls="icon-search">查询</a>
 		</div>
 	</div>
 	

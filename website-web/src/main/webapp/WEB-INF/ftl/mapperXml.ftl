@@ -14,7 +14,7 @@
   	<#list list as vo>
   	     <#if vo.chkCond=='1'>
 	  	     <if test="${vo.propertyName} != null">
-	  			and ${vo.columnName} = ${r"${"}${vo.propertyName}}
+	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}
 	  		</if>
 		</#if>
   	</#list>
