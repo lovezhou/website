@@ -1,19 +1,20 @@
 package com.jessrun.system.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jessrun.platform.util.SerializeUtils;
+import com.jessrun.common.pagination.Pagination;
+import com.jessrun.common.web.AjaxUtil;
+import com.jessrun.common.web.RequestPageParameter;
 import com.jessrun.system.domain.SysDict;
 import com.jessrun.system.service.SysDictService;
 
@@ -30,13 +31,12 @@ public class SysDictController {
         return mav;
     }
  
-    @ResponseBody
+    @SuppressWarnings("all")
     @RequestMapping(value = "/query.json", method = RequestMethod.POST)
-    public String query(HttpServletRequest req)  throws Exception {
-        Map<String,Object> model = new HashMap<String,Object>();
-        List<SysDict> sysDictList = sysDictService.selectListByPage(model);
-        String data = SerializeUtils.toJson(sysDictList);
-        return  data;
+    public void query(HttpServletRequest req ,SysDict  sysDict ,HttpServletResponse response)  throws Exception {
+        Map  map = RequestPageParameter.convertPageMap(sysDict,req);
+        List<SysDict> sysDictList = sysDictService.selectListByPage(map);
+        AjaxUtil.success(response, sysDictList,((Pagination)map.get("pagination")).getCount());
     }
 
 }

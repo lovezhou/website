@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jessrun.system.dao.SysDict" >
+<mapper namespace="com.jessrun.system.dao.SysDictMapper" >
   
   <!-- 实体类映射mapper -->
   <resultMap id="SysDict" type="com.jessrun.system.domain.SysDict" >
@@ -18,31 +18,31 @@
   <!--查询条件-->
   <sql id="where_condition">
 	  	     <if test="dictId != null">
-	  			and DICT_ID = ${dictId}
+	  			and DICT_ID = #{dictId}
 	  		</if>
 	  	     <if test="dictName != null">
-	  			and DICT_NAME = ${dictName}
+	  			and DICT_NAME = #{dictName}
 	  		</if>
 	  	     <if test="dictCode != null">
-	  			and DICT_CODE = ${dictCode}
+	  			and DICT_CODE = #{dictCode}
 	  		</if>
 	  	     <if test="creatorId != null">
-	  			and CREATOR_ID = ${creatorId}
+	  			and CREATOR_ID = #{creatorId}
 	  		</if>
 	  	     <if test="creatorTime != null">
-	  			and CREATOR_TIME = ${creatorTime}
+	  			and CREATOR_TIME = #{creatorTime}
 	  		</if>
 	  	     <if test="editorId != null">
-	  			and EDITOR_ID = ${editorId}
+	  			and EDITOR_ID = #{editorId}
 	  		</if>
 	  	     <if test="editorTime != null">
-	  			and EDITOR_TIME = ${editorTime}
+	  			and EDITOR_TIME = #{editorTime}
 	  		</if>
 	  	     <if test="isDeleted != null">
-	  			and IS_DELETED = ${isDeleted}
+	  			and IS_DELETED = #{isDeleted}
 	  		</if>
 	  	     <if test="remark != null">
-	  			and REMARK = ${remark}
+	  			and REMARK = #{remark}
 	  		</if>
   </sql>
   
@@ -115,15 +115,15 @@
   <!--分页查询-->
   <select id="selectListByPage" resultMap="SysDict" parameterType="java.util.Map" >
 	select 
-	  	       dictId ,       
-	  	       dictName ,       
-	  	       dictCode ,       
-	  	       creatorId ,       
-	  	       creatorTime ,       
-	  	       editorId ,       
-	  	       editorTime ,       
-	  	       isDeleted ,       
-	  	       remark        
+	  	       DICT_ID ,       
+	  	       DICT_NAME ,       
+	  	       DICT_CODE ,       
+	  	       CREATOR_ID ,       
+	  	       CREATOR_TIME ,       
+	  	       EDITOR_ID ,       
+	  	       EDITOR_TIME ,       
+	  	       IS_DELETED ,       
+	  	       REMARK          
 	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
   </select>
 </mapper>

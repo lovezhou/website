@@ -16,19 +16,17 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
+	<script type="text/javascript" src="<%=basePath%>js/system/sysDict_list.js" charset="utf-8"></script>
   </head>
   <body  style="margin: 0px">
-	<table class="easyui-datagrid" style="width:100%;height:100%"
+	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
 			url="sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageSize:10"
-			title="数据字典维护" toolbar="#tb"   fitColumns="true">
+		    toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>
-				<th field="itemid" width="60">Item ID</th>
-				<th field="productid" width="80">Product ID</th>
-				<th field="listprice" align="right" width="70">List Price</th>
-				<th field="unitcost" align="right" width="70">Unit Cost</th>
-				<th field="attr1" width="200">Address</th>
-				<th field="status" width="50">Status</th>
+				<th field="dictName" align="center" width="150">字典名称</th>
+				<th field="dictCode" align="center" width="150">字典代码</th>
+				<th field="remark"   align="center"   width="150">备注</th>
 			</tr>
 		</thead>
 	</table>
@@ -42,19 +40,12 @@
 			<a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"></a>
 		</div>
 		<div>
-			Date From: <input class="easyui-datebox" style="width:80px">
-			To: <input class="easyui-datebox" style="width:80px">
-			Language: 
-			<input class="easyui-combobox" style="width:100px"
-					url="data/combobox_data.json"
-					valueField="id" textField="text">
-			<a href="#" class="easyui-linkbutton" iconCls="icon-search">Search</a>
+			字典名称：<input id="txt_dictName" class="easyui-textbox" name="dictName" style="width:15%;height:20px">
+			字典代码：<input id="txt_dictCode" class="easyui-textbox" name="dictCode" style="width:15%;height:20px">
+			<a href="javascript:search();return false;" class="easyui-linkbutton"  iconCls="icon-search">查询</a>
 		</div>
 	</div>
 	
 
   </body>
 </html>
-<script type="text/javascript">
-
-</script>

@@ -2,9 +2,7 @@ package com.jessrun.system.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import lombok.Data;
 
-@Data
 public class SysDict  implements  Serializable  {
 
  	private static final long serialVersionUID = 1L;
@@ -20,6 +18,96 @@ public class SysDict  implements  Serializable  {
     
     public SysDict(){
         super();
+    }
+
+    
+    public String getDictId() {
+        return dictId;
+    }
+
+    
+    public void setDictId(String dictId) {
+        this.dictId = dictId;
+    }
+
+    
+    public String getDictName() {
+        return dictName;
+    }
+
+    
+    public void setDictName(String dictName) {
+        this.dictName = dictName;
+    }
+
+    
+    public String getDictCode() {
+        return dictCode;
+    }
+
+    
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
+    }
+
+    
+    public String getCreatorId() {
+        return creatorId;
+    }
+
+    
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
+    }
+
+    
+    public Date getCreatorTime() {
+        return creatorTime;
+    }
+
+    
+    public void setCreatorTime(Date creatorTime) {
+        this.creatorTime = creatorTime;
+    }
+
+    
+    public String getEditorId() {
+        return editorId;
+    }
+
+    
+    public void setEditorId(String editorId) {
+        this.editorId = editorId;
+    }
+
+    
+    public Date getEditorTime() {
+        return editorTime;
+    }
+
+    
+    public void setEditorTime(Date editorTime) {
+        this.editorTime = editorTime;
+    }
+
+    
+    public String getIsDeleted() {
+        return isDeleted;
+    }
+
+    
+    public void setIsDeleted(String isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    
+    public String getRemark() {
+        return remark;
+    }
+
+    
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 	
 }
