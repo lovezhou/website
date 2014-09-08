@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${basePath}.dao.${className}" >
+<mapper namespace="${basePath}.dao.${className}Mapper" >
   
   <!-- 实体类映射mapper -->
   <resultMap id="${className}" type="${basePath}.domain.${className}" >
@@ -68,7 +68,7 @@
   <select id="selectListByPage" resultMap="${className}" parameterType="java.util.Map" >
 	select 
 	  	<#list list as vo>
-	  	       ${vo.propertyName} <#if  vo_has_next>,</#if>       
+	  	       ${vo.columnName} <#if  vo_has_next>,</#if>       
 	  	</#list>
 	   from ${tableName}  where 1=1  <include refid="where_condition"/>
   </select>
