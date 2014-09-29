@@ -3,11 +3,14 @@ package com.jessrun.system.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.ehcache.Cache;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jessrun.common.cache.EhCacheUtil;
 import com.jessrun.system.dao.SysDictMapper;
 import com.jessrun.system.domain.SysDict;
 import com.jessrun.system.service.SysDictService;
@@ -16,12 +19,19 @@ import com.jessrun.system.service.SysDictService;
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS) 
 public class SysDictServiceImpl implements SysDictService {
 
+	
+	     
+		 
          @Autowired
          private  SysDictMapper   sysDictMapper;
          
          @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
          public int saveObject(SysDict  obj){
-             return sysDictMapper.saveObject(obj);
+        	 int num = sysDictMapper.saveObject(obj);
+        	 Cache dictCache =  EhCacheUtil.newInstance().getCache("DictCache");
+        	 
+        	 
+             return num  ;
          }
 
          @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
