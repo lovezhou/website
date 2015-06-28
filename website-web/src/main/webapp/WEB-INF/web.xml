@@ -139,6 +139,14 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.ico</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.exe</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.zip</url-pattern>
+	</servlet-mapping>
 	<!-- <servlet> <servlet-name>FreeMarkerPaginationConvertor</servlet-name> 
 		<servlet-class>com.jessrun.common.pagination.FreeMarkerPaginationConvertor</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>FreeMarkerPaginationConvertor</servlet-name> 

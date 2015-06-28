@@ -52,7 +52,7 @@ public class SysDictServiceImpl implements SysDictService {
         @Transactional(value="OracletransactionManager",readOnly = true, propagation = Propagation.SUPPORTS)
         public List<SysDict> selectListByPage(Map<String,Object> model){
             return sysDictMapper.selectListByPage(model);
-         }
+        }
 
 }
 

@@ -12,7 +12,7 @@
 	<!--  oracle数据库的连接配置      数据源定义,使用Apache DBCP 连接池 -->
 	<bean id="OracledataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
 		<property name="driverClassName" value="${jdbc.driverClassName}"/>
-		<property name="url" value="${jdbc.url}" />
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1/ORCL" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<!-- 初始化连接数 -->

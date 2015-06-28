@@ -1,5 +1,9 @@
 package com.jessrun.codegenerator.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.List;
 import java.util.Map;
 
@@ -9,11 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jessrun.codegenerator.domain.ColumnAndType;
 import com.jessrun.codegenerator.service.CodeGeneratorService;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 
 /**
  * 
@@ -54,6 +60,23 @@ public class CodeGeneratorController {
       
         Map<String,Object> data = codeGeneratorService.codeGenerator(map);
         ModelAndView mav = new ModelAndView("integration.ftl");
+        
+        // 1. 创建freemarker配置实例
+        Configuration conf = new Configuration();
+        conf.setDirectoryForTemplateLoading(new File("D:\\github_source\\website\\website-web\\target\\website-web\\WEB-INF\\ftl"));
+
+      
+        // 3.加载模板文件
+        Template t = conf.getTemplate("integration.ftl");
+
+        
+        String basePath = (String)data.get("basePath");
+        // 4.输出数据文件
+        Writer out = new OutputStreamWriter(new FileOutputStream(new File(basePath+"")));
+        t.process(map, out);
+        out.flush();
+        
+        
         //视图名称
         mav.addAllObjects(data);
         return mav;
