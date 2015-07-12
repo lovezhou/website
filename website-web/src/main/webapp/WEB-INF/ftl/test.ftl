@@ -21,6 +21,7 @@
 <#list sexList  as  tmp >
 	<#assign x = x + 1>
     ${x}; <br>${tmp_index}<#--特殊变量索引 -->=====${tmp}===== <#if !tmp_has_next >是最后一列</#if></br>
+    <#break>   <#-- 终止循环-->
 </#list>
 ===========================================
 

@@ -1,7 +1,9 @@
 package com.jessrun.codegenerator.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.List;
@@ -59,29 +61,90 @@ public class CodeGeneratorController {
         Map<String,String[]> map =( Map<String,String[]>)  req.getParameterMap();
       
         Map<String,Object> data = codeGeneratorService.codeGenerator(map);
-        ModelAndView mav = new ModelAndView("integration.ftl");
+        ModelAndView mav = new ModelAndView("showMessage.ftl");
         
         // 1. 创建freemarker配置实例
         Configuration conf = new Configuration();
-        conf.setDirectoryForTemplateLoading(new File("D:\\github_source\\website\\website-web\\target\\website-web\\WEB-INF\\ftl"));
+        conf.setDirectoryForTemplateLoading(new File("D:\\github_source\\website\\website-web\\src\\main\\webapp\\WEB-INF\\ftl"));
 
       
         // 3.加载模板文件
-        Template t = conf.getTemplate("integration.ftl");
+        Template domain = conf.getTemplate("domain.ftl");
+        Template controller = conf.getTemplate("controller.ftl");
+        Template service = conf.getTemplate("service.ftl");
+        Template serviceImpl = conf.getTemplate("serviceImpl.ftl");
+        Template mapper = conf.getTemplate("mapper.ftl");
+        Template mapperXml = conf.getTemplate("mapperXml.ftl");
 
+        String className = (String)data.get("className");
+        String javaSrcPath = (String)data.get("javaSrcPath");
+        String packageName = (String)data.get("packageName");
+        String[]  packs = packageName.split("\\.");
+        for (int i = 0; i < packs.length; i++) {
+            javaSrcPath =javaSrcPath+"\\"+packs[i];
+        }
+        File  basePath = new File(javaSrcPath);
+        if(basePath.exists()){
+            basePath.mkdirs();
+        }
+        //domain
+        File domainPath= new File(javaSrcPath+"\\"+"domain");
+        if(!domainPath.exists()){
+            domainPath.mkdirs();
+        }
+        FileOutputStream outStream =  new FileOutputStream(domainPath+"\\"+className+"VO.java");
+        Writer out = new OutputStreamWriter(outStream);
+        domain.process(data, out);// 4.输出数据文件
+        //controller
+        File controllerPath= new File(javaSrcPath+"\\"+"controller");
+        if(!controllerPath.exists()){
+            controllerPath.mkdirs();
+        }
+        outStream =  new FileOutputStream(controllerPath+"\\"+className+"Controller.java");
+        out = new OutputStreamWriter(outStream);
+        controller.process(data, out);// 4.输出数据文件
+        //service
+        File servicePath= new File(javaSrcPath+"\\"+"service");
+        if(!servicePath.exists()){
+            servicePath.mkdirs();
+        }
+        outStream =  new FileOutputStream(servicePath+"\\"+className+"Service.java");
+        out = new OutputStreamWriter(outStream);
+        service.process(data, out);
+        //service impl
+        File serviceImplPath= new File(javaSrcPath+"\\"+"service\\impl");
+        if(!serviceImplPath.exists()){
+            serviceImplPath.mkdir();
+        }
+        outStream =  new FileOutputStream(serviceImplPath+"\\"+className+"ServiceImpl.java");
+        out = new OutputStreamWriter(outStream);
+        serviceImpl.process(data, out);
+        //dao
+        File daoPath= new File(javaSrcPath+"\\"+"dao");
+        if(!daoPath.exists()){
+            daoPath.mkdirs();
+        }
+        outStream =  new FileOutputStream(daoPath+"\\"+className+"Mapper.java");
+        out = new OutputStreamWriter(outStream);
+        mapper.process(data, out);
+        //conf
+        File confPath= new File(javaSrcPath+"\\"+"dao\\conf");
+        if(!confPath.exists()){
+            confPath.mkdirs();
+        }
+        outStream =  new FileOutputStream(confPath+"\\"+className+"Mapper.xml");
+        out = new OutputStreamWriter(outStream);
+        mapperXml.process(data, out);
         
-        String basePath = (String)data.get("basePath");
-        // 4.输出数据文件
-        Writer out = new OutputStreamWriter(new FileOutputStream(new File(basePath+"")));
-        t.process(map, out);
+        outStream.flush();
+        outStream.close();
         out.flush();
-        
+        out.close();
         
         //视图名称
         mav.addAllObjects(data);
         return mav;
     }
 
-    
 
 }

@@ -32,7 +32,7 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
            for(ColumnAndType tmp:list){
                String columnName = tmp.getColumnName().toLowerCase();
                String propertyName = convertColumnToProperty(columnName);
-               tmp.setPropertyName(propertyName);
+               tmp.setPropertyName(propertyName.substring(1));
            }
        }
        return  list; 
@@ -109,8 +109,11 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         
         //类名称
         String  className = paramMap.get("className");
-        //前台js，jsp  基路径:
+        //前台js
+        String  jsPath = paramMap.get("jsPath");
         String  jspPath = paramMap.get("jspPath");
+        String  packageName = paramMap.get("packageName");
+        String  javaSrcPath = paramMap.get("javaSrcPath");
         //是否生成jsp，js
         String  jsp = paramMap.get("jsp");
         //后台 BasePath
@@ -127,7 +130,10 @@ public class CodeGeneratorServiceImp implements CodeGeneratorService {
         String tableName = paramMap.get("tableName");
         
         params.put("className", className);
+        params.put("jsPath",jsPath );
         params.put("jspPath",jspPath );
+        params.put("packageName",packageName );
+        params.put("javaSrcPath",javaSrcPath );
         params.put("isJsp",jsp );
         params.put("basePath",basePath );
         params.put("isController",controller );

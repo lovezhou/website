@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="${basePath}.dao.${className}Mapper" >
+<mapper namespace="${packageName}.dao.${className}Mapper" >
   
   <!-- 实体类映射mapper -->
-  <resultMap id="${className}" type="${basePath}.domain.${className}" >
+  <resultMap id="${className}" type="${packageName}.domain.${className}VO" >
   	<#list list as vo>
   	     <result column="${vo.columnName}" property="${vo.propertyName}" jdbcType="<#if vo.dataType=="VARCHAR2" >VARCHAR<#elseif vo.dataType=="DATE" >DATE<#elseif vo.dataType=="NUMBER" >DECIMAL</#if>" />
   	</#list>
@@ -30,7 +30,7 @@
   </select>
   
    <!--保存单个Object--> 
-  <insert id="saveObject" parameterType="${basePath}.domain.${className}">
+  <insert id="saveObject" parameterType="${packageName}.domain.${className}VO">
 		insert into TB_CERTIFY_ACCOUNT (
 			<#list  list as vo >
 	  	       ${vo.columnName} <#if  vo_has_next>,</#if>       
@@ -53,14 +53,17 @@
   </select>
   
   <!--更新单个对象-->
-  <update id="updateObject" parameterType="${basePath}.domain.${className}">
+  <update id="updateObject" parameterType="${packageName}.domain.${className}VO">
 		update ${tableName}  set
 		<#list list as vo>
 	  	      ${vo.columnName}=#${r"{"}${vo.propertyName},jdbcType=<#if vo.dataType=="VARCHAR2" >VARCHAR<#elseif vo.dataType=="DATE" >DATE<#elseif vo.dataType=="NUMBER" >DECIMAL</#if>} <#if  vo_has_next>,</#if>       
 	  	</#list>
 	  	where
 	  	<#list list as vo>
-	  	    <#if vo.isPk=="1">${vo.columnName}=#${r"{"}${vo.propertyName},jdbcType=VARCHAR}</#if>
+	  	    <#if vo.isPk=="1">
+	  	    	${vo.columnName}=#${r"{"}${vo.propertyName},jdbcType=VARCHAR}
+	  	    	<#break>
+	  	    </#if>
 	  	</#list>
   </update>
   

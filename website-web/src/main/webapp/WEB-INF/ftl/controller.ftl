@@ -1,4 +1,4 @@
-package ${basePath}.controller;
+package ${packageName}.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import ${basePath}.domain.${className};
-import ${basePath}.service.${className}Service;
+import ${packageName}.domain.${className}VO;
+import ${packageName}.service.${className}Service;
 <#assign  lowclassName="${className[0]?lower_case+className[1..]}">
 <#assign  lowServiceName="${lowclassName}Service">
 

@@ -57,8 +57,8 @@
 					<td class="color" width="15%">字段${status.count }</td>
 					<td width="10%"><input class="input"  name="columnName" value="${vo.columnName }"  required="true"    width="100%"/></td>
 					<td width="10%"><input class="input"  name="propertyName" value="${vo.propertyName }" required="true"   width="100%"/></td>
-					<td width="10%" ><input class="input" name="dataType" value="${vo.dataType }" required="true"    width="100%"/></td>
-					<td width="10%" ><input class="input" name="comments" value="${vo.comments }" required="true"    width="100%"/></td>
+					<td width="10%" ><input class="input" name="dataType" value="${vo.dataType }"     width="100%"/></td>
+					<td width="10%" ><input class="input" name="comments" value="${vo.comments }"     width="100%"/></td>
 					<td width="3%" ><input class="input" name="nullable" value="${vo.nullable }"     width="100%"/></td>
 					<td width="14%" ><input type="checkbox" id="chk_code_${status.count }" name="chk_code"  value="1"  checked="checked"  width="100%"/></td>
 					<td width="14%" ><input type="checkbox" id="chk_cond_${status.count }" name="chk_cond"  value="1"  checked="checked"  width="100%"/></td>
@@ -68,8 +68,10 @@
 				<table class="table06"   border="0" cellspacing="0"  style="width:90%">
 					<tr>
 							<td class="color" width="20%">类名：<input type="text" name="className" value="${className }"> </td>
-							<td class="color" width="40%"  colspan="2">前台js,jspBasePath:<input type="text"  required="true" name="jspPath"  width="80%" ></td>
-							<td class="color" width="40%" colspan="2">后台PackagePath:<input type="text" name="basePath"  required="true"  width="80%" ></td>
+							<td class="color" width="20%">js路径：<input type="text"  required="true" name="jsPath"  width="80%" ></td>
+							<td class="color" width="20%">jsp路径：<input type="text"  required="true" name="jspPath"  width="80%" ></td>
+							<td class="color" width="20%">包名：<input type="text" name="packageName"  required="true"  width="80%" ></td>
+				   			<td class="color" width="20%">java源码路径:<input type="text" name="javaSrcPath"  required="true"  width="80%" ></td>
 				   </tr>
 				   <tr>
 				   			<td class="color" width="20%">数据库类型：
