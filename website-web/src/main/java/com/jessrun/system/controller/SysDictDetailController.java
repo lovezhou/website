@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.jessrun.system.domain.SysDictVO;
-import com.jessrun.system.service.SysDictService;
+import com.jessrun.system.domain.SysDictDetailVO;
+import com.jessrun.system.service.SysDictDetailService;
 
 @Controller
-@RequestMapping(value = "/sysDict")
-public class SysDictController {
+@RequestMapping(value = "/sysDictDetail")
+public class SysDictDetailController {
 
     @Autowired
-    private SysDictService sysDictService;
+    private SysDictDetailService sysDictDetailService;
 
     @RequestMapping(value = "/toListView.do", method = RequestMethod.GET)
-    public ModelAndView toSysDictPage(HttpServletRequest req)  throws Exception {
-        ModelAndView mav = new ModelAndView("/sysDict_list.jsp");
+    public ModelAndView toSysDictDetailPage(HttpServletRequest req)  throws Exception {
+        ModelAndView mav = new ModelAndView("/sysDictDetail_list.jsp");
         return mav;
     }
  

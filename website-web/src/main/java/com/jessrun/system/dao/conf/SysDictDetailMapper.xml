@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.jessrun.system.dao.SysDictMapper" >
+<mapper namespace="com.jessrun.system.dao.SysDictDetailMapper" >
   
   <!-- 实体类映射mapper -->
-  <resultMap id="SysDict" type="com.jessrun.system.domain.SysDictVO" >
+  <resultMap id="SysDictDetail" type="com.jessrun.system.domain.SysDictDetailVO" >
   	     <result column="FID" property="id" jdbcType="VARCHAR" />
-  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
+  	     <result column="FDICT_ID" property="dictId" jdbcType="VARCHAR" />
   	     <result column="FCODE" property="code" jdbcType="VARCHAR" />
+  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
+  	     <result column="FORDER" property="order" jdbcType="DECIMAL" />
   	     <result column="FREMARK" property="remark" jdbcType="VARCHAR" />
   	     <result column="FCREATE_TIME" property="createTime" jdbcType="DATE" />
   </resultMap>
@@ -16,11 +18,17 @@
 	  	     <if test="id != null">
 	  			and FID = #{id}
 	  		</if>
-	  	     <if test="name != null">
-	  			and FNAME = #{name}
+	  	     <if test="dictId != null">
+	  			and FDICT_ID = #{dictId}
 	  		</if>
 	  	     <if test="code != null">
 	  			and FCODE = #{code}
+	  		</if>
+	  	     <if test="name != null">
+	  			and FNAME = #{name}
+	  		</if>
+	  	     <if test="order != null">
+	  			and FORDER = #{order}
 	  		</if>
 	  	     <if test="remark != null">
 	  			and FREMARK = #{remark}
@@ -31,29 +39,35 @@
   </sql>
   
  <!--查询单个Object--> 
-  <select id="selectById" resultMap="SysDict">
+  <select id="selectById" resultMap="SysDictDetail">
   	select 
 	  	       id ,       
-	  	       name ,       
+	  	       dictId ,       
 	  	       code ,       
+	  	       name ,       
+	  	       order ,       
 	  	       remark ,       
 	  	       createTime        
-	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
+	   from t_sys_dict_detail  where 1=1  <include refid="where_condition"/>
   </select>
   
    <!--保存单个Object--> 
-  <insert id="saveObject" parameterType="com.jessrun.system.domain.SysDictVO">
+  <insert id="saveObject" parameterType="com.jessrun.system.domain.SysDictDetailVO">
 		insert into TB_CERTIFY_ACCOUNT (
 	  	       FID ,       
-	  	       FNAME ,       
+	  	       FDICT_ID ,       
 	  	       FCODE ,       
+	  	       FNAME ,       
+	  	       FORDER ,       
 	  	       FREMARK ,       
 	  	       FCREATE_TIME        
 		)
 		values(
 	  	       #{id,jdbType=VARCHAR },
-	  	       #{name,jdbType=VARCHAR },
+	  	       #{dictId,jdbType=VARCHAR },
 	  	       #{code,jdbType=VARCHAR },
+	  	       #{name,jdbType=VARCHAR },
+	  	       #{order,jdbType=VARCHAR },
 	  	       #{remark,jdbType=VARCHAR },
 	  	       #{createTime,jdbType=VARCHAR }
         )
@@ -63,17 +77,19 @@
   <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
   		select 
 		    count(1) result
-		 from t_sys_dict
+		 from t_sys_dict_detail
 		  <where>
 	    </where>
   </select>
   
   <!--更新单个对象-->
-  <update id="updateObject" parameterType="com.jessrun.system.domain.SysDictVO">
-		update t_sys_dict  set
+  <update id="updateObject" parameterType="com.jessrun.system.domain.SysDictDetailVO">
+		update t_sys_dict_detail  set
 	  	      FID=#{id,jdbcType=VARCHAR} ,       
-	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
+	  	      FDICT_ID=#{dictId,jdbcType=VARCHAR} ,       
 	  	      FCODE=#{code,jdbcType=VARCHAR} ,       
+	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
+	  	      FORDER=#{order,jdbcType=DECIMAL} ,       
 	  	      FREMARK=#{remark,jdbcType=VARCHAR} ,       
 	  	      FCREATE_TIME=#{createTime,jdbcType=DATE}        
 	  	where
@@ -81,13 +97,15 @@
   </update>
   
   <!--分页查询-->
-  <select id="selectListByPage" resultMap="SysDict" parameterType="java.util.Map" >
+  <select id="selectListByPage" resultMap="SysDictDetail" parameterType="java.util.Map" >
 	select 
 	  	       FID ,       
-	  	       FNAME ,       
+	  	       FDICT_ID ,       
 	  	       FCODE ,       
+	  	       FNAME ,       
+	  	       FORDER ,       
 	  	       FREMARK ,       
 	  	       FCREATE_TIME        
-	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
+	   from t_sys_dict_detail  where 1=1  <include refid="where_condition"/>
   </select>
 </mapper>
