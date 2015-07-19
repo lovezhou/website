@@ -1,10 +1,8 @@
 package com.jessrun.system.service.impl;
 
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
-
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.Element;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +23,8 @@ public class SysDictServiceImpl implements SysDictService {
          private EhCacheUtil ehCacheUtil;
          
          public SysDictServiceImpl(){
-             ehCacheUtil  = EhCacheUtil.newInstance();
+             InputStream  is = this.getClass().getClassLoader().getResourceAsStream("ehcache.xml");
+             ehCacheUtil  = EhCacheUtil.newInstance(is);
          }
 
 		 @Autowired
