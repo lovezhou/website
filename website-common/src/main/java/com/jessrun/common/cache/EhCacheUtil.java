@@ -1,25 +1,42 @@
 package com.jessrun.common.cache;
+import java.io.InputStream;
+
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
+/**
+ * 
+ * 类EhCacheUtil.java的实现描述 缓存实现
+ * @author ZMy 2015-7-15 下午11:35:44
+ */
 public class EhCacheUtil {
-	
-	private  String  ehcache ="/cache.xml";
 	
 	private  CacheManager cacheManager ;
 	
 	private static EhCacheUtil ehCacheUtil ;
 	
-	private  EhCacheUtil(){
-		cacheManager = new CacheManager(ehcache);
+	private  EhCacheUtil(String cacheConfig){
+		cacheManager = new CacheManager(cacheConfig);
 	}
 	
-    public static EhCacheUtil  newInstance(){
+	private  EhCacheUtil(InputStream inputstream){
+        cacheManager = new CacheManager(inputstream);
+    }
+    
+	
+    public static EhCacheUtil  newInstance(String cacheConfig){
     	if(ehCacheUtil==null){
-    		ehCacheUtil = new EhCacheUtil();
+    		ehCacheUtil = new EhCacheUtil(cacheConfig);
     	}
     	return  ehCacheUtil;
+    }
+    
+    public static EhCacheUtil  newInstance(InputStream inputstream){
+        if(ehCacheUtil==null){
+            ehCacheUtil = new EhCacheUtil(inputstream);
+        }
+        return  ehCacheUtil;
     }
 	
     /**
