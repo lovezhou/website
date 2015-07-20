@@ -9,6 +9,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class JavaBeanUtil {
 	/**
 	 * 将一个 JavaBean 对象转化为一个 Map
@@ -53,7 +55,7 @@ public class JavaBeanUtil {
 		}
 		return returnMap;
 	}
-
+	
 	/**
 	 * 将一个 Map 对象转化为一个 JavaBean
 	 * 

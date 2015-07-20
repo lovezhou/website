@@ -17,3 +17,27 @@ function  search(){
   EasyUI.setQueryParams('grid',params);
   EasyUI.reload('grid');
 }
+
+
+//call 'submit' method of form plugin to submit the form    
+$('#from1').form('submit', {    
+    url:"",    
+    onSubmit: function(){    
+        // do some check    
+        // return false to prevent submit;    
+    },    
+    success:function(data){    
+        alert("");
+    }    
+});  
+
+
+function addData(){
+	$('#fromWindow').
+	alert("hello");
+}
+
+
+function deleteData(){
+	alert("hello");
+}
