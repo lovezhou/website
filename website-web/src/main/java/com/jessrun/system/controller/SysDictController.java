@@ -1,3 +1,4 @@
+
 package com.jessrun.system.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jessrun.common.web.BaseController;
-import com.jessrun.platform.util.StringUtils;
 import com.jessrun.system.service.SysDictService;
 
 @Controller
@@ -34,3 +34,4 @@ public class SysDictController extends  BaseController{
  
 
 }
+

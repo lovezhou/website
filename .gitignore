@@ -7,6 +7,10 @@
 .metadata
 bin/
 tmp/
+<<<<<<< HEAD
+=======
+target/
+>>>>>>> origin/master
 *.tmp
 *.bak
 *.swp
@@ -16,6 +20,10 @@ local.properties
 .settings/
 .loadpath
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 # External tool builders
 .externalToolBuilders/
 
@@ -214,4 +222,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+<<<<<<< HEAD
 target/
+=======
+*.classpath
+website-web/.settings/*.*
+website-web/target/*.*
+>>>>>>> origin/master
+website-web/.classpath
