@@ -4,8 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>jessrun-common</project>
-		<project>website-security</project>
-		<project>website-platform</project>
 		<project>jessrun-platform</project>
 	</projects>
 	<buildSpec>

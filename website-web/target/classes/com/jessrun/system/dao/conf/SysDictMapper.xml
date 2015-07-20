@@ -3,87 +3,59 @@
 <mapper namespace="com.jessrun.system.dao.SysDictMapper" >
   
   <!-- 实体类映射mapper -->
-  <resultMap id="SysDict" type="com.jessrun.system.domain.SysDict" >
-  	     <result column="DICT_ID" property="dictId" jdbcType="VARCHAR" />
-  	     <result column="DICT_NAME" property="dictName" jdbcType="VARCHAR" />
-  	     <result column="DICT_CODE" property="dictCode" jdbcType="VARCHAR" />
-  	     <result column="CREATOR_ID" property="creatorId" jdbcType="VARCHAR" />
-  	     <result column="CREATOR_TIME" property="creatorTime" jdbcType="DATE" />
-  	     <result column="EDITOR_ID" property="editorId" jdbcType="VARCHAR" />
-  	     <result column="EDITOR_TIME" property="editorTime" jdbcType="DATE" />
-  	     <result column="IS_DELETED" property="isDeleted" jdbcType="VARCHAR" />
-  	     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  <resultMap id="SysDict" type="com.jessrun.system.domain.SysDictVO" >
+  	     <result column="FID" property="id" jdbcType="VARCHAR" />
+  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
+  	     <result column="FCODE" property="code" jdbcType="VARCHAR" />
+  	     <result column="FREMARK" property="remark" jdbcType="VARCHAR" />
+  	     <result column="FCREATE_TIME" property="createTime" jdbcType="DATE" />
   </resultMap>
   
   <!--查询条件-->
   <sql id="where_condition">
-	  	     <if test="dictId != null">
-	  			and DICT_ID = #{dictId}
+	  	     <if test="id != null">
+	  			and FID = #{id}
 	  		</if>
-	  	     <if test="dictName != null">
-	  			and DICT_NAME = #{dictName}
+	  	     <if test="name != null">
+	  			and FNAME = #{name}
 	  		</if>
-	  	     <if test="dictCode != null">
-	  			and DICT_CODE = #{dictCode}
-	  		</if>
-	  	     <if test="creatorId != null">
-	  			and CREATOR_ID = #{creatorId}
-	  		</if>
-	  	     <if test="creatorTime != null">
-	  			and CREATOR_TIME = #{creatorTime}
-	  		</if>
-	  	     <if test="editorId != null">
-	  			and EDITOR_ID = #{editorId}
-	  		</if>
-	  	     <if test="editorTime != null">
-	  			and EDITOR_TIME = #{editorTime}
-	  		</if>
-	  	     <if test="isDeleted != null">
-	  			and IS_DELETED = #{isDeleted}
+	  	     <if test="code != null">
+	  			and FCODE = #{code}
 	  		</if>
 	  	     <if test="remark != null">
-	  			and REMARK = #{remark}
+	  			and FREMARK = #{remark}
+	  		</if>
+	  	     <if test="createTime != null">
+	  			and FCREATE_TIME = #{createTime}
 	  		</if>
   </sql>
   
  <!--查询单个Object--> 
   <select id="selectById" resultMap="SysDict">
   	select 
-	  	       dictId ,       
-	  	       dictName ,       
-	  	       dictCode ,       
-	  	       creatorId ,       
-	  	       creatorTime ,       
-	  	       editorId ,       
-	  	       editorTime ,       
-	  	       isDeleted ,       
-	  	       remark        
+	  	       id ,       
+	  	       name ,       
+	  	       code ,       
+	  	       remark ,       
+	  	       createTime        
 	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
   </select>
   
    <!--保存单个Object--> 
-  <insert id="saveObject" parameterType="com.jessrun.system.domain.SysDict">
+  <insert id="saveObject" parameterType="com.jessrun.system.domain.SysDictVO">
 		insert into TB_CERTIFY_ACCOUNT (
-	  	       DICT_ID ,       
-	  	       DICT_NAME ,       
-	  	       DICT_CODE ,       
-	  	       CREATOR_ID ,       
-	  	       CREATOR_TIME ,       
-	  	       EDITOR_ID ,       
-	  	       EDITOR_TIME ,       
-	  	       IS_DELETED ,       
-	  	       REMARK        
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FCODE ,       
+	  	       FREMARK ,       
+	  	       FCREATE_TIME        
 		)
 		values(
-	  	       #{dictId,jdbType=VARCHAR },
-	  	       #{dictName,jdbType=VARCHAR },
-	  	       #{dictCode,jdbType=VARCHAR },
-	  	       #{creatorId,jdbType=VARCHAR },
-	  	       #{creatorTime,jdbType=VARCHAR },
-	  	       #{editorId,jdbType=VARCHAR },
-	  	       #{editorTime,jdbType=VARCHAR },
-	  	       #{isDeleted,jdbType=VARCHAR },
-	  	       #{remark,jdbType=VARCHAR }
+	  	       #{id,jdbType=VARCHAR },
+	  	       #{name,jdbType=VARCHAR },
+	  	       #{code,jdbType=VARCHAR },
+	  	       #{remark,jdbType=VARCHAR },
+	  	       #{createTime,jdbType=VARCHAR }
         )
 	</insert>
  
@@ -97,33 +69,25 @@
   </select>
   
   <!--更新单个对象-->
-  <update id="updateObject" parameterType="com.jessrun.system.domain.SysDict">
+  <update id="updateObject" parameterType="com.jessrun.system.domain.SysDictVO">
 		update t_sys_dict  set
-	  	      DICT_ID=#{dictId,jdbcType=VARCHAR} ,       
-	  	      DICT_NAME=#{dictName,jdbcType=VARCHAR} ,       
-	  	      DICT_CODE=#{dictCode,jdbcType=VARCHAR} ,       
-	  	      CREATOR_ID=#{creatorId,jdbcType=VARCHAR} ,       
-	  	      CREATOR_TIME=#{creatorTime,jdbcType=DATE} ,       
-	  	      EDITOR_ID=#{editorId,jdbcType=VARCHAR} ,       
-	  	      EDITOR_TIME=#{editorTime,jdbcType=DATE} ,       
-	  	      IS_DELETED=#{isDeleted,jdbcType=VARCHAR} ,       
-	  	      REMARK=#{remark,jdbcType=VARCHAR}        
+	  	      FID=#{id,jdbcType=VARCHAR} ,       
+	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
+	  	      FCODE=#{code,jdbcType=VARCHAR} ,       
+	  	      FREMARK=#{remark,jdbcType=VARCHAR} ,       
+	  	      FCREATE_TIME=#{createTime,jdbcType=DATE}        
 	  	where
-	  	    DICT_ID=#{dictId,jdbcType=VARCHAR}
+	  	    	FID=#{id,jdbcType=VARCHAR}
   </update>
   
   <!--分页查询-->
   <select id="selectListByPage" resultMap="SysDict" parameterType="java.util.Map" >
 	select 
-	  	       DICT_ID ,       
-	  	       DICT_NAME ,       
-	  	       DICT_CODE ,       
-	  	       CREATOR_ID ,       
-	  	       CREATOR_TIME ,       
-	  	       EDITOR_ID ,       
-	  	       EDITOR_TIME ,       
-	  	       IS_DELETED ,       
-	  	       REMARK          
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FCODE ,       
+	  	       FREMARK ,       
+	  	       FCREATE_TIME        
 	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
   </select>
 </mapper>
