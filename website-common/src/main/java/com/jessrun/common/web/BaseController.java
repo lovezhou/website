@@ -33,5 +33,13 @@ public class BaseController {
     }
  
     
+    
+    @RequestMapping(value = "/save.do", method = RequestMethod.POST)
+    public ModelAndView save(HttpServletRequest req)  throws Exception {
+        if(StringUtils.isNullOrEmpty(listView)){
+            listView = defaultView ;
+        }
+        return new ModelAndView(listView);
+    }
 
 }

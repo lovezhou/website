@@ -20,7 +20,7 @@
   </head>
   <body  style="margin: 0px">
 	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
-			url="sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,singleSelect:false,pagination:true,pageSize:10"
+			url="<%=basePath%>/sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,singleSelect:false,pagination:true,pageSize:10"
 		    toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>
@@ -43,49 +43,21 @@
 		</div>
 	</div>
 	
-	<div  id="formWindow" class="easyui-dialog" style="width:350px;height:216p;display: none;"
-		data-options="title:'My Dialog',buttons:'#dlgBtn',modal:true" >
-		<form id="form1" method="post" >   
-		    <div>   
-		        <label for="dictName">字典名称:</label>   
-		        <input class="easyui-validatebox" type="text" name="dictName" data-options="required:true"  maxlength="30" />   
-		    </div>   
-		    <div>   
-		        <label for="dictCode">字典代码:</label>   
-		        <input class="easyui-validatebox" type="text" name="dictCode" data-options="required:true" maxlength="30" />   
-		    </div>  
-		     <div>   
-		        <label for="remark">备注:</label>   
-		        <input class="easyui-validatebox" type="text" name="remark"  maxlength="100" />   
-		    </div>   
-		</form>  
-	</div>  
-	
-	<div id="dlgBtn">
-		<a href="#" class="easyui-linkbutton">保存</a>
-		<a href="#" class="easyui-linkbutton">关闭</a>
-	</div>
-	
-	
-	<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+	 <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons">
-        <div class="ftitle">User Information</div>
+       <!--  <div class="ftitle">User Information</div> -->
         <form id="fm" method="post" novalidate>
             <div class="fitem">
-                <label>First Name:</label>
+                <label>字典名称:</label>
                 <input name="firstname" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
-                <label>Last Name:</label>
+                <label>字典代码:</label>
                 <input name="lastname" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
-                <label>Phone:</label>
+                <label>备注:</label>
                 <input name="phone" class="easyui-textbox">
-            </div>
-            <div class="fitem">
-                <label>Email:</label>
-                <input name="email" class="easyui-textbox" validType="email">
             </div>
         </form>
     </div>
@@ -93,7 +65,31 @@
         <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
     </div>
-
+	
+	 <style type="text/css">
+        #fm{
+            margin:0;
+            padding:10px 30px;
+        }
+        .ftitle{
+            font-size:14px;
+            font-weight:bold;
+            padding:5px 0;
+            margin-bottom:10px;
+            border-bottom:1px solid #ccc;
+        }
+        .fitem{
+            margin-bottom:5px;
+        }
+  
+ 		.fitem label{
+             display:inline-block;
+ 			 width:80px;
+        }
+        .fitem input{
+            width:160px;
+        }
+    </style>
 	
   </body>
 </html>
