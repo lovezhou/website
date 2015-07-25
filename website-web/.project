@@ -3,8 +3,6 @@
 	<name>website-web</name>
 	<comment></comment>
 	<projects>
-		<project>jessrun-common</project>
-		<project>jessrun-platform</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -48,4 +46,3 @@
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
 </projectDescription>
-
