@@ -2,10 +2,13 @@ package com.jessrun.system.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.jessrun.common.web.ValueObject;
+
 import lombok.Data;
 
 @Data
-public class SysDictDetailVO  implements  Serializable  {
+public class SysDictDetailVO   implements  ValueObject  {
 
  	private static final long serialVersionUID = 1L;
     private String id;//

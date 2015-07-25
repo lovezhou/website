@@ -1,15 +1,17 @@
 package com.jessrun.system.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jessrun.common.web.ValueObject;
+import com.jessrun.system.dao.SysDictDetailMapper;
 import com.jessrun.system.domain.SysDictDetailVO;
 import com.jessrun.system.service.SysDictDetailService;
-import  com.jessrun.system.dao.SysDictDetailMapper;
-import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS) 
@@ -19,13 +21,13 @@ public class SysDictDetailServiceImpl implements SysDictDetailService {
          private  SysDictDetailMapper   sysDictDetailMapper;
          
          @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
-		 public int saveObject(SysDictDetailVO  obj){
-		 	 return sysDictDetailMapper.saveObject(obj);
+		 public int saveObject(ValueObject  obj){
+		 	 return sysDictDetailMapper.saveObject((SysDictDetailVO)obj);
 		 }
 
 		 @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
-		 public int updateObject(SysDictDetailVO  obj){
-		 	return sysDictDetailMapper.updateObject(obj);
+		 public int updateObject(ValueObject  obj){
+		 	return sysDictDetailMapper.updateObject((SysDictDetailVO)obj);
 		 } 
 			
 		 @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)

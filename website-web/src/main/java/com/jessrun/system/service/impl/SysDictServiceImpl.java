@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jessrun.common.cache.EhCacheUtil;
+import com.jessrun.common.web.ValueObject;
 import com.jessrun.constant.Constant;
 import com.jessrun.system.dao.SysDictMapper;
 import com.jessrun.system.domain.SysDictVO;
@@ -31,13 +32,13 @@ public class SysDictServiceImpl implements SysDictService {
          private  SysDictMapper   sysDictMapper;
          
          @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
-		 public int saveObject(SysDictVO  obj){
-		 	 return sysDictMapper.saveObject(obj);
+		 public int saveObject(ValueObject  obj){
+		 	 return sysDictMapper.saveObject((SysDictVO)obj);
 		 }
 
 		 @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
-		 public int updateObject(SysDictVO  obj){
-		    int num =  sysDictMapper.updateObject(obj);
+		 public int updateObject(ValueObject  obj){
+		    int num =  sysDictMapper.updateObject((SysDictVO) obj);
 		    //将新的数据缓存起来
 		    ehCacheUtil.put(Constant.DICT_CACHE, obj.getId(), obj);
 		 	return num;
@@ -60,7 +61,7 @@ public class SysDictServiceImpl implements SysDictService {
 		 	return vo;
 		 }
 
-	  	@Transactional(value="OracletransactionManager",readOnly = true, propagation = Propagation.SUPPORTS)
+	  	 @Transactional(value="OracletransactionManager",readOnly = true, propagation = Propagation.SUPPORTS)
 		 public List<SysDictVO> selectListByPage(Map<String,Object> model){
 		 	return sysDictMapper.selectListByPage(model);
 		 }

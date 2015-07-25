@@ -1,11 +1,13 @@
 package com.jessrun.system.domain;
 
-import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
+import com.jessrun.common.web.ValueObject;
+
 @Data
-public class SysDictVO  implements  Serializable  {
+public class SysDictVO implements  ValueObject  {
 
  	private static final long serialVersionUID = 1L;
     private String id;//
@@ -18,4 +20,5 @@ public class SysDictVO  implements  Serializable  {
         super();
     }
 	
+    
 }
