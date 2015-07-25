@@ -10,19 +10,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jessrun.common.web.BaseController;
+import com.jessrun.system.domain.SysDictVO;
 import com.jessrun.system.service.SysDictService;
 
 @Controller
 @RequestMapping(value = "/sysDict")
 public class SysDictController extends  BaseController{
     
+	private SysDictVO vo  ;
+	
     @Autowired
     private SysDictService sysDictService;
 
     public SysDictController(){
-        super("/system/sysDict_list");
     }
     
+    public void init() {
+    
+    	this.setListView("/system/sysDict_list");
+    	this.setClazz(vo.getClass());
+    	
+    }
     
 
     

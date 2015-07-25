@@ -8,14 +8,5 @@ import java.util.Map;
 
 public interface SysDictService extends JessrunMonitor {
          
-		 public int saveObject(SysDictVO  obj); 
-
-		 public int updateObject(SysDictVO  obj); 
-
-		 public int deleteById(String  id);
-
-		 public SysDictVO selectById(String id);
-
-		 public List<SysDictVO> selectListByPage(Map<String,Object> model);
 
 }
