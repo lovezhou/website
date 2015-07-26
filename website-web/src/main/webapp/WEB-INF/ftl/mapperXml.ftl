@@ -31,14 +31,14 @@
   
    <!--保存单个Object--> 
   <insert id="saveObject" parameterType="${packageName}.domain.${className}VO">
-		insert into TB_CERTIFY_ACCOUNT (
+		insert into ${tableName} (
 			<#list  list as vo >
 	  	       ${vo.columnName} <#if  vo_has_next>,</#if>       
 	  		</#list>
 		)
 		values(
 			<#list   list as vo >
-	  	       #${r"{"}${vo.propertyName},jdbType=VARCHAR ${r"}"}<#if vo_has_next>,</#if>
+	  	       #${r"{"}${vo.propertyName},jdbcType=VARCHAR ${r"}"}<#if vo_has_next>,</#if>
 	  		</#list>
         )
 	</insert>

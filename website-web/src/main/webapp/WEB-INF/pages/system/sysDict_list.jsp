@@ -20,7 +20,7 @@
   </head>
   <body  style="margin: 0px">
 	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
-			url="<%=basePath%>/sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,singleSelect:false,pagination:true,pageSize:10"
+			url="<%=basePath%>/sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageSize:10"
 		    toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>
@@ -39,25 +39,25 @@
 		<div>
 			字典名称：<input id="txt_dictName" class="easyui-textbox" name="dictName" style="width:20%;height:20px">
 			字典代码：<input id="txt_dictCode" class="easyui-textbox" name="dictCode" style="width:20%;height:20px">
-			<a href="javascript:search();" class="easyui-linkbutton"  iconCls="icon-search" style="width:15%;height:20px">查询</a>
+			<a href="javascript:search()" class="easyui-linkbutton"  iconCls="icon-search" style="width:15%;height:20px">查询</a>
 		</div>
 	</div>
 	
 	 <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons">
        <!--  <div class="ftitle">User Information</div> -->
-        <form id="fm" method="post" novalidate>
+        <form id="fm" method="post"  novalidate>
             <div class="fitem">
                 <label>字典名称:</label>
-                <input name="firstname" class="easyui-textbox" required="true">
+                <input name="dictName" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
                 <label>字典代码:</label>
-                <input name="lastname" class="easyui-textbox" required="true">
+                <input name="dictCode" class="easyui-textbox" required="true">
             </div>
             <div class="fitem">
                 <label>备注:</label>
-                <input name="phone" class="easyui-textbox">
+                <input name="remark" class="easyui-textbox">
             </div>
         </form>
     </div>

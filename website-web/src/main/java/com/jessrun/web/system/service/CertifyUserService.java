@@ -6,7 +6,7 @@ import java.util.Map;
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.web.system.domain.CertifyUser;
 
-public interface CertifyUserService extends JessrunMonitor{
+public interface CertifyUserService {
 	public List<CertifyUser> getCertifyUserListByPage(Map<String,Object> map);
 	
 	public CertifyUser getCertifyUserById(Integer Id);

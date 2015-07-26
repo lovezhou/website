@@ -16,11 +16,11 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="<%=basePath%>js/system/sysDict_list.js" charset="utf-8"></script>
+	<script type="text/javascript" src="<%=basePath%>js/system/sysDictDetail_list.js" charset="utf-8"></script>
   </head>
   <body  style="margin: 0px">
-	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
-			url="sysDict/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageSize:10"
+	<table  id="grid1" class="easyui-datagrid" style="width:100%;height:100%"
+			url="sysDictDetail/query.json" data-options="rownumbers:true,singleSelect:true,autoRowHeight:false,pagination:true,pageSize:10"
 		    toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>

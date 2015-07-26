@@ -7,6 +7,7 @@
 <script type="text/javascript" src="<%=basePath %>/js/easyui/jquery.easyui.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="<%=basePath %>/js/easyui/locale/easyui-lang-zh_CN.js" charset="UTF-8"></script>
 <script type="text/javascript" src="<%=basePath %>/js/My97DatePicker/WdatePicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="<%=basePath %>/js/json2.js" charset="UTF-8"></script>
 <script type="text/javascript" src="<%=basePath %>/js/basic.js" charset="UTF-8"></script>
 <link href="<%=basePath %>/css/main.css" rel="stylesheet" type="text/css">
  <%--

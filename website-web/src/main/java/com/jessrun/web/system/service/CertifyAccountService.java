@@ -7,7 +7,7 @@ import com.jessrun.certify.vo.UserInfo;
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.web.system.domain.CertifyAccount;
 
-public interface CertifyAccountService extends JessrunMonitor{
+public interface CertifyAccountService {
 	public List<UserInfo> getCertifyAccountListByPage(
 			Map<String, Object> map);
 

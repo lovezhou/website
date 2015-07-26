@@ -6,7 +6,7 @@ import java.util.Map;
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.web.system.domain.CertifyResoAcco;
 
-public interface CertifyResoAccoService extends JessrunMonitor{
+public interface CertifyResoAccoService {
 	public List<CertifyResoAcco> getCertifyResoAccoListByPage(
 			Map<String, Object> map);
 

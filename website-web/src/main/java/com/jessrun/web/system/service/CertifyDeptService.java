@@ -5,7 +5,7 @@ import java.util.List;
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.web.system.domain.CertifyDept;
 
-public interface CertifyDeptService extends JessrunMonitor{
+public interface CertifyDeptService {
 	
 	public List<CertifyDept> getCertifyDeptList(Integer deptId);
 	

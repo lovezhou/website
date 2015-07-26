@@ -4,29 +4,20 @@
   
   <!-- 实体类映射mapper -->
   <resultMap id="SysDict" type="com.jessrun.system.domain.SysDictVO" >
-  	     <result column="FID" property="id" jdbcType="VARCHAR" />
-  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
-  	     <result column="FCODE" property="code" jdbcType="VARCHAR" />
+         <id property="id" column="FID" jdbcType="VARCHAR"  />
+  	     <result column="FNAME" property="dictName" jdbcType="VARCHAR" />
+  	     <result column="FCODE" property="dictCode" jdbcType="VARCHAR" />
   	     <result column="FREMARK" property="remark" jdbcType="VARCHAR" />
   	     <result column="FCREATE_TIME" property="createTime" jdbcType="DATE" />
   </resultMap>
   
   <!--查询条件-->
   <sql id="where_condition">
-	  	     <if test="id != null">
-	  			and FID = #{id}
+	  	     <if test="dictName != null ">
+	  			and FNAME = #{dictName,jdbcType=VARCHAR}
 	  		</if>
-	  	     <if test="name != null">
-	  			and FNAME = #{name}
-	  		</if>
-	  	     <if test="code != null">
-	  			and FCODE = #{code}
-	  		</if>
-	  	     <if test="remark != null">
-	  			and FREMARK = #{remark}
-	  		</if>
-	  	     <if test="createTime != null">
-	  			and FCREATE_TIME = #{createTime}
+	  	     <if test="dictCode != null">
+	  			and FCODE = #{dictCode,jdbcType=VARCHAR}
 	  		</if>
   </sql>
   
@@ -34,8 +25,8 @@
   <select id="selectById" resultMap="SysDict">
   	select 
 	  	       id ,       
-	  	       name ,       
-	  	       code ,       
+	  	       dictName ,       
+	  	       dictCode ,       
 	  	       remark ,       
 	  	       createTime        
 	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
@@ -43,7 +34,7 @@
   
    <!--保存单个Object--> 
   <insert id="saveObject" parameterType="com.jessrun.system.domain.SysDictVO">
-		insert into TB_CERTIFY_ACCOUNT (
+		insert into t_sys_dict (
 	  	       FID ,       
 	  	       FNAME ,       
 	  	       FCODE ,       
@@ -51,11 +42,11 @@
 	  	       FCREATE_TIME        
 		)
 		values(
-	  	       #{id,jdbType=VARCHAR },
-	  	       #{name,jdbType=VARCHAR },
-	  	       #{code,jdbType=VARCHAR },
-	  	       #{remark,jdbType=VARCHAR },
-	  	       #{createTime,jdbType=VARCHAR }
+	  	       #{id,jdbcType=VARCHAR },
+	  	       #{dictName,jdbcType=VARCHAR },
+	  	       #{dictCode,jdbcType=VARCHAR },
+	  	       #{remark,jdbcType=VARCHAR },
+	  	       sysdate
         )
 	</insert>
  
@@ -72,8 +63,8 @@
   <update id="updateObject" parameterType="com.jessrun.system.domain.SysDictVO">
 		update t_sys_dict  set
 	  	      FID=#{id,jdbcType=VARCHAR} ,       
-	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
-	  	      FCODE=#{code,jdbcType=VARCHAR} ,       
+	  	      FNAME=#{dictName,jdbcType=VARCHAR} ,       
+	  	      FCODE=#{dictCode,jdbcType=VARCHAR} ,       
 	  	      FREMARK=#{remark,jdbcType=VARCHAR} ,       
 	  	      FCREATE_TIME=#{createTime,jdbcType=DATE}        
 	  	where

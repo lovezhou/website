@@ -20,7 +20,6 @@ public class SysDictDetailVO   implements  ValueObject  {
     private Date createTime;//
     
     public SysDictDetailVO(){
-        super();
     }
 	
 }

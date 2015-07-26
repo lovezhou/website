@@ -14,7 +14,7 @@ function queryParams(){
 function  search(){
   var params = queryParams();
   EasyUI.setQueryParams('grid',params);
-  //EasyUI.reload('grid');
+  EasyUI.reload('grid');
 }
 
 
@@ -30,6 +30,7 @@ function editUser(){
     }
 }
 function saveUser(){
+	alert("12");
 	$('#fm').form({
 	    url:"sysDict/save.do",
 	    onSubmit: function(param){

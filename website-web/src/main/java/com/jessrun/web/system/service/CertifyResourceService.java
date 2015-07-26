@@ -6,6 +6,6 @@ import java.util.Map;
 import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.web.system.domain.CertifyResource;
 
-public interface CertifyResourceService extends JessrunMonitor{
+public interface CertifyResourceService {
 	List<CertifyResource> getCertifyResourceList(Integer accountId);
 }

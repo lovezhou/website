@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import com.jessrun.common.web.BaseController;
 import com.jessrun.system.domain.SysDictVO;
 import com.jessrun.system.service.SysDictService;
@@ -22,18 +23,19 @@ public class SysDictController extends  BaseController{
     @Autowired
     private SysDictService sysDictService;
 
-    public SysDictController(){
-    }
     
     public void init() {
-    
     	this.setListView("/system/sysDict_list");
-    	this.setClazz(vo.getClass());
-    	
+    	this.setClazz(SysDictVO.class);
     }
-    
 
     
+    @Override
+    public JessrunMonitor getService() {
+        return sysDictService;
+    }
+
+
     @RequestMapping(value = "/toConfig.do", method = RequestMethod.GET)
     public ModelAndView toConfigView(HttpServletRequest req)  throws Exception {
         
