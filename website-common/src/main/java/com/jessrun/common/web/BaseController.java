@@ -136,6 +136,7 @@ public abstract class BaseController {
 	    }
 	}
    
+	@SuppressWarnings("all")
     private Map filterNullValue(Map map){
         Map<String,String> param = new HashMap<String,String>();
         if(map!=null){
