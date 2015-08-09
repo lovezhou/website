@@ -13,7 +13,7 @@
   <sql id="where_condition">
   	<#list list as vo>
   	     <#if vo.chkCond=='1'>
-	  	     <if test="${vo.propertyName} != null">
+	  	     <if test="${vo.propertyName} != null and ${vo.propertyName} != ''">
 	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}
 	  		</if>
 		</#if>
@@ -45,12 +45,39 @@
  
   <!--唯一性校验-->
   <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
-  		select 
-		    count(1) result
-		 from ${tableName}
-		  <where>
-	    </where>
+  		select *
+		 from ${tableName}  where 1=1 
+		 <#list  list as vo >
+		 	 <if test="${vo.propertyName} != null">
+	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}
+	  		</if>
+	  	</#list>
   </select>
+  
+   <!--唯一性校验-->
+  <select id="isUniqueExist" parameterType="${packageName}.domain.${className}VO"  resultMap="${className}">
+  		select *
+		 from t_sys_dict where 1=1 
+		  <#list  list as vo >
+		 	 <if test="${vo.propertyName} != null and ${vo.propertyName} !=''">
+	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}
+	  		</if>
+	  	</#list>
+  </select>
+  
+  
+   <!--刪除-->
+  <delete id="deleteById" parameterType="java.lang.String" flushCache="true" >
+  		  delete from  ${tableName}  where FID= ${r"#{"}id,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteByIds" >
+		 delete from   ${tableName} where FID in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			${r"#{"}item}
+		</foreach>
+	</delete>
   
   <!--更新单个对象-->
   <update id="updateObject" parameterType="${packageName}.domain.${className}VO">

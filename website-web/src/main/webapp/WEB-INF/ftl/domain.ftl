@@ -1,11 +1,13 @@
 package ${packageName}.domain;
 
-import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
+import com.jessrun.common.web.ValueObject;
+
 @Data
-public class ${className}VO  implements  Serializable  {
+public class ${className}VO  implements  ValueObject {
 
  	private static final long serialVersionUID = 1L;
     <#list list as vo>

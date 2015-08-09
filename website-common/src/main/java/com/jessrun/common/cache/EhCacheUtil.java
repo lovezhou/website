@@ -48,6 +48,7 @@ public class EhCacheUtil {
     	Cache cache = getCache(cacheName);
     	if(cache==null){
     		cache = new Cache(cacheName,10000,true,false,300L,600L,true,3000L);
+    		cacheManager.addCache(cache);
     	}
     	return cache;
     }

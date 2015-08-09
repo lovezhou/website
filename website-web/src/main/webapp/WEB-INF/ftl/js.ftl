@@ -43,11 +43,11 @@ function viewRow(index){
         EasyUI.disableForm('fm',true);
     }
 }
-
+<#assign lowclassName="${className[0]?lower_case+className[1..]}">
 function saveRow(){
 	$.messager.progress();
 	$('#fm').form('submit',{
-	    url:"sysDict/save.do",
+	    url:"${lowclassName}/save.do",
 	    onSubmit: function(param){
 	    	param._jsonData=EasyUI.serializeJson2str('fm');
 	    	var isValid = $(this).form('validate');
@@ -78,7 +78,7 @@ function deleteRow(id){
     if (id){
         $.messager.confirm('确认','确实删除这条数据?',function(r){
             if (r){
-                $.post('sysDict/deleteById.do',{id:id},function(result){
+                $.post('${lowclassName}/deleteById.do',{id:id},function(result){
                     if (result.success){
                     	search();
                     } else {
@@ -101,7 +101,7 @@ function deleteRows(){
 		var ids=EasyUI.serializeIds(rows);
 		$.messager.confirm('确认','确实删除['+rows.length+']条数据?',function(r){
 	            if (r){
-	                $.post('sysDict/deleteByIds.do',{ids:ids},function(result){
+	                $.post('${lowclassName}/deleteByIds.do',{ids:ids},function(result){
 	                    if (result.success){
 	                    	search();
 	                    } else {

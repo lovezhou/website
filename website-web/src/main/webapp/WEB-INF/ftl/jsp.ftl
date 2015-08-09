@@ -16,19 +16,22 @@
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<script type="text/javascript" src="<%=basePath%>js/system/sysDict_list.js" charset="utf-8"></script>
+	<#assign lowclassName="${className[0]?lower_case+className[1..]}">
+	<script type="text/javascript" src="<%=basePath%>js/system/${lowclassName}_list.js" charset="utf-8"></script>
   </head>
   <body  style="margin: 0px">
 	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
-			url="<%=basePath%>/sysDict/query.json" data-options="rownumbers:true,singleSelect:false,autoRowHeight:true,pagination:true,pageSize:10"
+			url="<%=basePath%>/${lowclassName}/query.json" data-options="rownumbers:true,singleSelect:false,autoRowHeight:true,pagination:true,pageSize:10"
 		    toolbar="#tb"   fitColumns="true">
 		<thead>
 			<tr>
 				<th  field="ck" align="center" checkbox=true></th>
 				<th data-options="field:'id',width:100,formatter:rowformater" align="center">操作</th>
-				<th field="dictName" align="center" width="100">字典名称</th>
-				<th field="dictCode" align="center" width="100">字典代码</th>
-				<th field="remark"   align="center" width="150">备注</th>
+				<#list list as vo>
+			  	     <#if vo.propertyName!='id'>
+			  	   	  <th field="${vo.propertyName}" align="center" width="100">${vo.comments}</th>
+					</#if>
+			  	</#list>
 			</tr>
 		</thead>
 	</table>
@@ -38,8 +41,11 @@
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRows()">删除</a>
 		</div>
 		<div>
-			字典名称：<input id="txt_dictName" class="easyui-textbox" name="dictName" style="width:20%;height:20px">
-			字典代码：<input id="txt_dictCode" class="easyui-textbox" name="dictCode" style="width:20%;height:20px">
+			<#list list as vo>
+			  	     <#if vo.propertyName!='id'>
+			  	   	  	${vo.comments}：<input id="txt_${vo.propertyName}" class="easyui-textbox" name="${vo.propertyName}" style="width:20%;height:20px">
+					</#if>
+			 </#list>
 			<a href="javascript:search()"  class="easyui-linkbutton"  iconCls="icon-search" style="width:15%;height:20px">查询</a>
 		</div>
 	</div>
@@ -49,17 +55,14 @@
        <!--  <div class="ftitle">User Information</div> -->
         <form id="fm" method="post"  novalidate>
         	 <input name="id" id="input_dlg_fm_id" type="hidden">
-            <div class="fitem">
-                <label>字典名称:</label>
-                <input name="dictName" class="easyui-textbox" required="true">
-            </div>
-            <div class="fitem">
-                <label>字典代码:</label>
-                <input name="dictCode" class="easyui-textbox" required="true">
-            </div>
-            <div class="fitem">
-                <label>备注:</label>
-                <input name="remark" class="easyui-textbox">
+        	 <#list list as vo>
+			  	     <#if vo.propertyName!='id'>
+						<div class="fitem">
+			                <label>${vo.comments}</label>
+			                <input name="${vo.propertyName}" class="easyui-textbox" required="true">
+			            </div>
+            		</#if>
+			 </#list>
             </div>
         </form>
     </div>

@@ -27,7 +27,40 @@ public class AjaxUtil {
              out.write(result);
          }catch(IOException e){
              e.printStackTrace();
-             //TODO　异常处理
+         }
+    }
+    
+    /**
+     * ajax 
+     * @param rep
+     * @param list
+     */
+    public  static void  success(HttpServletResponse response ,List<?> list){
+         response.setCharacterEncoding("UTF-8");
+         response.setContentType("text/html");
+         String result = SerializeUtils.toJson(list);
+         try{
+             Writer  out =  response.getWriter();
+             out.write(result);
+         }catch(IOException e){
+             e.printStackTrace();
+         }
+    }
+    
+    /**
+     * ajax 成功之后 返回的带分页格式的字符串
+     * @param rep
+     * @param list
+     */
+    public  static void  success(HttpServletResponse response,Object  t){
+         response.setCharacterEncoding("UTF-8");
+         response.setContentType("text/html");
+         String result = SerializeUtils.toJson(t);
+         try{
+             Writer  out =  response.getWriter();
+             out.write(result);
+         }catch(IOException e){
+             e.printStackTrace();
          }
     }
 }

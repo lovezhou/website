@@ -51,13 +51,27 @@
 	</insert>
  
   <!--唯一性校验-->
-  <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
-  		select 
-		    count(1) result
-		 from t_sys_dict
-		  <where>
-	    </where>
+  <select id="isUniqueExist" parameterType="com.jessrun.system.domain.SysDictVO"  resultMap="SysDict">
+  		select *
+		 from t_sys_dict where 1=1 
+	  	     <if test="dictCode != null  and dictCode !='' ">
+	  			and FCODE = #{dictCode,jdbcType=VARCHAR}
+	  		</if>
   </select>
+  
+   <!--刪除-->
+  <delete id="deleteById" parameterType="java.lang.String" flushCache="true" >
+  		  delete from  t_sys_dict where FID=#{id,jdbcType=VARCHAR}
+  </delete>
+  
+  
+  <delete id="deleteByIds" >
+		 delete from  t_sys_dict where FID in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+</delete>
   
   <!--更新单个对象-->
   <update id="updateObject" parameterType="com.jessrun.system.domain.SysDictVO">
@@ -80,5 +94,15 @@
 	  	       FREMARK ,       
 	  	       FCREATE_TIME        
 	   from t_sys_dict  where 1=1  <include refid="where_condition"/>
+  </select>
+  
+   <select id="queryDict" resultMap="SysDict" parameterType="java.util.Map" >
+	select 
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FCODE ,       
+	  	       FREMARK ,       
+	  	       FCREATE_TIME        
+	   from t_sys_dict 
   </select>
 </mapper>

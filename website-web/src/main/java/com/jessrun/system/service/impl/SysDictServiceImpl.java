@@ -12,9 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jessrun.common.cache.EhCacheUtil;
 import com.jessrun.common.web.ValueObject;
 import com.jessrun.constant.Constant;
+import com.jessrun.platform.util.StringUtils;
 import com.jessrun.system.dao.SysDictMapper;
 import com.jessrun.system.domain.SysDictVO;
 import com.jessrun.system.service.SysDictService;
+
+import freemarker.template.utility.StringUtil;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS) 
@@ -26,6 +29,7 @@ public class SysDictServiceImpl implements SysDictService {
          public SysDictServiceImpl(){
              InputStream  is = this.getClass().getClassLoader().getResourceAsStream("ehcache.xml");
              ehCacheUtil  = EhCacheUtil.newInstance(is);
+             ehCacheUtil.createCache(Constant.DICT_CACHE);//创建一个数据字典缓存
          }
 
 		 @Autowired
@@ -65,5 +69,45 @@ public class SysDictServiceImpl implements SysDictService {
 		 public List<SysDictVO> selectListByPage(Map<String,Object> model){
 		 	return sysDictMapper.selectListByPage(model);
 		 }
+	  	 
+	  	 
+	  	 
 
+        @Override
+        public List<SysDictVO> queryDict() {
+            return sysDictMapper.queryDict();
+        }
+
+        @Override
+        @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
+        public int deleteByIds(List<String> ids) {
+            int num =  sysDictMapper.deleteByIds(ids);
+            //ehCacheUtil.removeObject(Constant.DICT_CACHE, id);
+            return num ;
+        }
+
+        @Override
+        @Transactional(value="OracletransactionManager",readOnly = false, propagation = Propagation.SUPPORTS)
+        public boolean isUniqueExist(ValueObject vo) {
+             List<SysDictVO> list = sysDictMapper.isUniqueExist(vo);
+             if(StringUtils.isNullOrEmpty(vo.getId())){
+                 if(list==null || list.size()==0){
+                     return true;
+                 }else{
+                     return false;
+                 }
+             }else{
+                 if(list==null || list.size()==0){
+                     return true;
+                 }else if(list.size()==1){
+                     if(vo.getId().equals(list.get(0).getId())){
+                         return true;
+                     }else{
+                         return  false;
+                     }
+                 }else{
+                     return false;
+                 }
+             }
+        }
 }
