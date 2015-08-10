@@ -75,9 +75,13 @@ public class CodeGeneratorController {
         Template serviceImpl = conf.getTemplate("serviceImpl.ftl");
         Template mapper = conf.getTemplate("mapper.ftl");
         Template mapperXml = conf.getTemplate("mapperXml.ftl");
+        Template jsp = conf.getTemplate("jsp.ftl");
+        Template js = conf.getTemplate("js.ftl");
 
         String className = (String)data.get("className");
         String javaSrcPath = (String)data.get("javaSrcPath");
+        String jspSrcPath = (String)data.get("jspPath");
+        String jsSrcPath = (String)data.get("jsPath");
         String packageName = (String)data.get("packageName");
         String[]  packs = packageName.split("\\.");
         for (int i = 0; i < packs.length; i++) {
@@ -135,6 +139,23 @@ public class CodeGeneratorController {
         outStream =  new FileOutputStream(confPath+"\\"+className+"Mapper.xml");
         out = new OutputStreamWriter(outStream);
         mapperXml.process(data, out);
+        
+        File jspPath= new File(jspSrcPath);
+        if(!confPath.exists()){
+            confPath.mkdirs();
+        }
+        outStream =  new FileOutputStream(jspPath+"\\"+className+"_list.jsp");
+        out = new OutputStreamWriter(outStream);
+        jsp.process(data, out);
+        
+        
+        File jsPath= new File(jsSrcPath);
+        if(!confPath.exists()){
+            confPath.mkdirs();
+        }
+        outStream =  new FileOutputStream(jsPath+"\\"+className+"_list.js");
+        out = new OutputStreamWriter(outStream);
+        js.process(data, out);
         
         outStream.flush();
         outStream.close();

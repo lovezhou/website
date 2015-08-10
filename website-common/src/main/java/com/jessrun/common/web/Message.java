@@ -31,21 +31,11 @@ public class Message implements Serializable {
     }
 
     public static Message newInstance(String title,String errorMsg){
-        if(message==null){
-            synchronized (Message.class) {
-                message= new Message(title,errorMsg);
-            }
-        }
-        return message;
+        return new Message(title,errorMsg);
     }
     
     public static Message newInstance(){
-        if(message==null){
-            synchronized (Message.class) {
-                message= new Message();
-            }
-        }
-        return message;
+        return new Message();
     }
     
     public String getErrorMsg() {

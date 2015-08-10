@@ -1,12 +1,22 @@
 package com.jessrun.system.service;
 
-import com.jessrun.system.domain.SysDictVO;
-import com.jessrun.common.support.spring.monitor.JessrunMonitor;
 import java.util.List;
-import java.util.Map;
+
+import com.jessrun.common.service.Service;
+import com.jessrun.common.web.ValueObject;
+import com.jessrun.system.domain.SysDictVO;
 
 
-public interface SysDictService extends JessrunMonitor {
+public interface SysDictService extends Service {
+
+    /**
+     * 唯一性校验
+     * @param vo
+     * @return
+     */
+    boolean isUniqueExist(ValueObject vo);
+
+    List<SysDictVO> queryDict();
          
 
 }

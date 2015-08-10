@@ -1,13 +1,12 @@
 package ${packageName}.controller;
 
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.jessrun.common.service.Service;
+import com.jessrun.common.web.BaseController;
+import com.jessrun.common.web.ValueObject;
 
 import ${packageName}.domain.${className}VO;
 import ${packageName}.service.${className}Service;
@@ -16,16 +15,29 @@ import ${packageName}.service.${className}Service;
 
 @Controller
 @RequestMapping(value = "/${lowclassName}")
-public class ${className}Controller {
+public class ${className}Controller  extends  BaseController{
 
     @Autowired
     private ${className}Service ${lowServiceName};
-
-    @RequestMapping(value = "/toListView.do", method = RequestMethod.GET)
-    public ModelAndView to${className}Page(HttpServletRequest req)  throws Exception {
-        ModelAndView mav = new ModelAndView("/${lowclassName}_list.jsp");
-        return mav;
+    
+    public void init() {
+    	this.setListView("/system/${lowclassName}_list");
+    	this.setClazz(${className}VO.class);
     }
+    
+    @Override
+    public Service getService() {
+        return ${lowServiceName};
+    }
+    
+    
+   @Override
+    public Object[] isUniqueExist(ValueObject vo) {
+       boolean flag =  ${lowServiceName}.isUniqueExist(vo);
+       return new Object[]{flag,"【字典代码】必须唯一！"};
+    }
+    
+ 
  
 
 }

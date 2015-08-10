@@ -3,6 +3,9 @@
 	<name>website-web</name>
 	<comment></comment>
 	<projects>
+		<project>website-common</project>
+		<project>website-security</project>
+		<project>website-platform</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

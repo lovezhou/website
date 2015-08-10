@@ -5,8 +5,8 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>组织结构</title>
+    <base href="<%=basePath%>">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
  </head>
  <frameset cols="500,*"> 
   <frame src="<%=basePath%>/sysDict/toListView.do" name="leftframe" frameborder="0" scrolling="yes" noresize="noresize" /> 

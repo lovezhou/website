@@ -13,14 +13,6 @@ import com.jessrun.common.web.ValueObject;
 public interface JessrunMonitor {
 
 	
-	 public int saveObject(ValueObject  obj); 
-
-	 public int updateObject(ValueObject  obj); 
-
-	 public int deleteById(String  id);
-
-	 public ValueObject selectById(String id);
-
-	 public List<? extends ValueObject > selectListByPage(Map<String,Object> model);
+	 
 	
 }
