@@ -66,8 +66,8 @@ public class CodeGeneratorController {
         // 1. 创建freemarker配置实例
         Configuration conf = new Configuration();
         conf.setDirectoryForTemplateLoading(new File("D:\\github_source\\website\\website-web\\src\\main\\webapp\\WEB-INF\\ftl"));
-
-      
+        //conf.setClassForTemplateLoading(clazz, pathPrefix);
+        
         // 3.加载模板文件
         Template domain = conf.getTemplate("domain.ftl");
         Template controller = conf.getTemplate("controller.ftl");
@@ -100,63 +100,71 @@ public class CodeGeneratorController {
         Writer out = new OutputStreamWriter(outStream);
         domain.process(data, out);// 4.输出数据文件
         //controller
-        File controllerPath= new File(javaSrcPath+"\\"+"controller");
-        if(!controllerPath.exists()){
-            controllerPath.mkdirs();
+        if("1".equals(data.get("isController"))){
+            File controllerPath= new File(javaSrcPath+"\\"+"controller");
+            if(!controllerPath.exists()){
+                controllerPath.mkdirs();
+            }
+            outStream =  new FileOutputStream(controllerPath+"\\"+className+"Controller.java");
+            out = new OutputStreamWriter(outStream);
+            controller.process(data, out);// 4.输出数据文件
         }
-        outStream =  new FileOutputStream(controllerPath+"\\"+className+"Controller.java");
-        out = new OutputStreamWriter(outStream);
-        controller.process(data, out);// 4.输出数据文件
-        //service
-        File servicePath= new File(javaSrcPath+"\\"+"service");
-        if(!servicePath.exists()){
-            servicePath.mkdirs();
+        if("1".equals(data.get("isService"))){
+            //service
+            File servicePath= new File(javaSrcPath+"\\"+"service");
+            if(!servicePath.exists()){
+                servicePath.mkdirs();
+            }
+            outStream =  new FileOutputStream(servicePath+"\\"+className+"Service.java");
+            out = new OutputStreamWriter(outStream);
+            service.process(data, out);
+            //service impl
+            File serviceImplPath= new File(javaSrcPath+"\\"+"service\\impl");
+            if(!serviceImplPath.exists()){
+                serviceImplPath.mkdir();
+            }
+            outStream =  new FileOutputStream(serviceImplPath+"\\"+className+"ServiceImpl.java");
+            out = new OutputStreamWriter(outStream);
+            serviceImpl.process(data, out);
         }
-        outStream =  new FileOutputStream(servicePath+"\\"+className+"Service.java");
-        out = new OutputStreamWriter(outStream);
-        service.process(data, out);
-        //service impl
-        File serviceImplPath= new File(javaSrcPath+"\\"+"service\\impl");
-        if(!serviceImplPath.exists()){
-            serviceImplPath.mkdir();
-        }
-        outStream =  new FileOutputStream(serviceImplPath+"\\"+className+"ServiceImpl.java");
-        out = new OutputStreamWriter(outStream);
-        serviceImpl.process(data, out);
         //dao
-        File daoPath= new File(javaSrcPath+"\\"+"dao");
-        if(!daoPath.exists()){
-            daoPath.mkdirs();
+        if("1".equals(data.get("isDao"))){
+            File daoPath= new File(javaSrcPath+"\\"+"dao");
+            if(!daoPath.exists()){
+                daoPath.mkdirs();
+            }
+            outStream =  new FileOutputStream(daoPath+"\\"+className+"Mapper.java");
+            out = new OutputStreamWriter(outStream);
+            mapper.process(data, out);
+            //conf
+            File confPath= new File(javaSrcPath+"\\"+"dao\\conf");
+            if(!confPath.exists()){
+                confPath.mkdirs();
+            }
+            outStream =  new FileOutputStream(confPath+"\\"+className+"Mapper.xml");
+            out = new OutputStreamWriter(outStream);
+            mapperXml.process(data, out);
         }
-        outStream =  new FileOutputStream(daoPath+"\\"+className+"Mapper.java");
-        out = new OutputStreamWriter(outStream);
-        mapper.process(data, out);
-        //conf
-        File confPath= new File(javaSrcPath+"\\"+"dao\\conf");
-        if(!confPath.exists()){
-            confPath.mkdirs();
+        //jsp,js
+        if("1".equals(data.get("isJsp"))){
+            File jspPath= new File(jspSrcPath);
+            if(!jspPath.exists()){
+                jspPath.mkdirs();
+            }
+            className= className.substring(0, 1).toLowerCase()+className.substring(1);
+            outStream =  new FileOutputStream(jspPath+"\\"+className+"_list.jsp");
+            out = new OutputStreamWriter(outStream);
+            jsp.process(data, out);
+            
+            
+            File jsPath= new File(jsSrcPath);
+            if(!jsPath.exists()){
+                jsPath.mkdirs();
+            }
+            outStream =  new FileOutputStream(jsPath+"\\"+className+"_list.js");
+            out = new OutputStreamWriter(outStream);
+            js.process(data, out);
         }
-        outStream =  new FileOutputStream(confPath+"\\"+className+"Mapper.xml");
-        out = new OutputStreamWriter(outStream);
-        mapperXml.process(data, out);
-        
-        File jspPath= new File(jspSrcPath);
-        if(!confPath.exists()){
-            confPath.mkdirs();
-        }
-        outStream =  new FileOutputStream(jspPath+"\\"+className+"_list.jsp");
-        out = new OutputStreamWriter(outStream);
-        jsp.process(data, out);
-        
-        
-        File jsPath= new File(jsSrcPath);
-        if(!confPath.exists()){
-            confPath.mkdirs();
-        }
-        outStream =  new FileOutputStream(jsPath+"\\"+className+"_list.js");
-        out = new OutputStreamWriter(outStream);
-        js.process(data, out);
-        
         outStream.flush();
         outStream.close();
         out.flush();

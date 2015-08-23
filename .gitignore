@@ -218,4 +218,6 @@ pip-log.txt
 
 *.classpath
 website-web/target/*.*
+website-web/target/*
+website-web/target/
 

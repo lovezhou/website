@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.rbac.dao.SysFunctionsMapper" >
+  
+  <!-- 实体类映射mapper -->
+  <resultMap id="SysFunctions" type="com.jessrun.rbac.domain.SysFunctionsVO" >
+  	     <result column="FID" property="id" jdbcType="VARCHAR" />
+  	     <result column="FRESOURCE_ID" property="resourceId" jdbcType="VARCHAR" />
+  	     <result column="FQUERY" property="query" jdbcType="VARCHAR" />
+  	     <result column="FADD" property="add" jdbcType="VARCHAR" />
+  	     <result column="FUPDATE" property="update" jdbcType="VARCHAR" />
+  	     <result column="FDELETE" property="delete" jdbcType="VARCHAR" />
+  	     <result column="FVIEW" property="view" jdbcType="VARCHAR" />
+  	     <result column="FCHECKED" property="checked" jdbcType="VARCHAR" />
+  	     <result column="FUNCHECKED" property="unchecked" jdbcType="VARCHAR" />
+  	     <result column="FEXPORT" property="export" jdbcType="VARCHAR" />
+  	     <result column="FUPLOAD" property="upload" jdbcType="VARCHAR" />
+  	     <result column="FDOWNLOAD" property="download" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!--查询条件-->
+  <sql id="where_condition">
+	  	     <if test="id != null and id != ''">
+	  			and FID = #{id}
+	  		</if>
+	  	     <if test="resourceId != null and resourceId != ''">
+	  			and FRESOURCE_ID = #{resourceId}
+	  		</if>
+	  	     <if test="query != null and query != ''">
+	  			and FQUERY = #{query}
+	  		</if>
+	  	     <if test="add != null and add != ''">
+	  			and FADD = #{add}
+	  		</if>
+	  	     <if test="update != null and update != ''">
+	  			and FUPDATE = #{update}
+	  		</if>
+	  	     <if test="delete != null and delete != ''">
+	  			and FDELETE = #{delete}
+	  		</if>
+	  	     <if test="view != null and view != ''">
+	  			and FVIEW = #{view}
+	  		</if>
+	  	     <if test="checked != null and checked != ''">
+	  			and FCHECKED = #{checked}
+	  		</if>
+	  	     <if test="unchecked != null and unchecked != ''">
+	  			and FUNCHECKED = #{unchecked}
+	  		</if>
+	  	     <if test="export != null and export != ''">
+	  			and FEXPORT = #{export}
+	  		</if>
+	  	     <if test="upload != null and upload != ''">
+	  			and FUPLOAD = #{upload}
+	  		</if>
+	  	     <if test="download != null and download != ''">
+	  			and FDOWNLOAD = #{download}
+	  		</if>
+  </sql>
+  
+ <!--查询单个Object--> 
+  <select id="selectById" resultMap="SysFunctions">
+  	select 
+	  	     FID,       
+
+	  	     FRESOURCE_ID,       
+
+	  	     FQUERY,       
+
+	  	     FADD,       
+
+	  	     FUPDATE,       
+
+	  	     FDELETE,       
+
+	  	     FVIEW,       
+
+	  	     FCHECKED,       
+
+	  	     FUNCHECKED,       
+
+	  	     FEXPORT,       
+
+	  	     FUPLOAD,       
+
+	  	     FDOWNLOAD       
+	   from t_sys_functions  where  FID =#{id}
+  </select>
+  
+   <!--保存单个Object--> 
+  <insert id="saveObject" parameterType="com.jessrun.rbac.domain.SysFunctionsVO">
+		insert into t_sys_functions (
+	  	       FID ,       
+	  	       FRESOURCE_ID ,       
+	  	       FQUERY ,       
+	  	       FADD ,       
+	  	       FUPDATE ,       
+	  	       FDELETE ,       
+	  	       FVIEW ,       
+	  	       FCHECKED ,       
+	  	       FUNCHECKED ,       
+	  	       FEXPORT ,       
+	  	       FUPLOAD ,       
+	  	       FDOWNLOAD        
+		)
+		values(
+	  	       #{id,jdbcType=VARCHAR },
+	  	       #{resourceId,jdbcType=VARCHAR },
+	  	       #{query,jdbcType=VARCHAR },
+	  	       #{add,jdbcType=VARCHAR },
+	  	       #{update,jdbcType=VARCHAR },
+	  	       #{delete,jdbcType=VARCHAR },
+	  	       #{view,jdbcType=VARCHAR },
+	  	       #{checked,jdbcType=VARCHAR },
+	  	       #{unchecked,jdbcType=VARCHAR },
+	  	       #{export,jdbcType=VARCHAR },
+	  	       #{upload,jdbcType=VARCHAR },
+	  	       #{download,jdbcType=VARCHAR }
+        )
+	</insert>
+ 
+   <!--唯一性校验-->
+  <select id="isUniqueExist" parameterType="com.jessrun.rbac.domain.SysFunctionsVO"  resultMap="SysFunctions">
+  		select *
+		 from t_sys_functions where 1=1 
+		 	 <if test="id != null and id !=''">
+	  			and FID = #{id}
+	  		</if>
+		 	 <if test="resourceId != null and resourceId !=''">
+	  			and FRESOURCE_ID = #{resourceId}
+	  		</if>
+		 	 <if test="query != null and query !=''">
+	  			and FQUERY = #{query}
+	  		</if>
+		 	 <if test="add != null and add !=''">
+	  			and FADD = #{add}
+	  		</if>
+		 	 <if test="update != null and update !=''">
+	  			and FUPDATE = #{update}
+	  		</if>
+		 	 <if test="delete != null and delete !=''">
+	  			and FDELETE = #{delete}
+	  		</if>
+		 	 <if test="view != null and view !=''">
+	  			and FVIEW = #{view}
+	  		</if>
+		 	 <if test="checked != null and checked !=''">
+	  			and FCHECKED = #{checked}
+	  		</if>
+		 	 <if test="unchecked != null and unchecked !=''">
+	  			and FUNCHECKED = #{unchecked}
+	  		</if>
+		 	 <if test="export != null and export !=''">
+	  			and FEXPORT = #{export}
+	  		</if>
+		 	 <if test="upload != null and upload !=''">
+	  			and FUPLOAD = #{upload}
+	  		</if>
+		 	 <if test="download != null and download !=''">
+	  			and FDOWNLOAD = #{download}
+	  		</if>
+  </select>
+  
+  
+   <!--刪除-->
+  <delete id="deleteById" parameterType="java.lang.String" flushCache="true" >
+  		  delete from  t_sys_functions  where FID= #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteByIds" >
+		 delete from   t_sys_functions where FID in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+  
+  <!--更新单个对象-->
+  <update id="updateObject" parameterType="com.jessrun.rbac.domain.SysFunctionsVO">
+		update t_sys_functions  set
+	  	      FID=#{id,jdbcType=VARCHAR} ,       
+	  	      FRESOURCE_ID=#{resourceId,jdbcType=VARCHAR} ,       
+	  	      FQUERY=#{query,jdbcType=VARCHAR} ,       
+	  	      FADD=#{add,jdbcType=VARCHAR} ,       
+	  	      FUPDATE=#{update,jdbcType=VARCHAR} ,       
+	  	      FDELETE=#{delete,jdbcType=VARCHAR} ,       
+	  	      FVIEW=#{view,jdbcType=VARCHAR} ,       
+	  	      FCHECKED=#{checked,jdbcType=VARCHAR} ,       
+	  	      FUNCHECKED=#{unchecked,jdbcType=VARCHAR} ,       
+	  	      FEXPORT=#{export,jdbcType=VARCHAR} ,       
+	  	      FUPLOAD=#{upload,jdbcType=VARCHAR} ,       
+	  	      FDOWNLOAD=#{download,jdbcType=VARCHAR}        
+	  	where
+	  	    	FID=#{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!--分页查询-->
+  <select id="selectListByPage" resultMap="SysFunctions" parameterType="java.util.Map" >
+	select 
+	  	       FID ,       
+	  	       FRESOURCE_ID ,       
+	  	       FQUERY ,       
+	  	       FADD ,       
+	  	       FUPDATE ,       
+	  	       FDELETE ,       
+	  	       FVIEW ,       
+	  	       FCHECKED ,       
+	  	       FUNCHECKED ,       
+	  	       FEXPORT ,       
+	  	       FUPLOAD ,       
+	  	       FDOWNLOAD        
+	   from t_sys_functions  where 1=1  <include refid="where_condition"/>
+  </select>
+</mapper>

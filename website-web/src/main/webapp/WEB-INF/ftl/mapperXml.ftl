@@ -22,11 +22,10 @@
   
  <!--查询单个Object--> 
   <select id="selectById" resultMap="${className}">
-  	select 
-	  	<#list list as vo>
-	  	       ${vo.propertyName} <#if  vo_has_next>,</#if>       
-	  	</#list>
-	   from ${tableName}  where 1=1  <include refid="where_condition"/>
+  	select <#list list as vo>
+	  	     ${vo.columnName}<#if  vo_has_next>,</#if>       
+	  	   </#list>
+	   from ${tableName}  where  FID =${r"#{id}"}
   </select>
   
    <!--保存单个Object--> 
@@ -43,21 +42,10 @@
         )
 	</insert>
  
-  <!--唯一性校验-->
-  <select id="checkDateIsExits" parameterType="java.lang.String"  resultType="java.lang.Integer">
-  		select *
-		 from ${tableName}  where 1=1 
-		 <#list  list as vo >
-		 	 <if test="${vo.propertyName} != null">
-	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}
-	  		</if>
-	  	</#list>
-  </select>
-  
    <!--唯一性校验-->
   <select id="isUniqueExist" parameterType="${packageName}.domain.${className}VO"  resultMap="${className}">
   		select *
-		 from t_sys_dict where 1=1 
+		 from ${tableName} where 1=1 
 		  <#list  list as vo >
 		 	 <if test="${vo.propertyName} != null and ${vo.propertyName} !=''">
 	  			and ${vo.columnName} = ${r"#{"}${vo.propertyName}}

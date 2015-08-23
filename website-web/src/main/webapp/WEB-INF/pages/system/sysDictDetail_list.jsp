@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="<%=basePath%>js/system/sysDictDetail_list.js" charset="utf-8"></script>
   </head>
   <body  style="margin: 0px">
-	<table  id="grid1" class="easyui-datagrid" style="width:100%;height:100%"
+	<table  id="grid1" class="easyui-datagrid" style="width:98%;height:99%"
 			url="<%=basePath%>/sysDictDetail/query.json" data-options="rownumbers:true,singleSelect:false,autoRowHeight:true,pagination:true,pageSize:10"
 		    toolbar="#tb1"   fitColumns="true">
 		<thead>
@@ -40,8 +40,8 @@
 			<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="deleteRows1()">删除</a>
 		</div>
 		<div>
-			  	   	  	字典名称：<input id="txt_code" class="easyui-textbox" name="name" style="width:20%;height:20px">
-			  	   	  	字典代码：<input id="txt_name" class="easyui-textbox" name="code" style="width:20%;height:20px">
+			  	   	  	字典名称：<input id="txt_code1" class="easyui-textbox" name="name" style="width:20%;height:20px">
+			  	   	  	字典代码：<input id="txt_name1" class="easyui-textbox" name="code" style="width:20%;height:20px">
 			<a href="javascript:search1()"  class="easyui-linkbutton"  iconCls="icon-search" style="width:15%;height:20px">查询</a>
 		</div>
 	</div>
@@ -72,7 +72,6 @@
 			                <label>备注</label>
 			                <input name="remark" class="easyui-textbox" >
 			            </div>
-            </div>
         </form>
     </div>
     <div id="dlg-buttons1">

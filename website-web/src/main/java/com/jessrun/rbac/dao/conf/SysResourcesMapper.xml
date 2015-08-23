@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.rbac.dao.SysResourcesMapper" >
+  
+  <!-- 实体类映射mapper -->
+  <resultMap id="SysResources" type="com.jessrun.rbac.domain.SysResourcesVO" >
+  	     <result column="FID" property="id" jdbcType="VARCHAR" />
+  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
+  	     <result column="FURL" property="url" jdbcType="VARCHAR" />
+  	     <result column="FPID" property="pid" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!--查询条件-->
+  <sql id="where_condition">
+	  	     <if test="name != null and name != ''">
+	  			and FNAME = #{name}
+	  		</if>
+	  	     <if test="url != null and url != ''">
+	  			and FURL = #{url}
+	  		</if>
+	  	     <if test="pid != null and pid != ''">
+	  			and FPID = #{pid}
+	  		</if>
+  </sql>
+  
+ <!--查询单个Object--> 
+  <select id="selectById" resultMap="SysResources">
+  	select 
+	  	     FID,       
+
+	  	     FNAME,       
+
+	  	     FURL,       
+
+	  	     FPID       
+	   from t_sys_resources  where  FID =#{id}
+  </select>
+  
+   <!--保存单个Object--> 
+  <insert id="saveObject" parameterType="com.jessrun.rbac.domain.SysResourcesVO">
+		insert into t_sys_resources (
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FURL ,       
+	  	       FPID        
+		)
+		values(
+	  	       #{id,jdbcType=VARCHAR },
+	  	       #{name,jdbcType=VARCHAR },
+	  	       #{url,jdbcType=VARCHAR },
+	  	       #{pid,jdbcType=VARCHAR }
+        )
+	</insert>
+ 
+   <!--唯一性校验-->
+  <select id="isUniqueExist" parameterType="com.jessrun.rbac.domain.SysResourcesVO"  resultMap="SysResources">
+  		select *
+		 from t_sys_resources where 1=1 
+		 	 <if test="id != null and id !=''">
+	  			and FID = #{id}
+	  		</if>
+		 	 <if test="name != null and name !=''">
+	  			and FNAME = #{name}
+	  		</if>
+		 	 <if test="url != null and url !=''">
+	  			and FURL = #{url}
+	  		</if>
+		 	 <if test="pid != null and pid !=''">
+	  			and FPID = #{pid}
+	  		</if>
+  </select>
+  
+  
+   <!--刪除-->
+  <delete id="deleteById" parameterType="java.lang.String" flushCache="true" >
+  		  delete from  t_sys_resources  where FID= #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteByIds" >
+		 delete from   t_sys_resources where FID in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+  
+  <!--更新单个对象-->
+  <update id="updateObject" parameterType="com.jessrun.rbac.domain.SysResourcesVO">
+		update t_sys_resources  set
+	  	      FID=#{id,jdbcType=VARCHAR} ,       
+	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
+	  	      FURL=#{url,jdbcType=VARCHAR} ,       
+	  	      FPID=#{pid,jdbcType=VARCHAR}        
+	  	where
+	  	    	FID=#{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!--分页查询-->
+  <select id="selectListByPage" resultMap="SysResources" parameterType="java.util.Map" >
+	select 
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FURL ,       
+	  	       FPID        
+	   from t_sys_resources  where 1=1  <include refid="where_condition"/>
+  </select>
+  
+  
+   <select id="selectListTree" resultMap="SysResources" parameterType="java.util.Map" >
+	select 
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FURL ,       
+	  	       FPID        
+	   from t_sys_resources  where 1=1  <include refid="where_condition"/>
+  </select>
+  
+  
+  
+  
+</mapper>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jessrun.system.dao.SysUserMapper" >
+  
+  <!-- 实体类映射mapper -->
+  <resultMap id="SysUser" type="com.jessrun.system.domain.SysUserVO" >
+  	     <result column="FID" property="id" jdbcType="VARCHAR" />
+  	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
+  	     <result column="FLOGIN_ACCOUNT" property="loginAccount" jdbcType="VARCHAR" />
+  	     <result column="FLOGIN_PASSWD" property="loginPasswd" jdbcType="VARCHAR" />
+  	     <result column="FEMAIL" property="email" jdbcType="VARCHAR" />
+  	     <result column="FADDRESS" property="address" jdbcType="VARCHAR" />
+  	     <result column="FPHONE_NUM" property="phoneNum" jdbcType="VARCHAR" />
+  	     <result column="FACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!--查询条件-->
+  <sql id="where_condition">
+	  	     <if test="name != null and name != ''">
+	  			and FNAME = #{name}
+	  		</if>
+	  	     <if test="loginAccount != null and loginAccount != ''">
+	  			and FLOGIN_ACCOUNT = #{loginAccount}
+	  		</if>
+	  	     <if test="accountId != null and accountId != ''">
+	  			and FACCOUNT_ID = #{accountId}
+	  		</if>
+  </sql>
+  
+ <!--查询单个Object--> 
+  <select id="selectById" resultMap="SysUser"  parameterType="java.lang.String">
+  	select 
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FLOGIN_ACCOUNT ,       
+	  	       FLOGIN_PASSWD ,       
+	  	       FEMAIL ,       
+	  	       FADDRESS ,       
+	  	       FPHONE_NUM ,       
+	  	       FACCOUNT_ID              
+	   from t_sys_user  where FID = #{id}
+  </select>
+  
+   <!--保存单个Object--> 
+  <insert id="saveObject" parameterType="com.jessrun.system.domain.SysUserVO">
+		insert into t_sys_user (
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FLOGIN_ACCOUNT ,       
+	  	       FLOGIN_PASSWD ,       
+	  	       FEMAIL ,       
+	  	       FADDRESS ,       
+	  	       FPHONE_NUM ,       
+	  	       FACCOUNT_ID        
+		)
+		values(
+	  	       #{id,jdbcType=VARCHAR },
+	  	       #{name,jdbcType=VARCHAR },
+	  	       #{loginAccount,jdbcType=VARCHAR },
+	  	       #{loginPasswd,jdbcType=VARCHAR },
+	  	       #{email,jdbcType=VARCHAR },
+	  	       #{address,jdbcType=VARCHAR },
+	  	       #{phoneNum,jdbcType=VARCHAR },
+	  	       #{accountId,jdbcType=VARCHAR }
+        )
+	</insert>
+  
+   <!--唯一性校验-->
+  <select id="isUniqueExist" parameterType="com.jessrun.system.domain.SysUserVO"  resultMap="SysUser">
+  		select *
+		 from t_sys_user <where>
+		 	 <if test="id != null and id !=''">
+	  			and FID = #{id}
+	  		</if>
+		 	 <if test="loginAccount != null and loginAccount !=''">
+	  			or FLOGIN_ACCOUNT = #{loginAccount}
+	  		</if>
+	  		 <if test="accountId != null and accountId != ''">
+	  			or FACCOUNT_ID = #{accountId}
+	  		</if>
+	  		</where>
+  </select>
+  
+  
+   <!--刪除-->
+  <delete id="deleteById" parameterType="java.lang.String" flushCache="true" >
+  		  delete from  t_sys_user  where FID= #{id,jdbcType=VARCHAR}
+  </delete>
+  
+  <delete id="deleteByIds" >
+		 delete from   t_sys_user where FID in
+		<foreach item="item" index="index" collection="list"
+			open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+  
+  <!--更新单个对象-->
+  <update id="updateObject" parameterType="com.jessrun.system.domain.SysUserVO">
+		update t_sys_user  set
+	  	      FID=#{id,jdbcType=VARCHAR} ,       
+	  	      FNAME=#{name,jdbcType=VARCHAR} ,       
+	  	      FLOGIN_ACCOUNT=#{loginAccount,jdbcType=VARCHAR} ,       
+	  	      FLOGIN_PASSWD=#{loginPasswd,jdbcType=VARCHAR} ,       
+	  	      FEMAIL=#{email,jdbcType=VARCHAR} ,       
+	  	      FADDRESS=#{address,jdbcType=VARCHAR} ,       
+	  	      FPHONE_NUM=#{phoneNum,jdbcType=VARCHAR} ,       
+	  	      FACCOUNT_ID=#{accountId,jdbcType=VARCHAR}        
+	  	where
+	  	    	FID=#{id,jdbcType=VARCHAR}
+  </update>
+  
+  <!--分页查询-->
+  <select id="selectListByPage" resultMap="SysUser" parameterType="java.util.Map" >
+	select 
+	  	       FID ,       
+	  	       FNAME ,       
+	  	       FLOGIN_ACCOUNT ,       
+	  	       FLOGIN_PASSWD ,       
+	  	       FEMAIL ,       
+	  	       FADDRESS ,       
+	  	       FPHONE_NUM ,       
+	  	       FACCOUNT_ID        
+	   from t_sys_user  where 1=1  <include refid="where_condition"/>
+  </select>
+</mapper>

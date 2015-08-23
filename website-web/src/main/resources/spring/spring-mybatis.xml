@@ -59,6 +59,7 @@
                 <value>classpath*:com/jessrun/web/system/dao/conf/*.xml</value>
                 <value>classpath*:com/jessrun/system/dao/conf/*.xml</value>
                 <value>classpath*:com/jessrun/codegenerator/dao/conf/*.xml</value>
+                <value>classpath*:com/jessrun/rbac/dao/conf/*.xml</value>
 			</list>  
 		</property>
 		<property name="plugins">

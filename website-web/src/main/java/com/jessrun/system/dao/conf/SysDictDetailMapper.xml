@@ -27,13 +27,14 @@
  <!--查询单个Object--> 
   <select id="selectById" resultMap="SysDictDetail">
   	select 
-	  	       id ,       
-	  	       dictId ,       
-	  	       code ,       
-	  	       name ,       
-	  	       order ,       
-	  	       remark ,       
-	  	       createTime        
+	  	       t1.FID ,       
+	  	       t1.FDICT_ID ,       
+	  	       t1.FCODE ,       
+	  	       t1.FNAME ,       
+	  	       t1.FORDER ,       
+	  	       t1.FREMARK ,       
+	  	       t1.FCREATE_TIME,
+	  	       t2.FNAME FDICT_TEXT            
 	   from t_sys_dict_detail  where 1=1  <include refid="where_condition"/>
   </select>
   

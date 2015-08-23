@@ -63,7 +63,6 @@
 			            </div>
             		</#if>
 			 </#list>
-            </div>
         </form>
     </div>
     <div id="dlg-buttons">

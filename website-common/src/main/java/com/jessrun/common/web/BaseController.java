@@ -27,7 +27,7 @@ import com.jessrun.platform.util.StringUtils;
 public abstract class BaseController {
     
 	private final String  FORMDATA = "_jsonData" ;
-	private final String TITLE = "提示";
+	protected final String TITLE = "提示";
 	
 	protected Class<? extends ValueObject> clazz; //vo对于的class
 	
@@ -91,6 +91,7 @@ public abstract class BaseController {
             }
             AjaxUtil.success(response, Message.newInstance());
         }catch(Exception e){
+            e.printStackTrace();
             AjaxUtil.success(response, Message.newInstance(TITLE,e.getMessage()));
         }
     }

@@ -1,8 +1,8 @@
 var title = "数据字典" ;
 //获取查询参数
 function queryParams1(){
-	var name =  EasyUI.getValue("txt_name");
-	var code =  EasyUI.getValue("txt_code");
+	var name =  EasyUI.getValue("txt_name1");
+	var code =  EasyUI.getValue("txt_code1");
 	var params = {
 			  name:name,
 			  code:code
@@ -14,7 +14,7 @@ function queryParams1(){
 function  search1(){
   var params = queryParams1();
   EasyUI.setQueryParams('grid1',params);
-  //EasyUI.reload('grid');
+  //EasyUI.reload('grid1');
 }
 
 

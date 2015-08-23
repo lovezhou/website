@@ -33,13 +33,13 @@ html {
 						<a href="javascript:void(0);" onClick="SwitchMenu('sub1');return false;"></a>
 						<ul id="sub1">
 							<li>
-								<a href="" target="mainFrame">用户管理</a>
+								<a href="sysUser/toListView.do" target="mainFrame">用户管理</a>
 							</li>
 							<li>
-								<a href="" target="mainFrame">角色管理</a>
+								<a href="sysRole/toListView.do" target="mainFrame">角色管理</a>
 							</li>
 							<li>
-								<a href="" target="mainFrame">权限管理</a>
+								<a href="sysResources/toListView.do" target="mainFrame">资源管理</a>
 							</li>
 						
 							<li>
@@ -49,10 +49,10 @@ html {
 								<a href="monitoring" target="mainFrame">系统性能监控</a>
 							</li>
 							<li>
-								<a href="<%=basePath %>/sysDict/toConfig.do" target="mainFrame">数据字典维护</a>
+								<a href="sysDict/toConfig.do" target="mainFrame">数据字典维护</a>
 							</li>
 							<li>
-								<a href="<%=basePath %>/codegenerator/codegenerator.do" target="mainFrame">代码自动生成</a>
+								<a href="codegenerator/codegenerator.do" target="mainFrame">代码自动生成</a>
 							</li>
 						</ul>
 					</li>

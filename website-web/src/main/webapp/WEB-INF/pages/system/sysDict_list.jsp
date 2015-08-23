@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="<%=basePath%>js/system/sysDict_list.js" charset="utf-8"></script>
   </head>
   <body  style="margin: 0px">
-	<table  id="grid" class="easyui-datagrid" style="width:100%;height:100%"
+	<table  id="grid" class="easyui-datagrid" style="width:90%;height:90%"
 			url="<%=basePath%>/sysDict/query.json" data-options="rownumbers:true,singleSelect:false,autoRowHeight:true,pagination:true,pageSize:10"
 		    toolbar="#tb"   fitColumns="true">
 		<thead>
