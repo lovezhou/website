@@ -1,20 +1,19 @@
 package com.jessrun.rbac.service.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jessrun.common.cache.EhCacheUtil;
 import com.jessrun.common.web.ValueObject;
-import com.jessrun.constant.Constant;
 import com.jessrun.platform.util.StringUtils;
-
+import com.jessrun.platform.util.TreeUtil;
+import com.jessrun.rbac.dao.SysResourcesMapper;
 import com.jessrun.rbac.domain.SysResourcesVO;
 import com.jessrun.rbac.service.SysResourcesService;
-import  com.jessrun.rbac.dao.SysResourcesMapper;
-import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS) 
@@ -80,8 +79,11 @@ public class SysResourcesServiceImpl implements SysResourcesService {
         }
 
         @Override
-        public List<SysResourcesVO> selectListTree() {
-            return sysResourcesMapper.selectListTree();
+        public List<SysResourcesVO> selectListTree() throws Exception {
+             List<SysResourcesVO> list = sysResourcesMapper.selectListTree();
+             return TreeUtil.convertToTree(list, "id", "pid", "children", "0");
         }
+        
+        
 
 }

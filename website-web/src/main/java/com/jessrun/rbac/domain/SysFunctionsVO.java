@@ -1,7 +1,5 @@
 package com.jessrun.rbac.domain;
 
-import java.util.Date;
-
 import lombok.Data;
 
 import com.jessrun.common.web.ValueObject;
@@ -15,13 +13,14 @@ public class SysFunctionsVO  implements  ValueObject {
     private String query;//查询
     private String add;//增加
     private String update;//编辑
-    private String delete;//删除
+    private String deleted;//删除
     private String view;//查看
     private String checked;//审核
     private String unchecked;//反审核
-    private String export;//导出
+    private String exported;//导出
     private String upload;//上传
     private String download;//下载
+  
     
     public SysFunctionsVO(){
         super();

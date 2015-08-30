@@ -4,10 +4,13 @@
   
   <!-- 实体类映射mapper -->
   <resultMap id="SysResources" type="com.jessrun.rbac.domain.SysResourcesVO" >
-  	     <result column="FID" property="id" jdbcType="VARCHAR" />
+  	     <id column="FID" property="id" jdbcType="VARCHAR" />
   	     <result column="FNAME" property="name" jdbcType="VARCHAR" />
   	     <result column="FURL" property="url" jdbcType="VARCHAR" />
   	     <result column="FPID" property="pid" jdbcType="VARCHAR" />
+  	     <result column="FORDER" property="forder" jdbcType="INTEGER" />
+  	     <association property="sysFunctionsVO" column="FRESOURCE_ID" 
+  	         javaType="com.jessrun.rbac.domain.SysFunctionsVO" resultMap="com.jessrun.rbac.dao.SysFunctionsMapper.SysFunctions"/>
   </resultMap>
   
   <!--查询条件-->
@@ -106,16 +109,28 @@
   </select>
   
   
-   <select id="selectListTree" resultMap="SysResources" parameterType="java.util.Map" >
-	select 
-	  	       FID ,       
-	  	       FNAME ,       
-	  	       FURL ,       
-	  	       FPID        
-	   from t_sys_resources  where 1=1  <include refid="where_condition"/>
+   <select id="selectListTree" resultMap="SysResources"  >
+				select t1.fid,
+				       t1.fname,
+				       t1.furl,
+				       t1.fpid,
+				       t1.forder,
+				       t2.fresource_id,
+				       t2.fquery,
+				       t2.fadd,
+				       t2.fupdate,
+				       t2.fdeleted,
+				       t2.fview,
+				       t2.fchecked,
+				       t2.funchecked,
+				       t2.fexported,
+				       t2.fupload,
+				       t2.fdownload
+				  from t_sys_resources t1
+				  left join t_sys_functions t2
+				    on t1.fid = t2.fresource_id
+				 start with t1.fpid = 0
+				connect by t1.fpid = prior t1.fid
+				 order by forder
   </select>
-  
-  
-  
-  
 </mapper>

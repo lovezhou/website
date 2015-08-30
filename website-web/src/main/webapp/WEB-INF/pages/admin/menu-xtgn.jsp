@@ -8,8 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>维护系统</title>
+    <%@include file="../head_include.jsp" %>
 	<link rel="stylesheet" type="text/css" href="<%=basePath %>css/left.css">
 	<script type="text/javascript" src="<%=basePath %>js/left.js"></script>
 	<meta http-equiv="pragma" content="no-cache">

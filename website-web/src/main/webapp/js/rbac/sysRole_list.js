@@ -3,7 +3,7 @@ var title = "角色" ;
 function queryParams(){
 	var roleName =  EasyUI.getValue("txt_roleName");
 	var params = {
-			roleName:roleName,
+			roleName:roleName
 	};
 	return params;
 }

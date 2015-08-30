@@ -17,6 +17,6 @@ public interface SysResourcesService extends Service {
      */
     boolean isUniqueExist(ValueObject vo);
 
-    List<SysResourcesVO> selectListTree();
+    List<SysResourcesVO> selectListTree() throws Exception ;
          
 }

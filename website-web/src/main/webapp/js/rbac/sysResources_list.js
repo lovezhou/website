@@ -1,11 +1,9 @@
-var title = "数据字典" ;
+var title = "资源" ;
 //获取查询参数
 function queryParams(){
-	var dictName =  EasyUI.getValue("txt_dictName");
-	var dictCode =  EasyUI.getValue("txt_dictCode");
+	var name =  EasyUI.getValue("txt_name");
 	var params = {
-			  dictName:dictName,
-			  dictCode:dictCode
+			  name:name
 	};
 	return params;
 }
@@ -13,8 +11,7 @@ function queryParams(){
 //点击查询按钮
 function  search(){
   var params = queryParams();
-  EasyUI.setQueryParams('grid',params);
-  //EasyUI.reload('grid');
+  $('#grid').treegrid('load',params);
 }
 
 
@@ -24,12 +21,25 @@ function addRow(){
     EasyUI.disableForm('fm',false);
 }
 
-function editRow(index){
-    //var row = $('#grid').datagrid('getSelected');
-	var row =  $('#grid').datagrid('getRows')[index];
+function editRow(id){
+	$('#grid').treegrid('select',id);//选中当前节点
+    var row = $('#grid').datagrid('getSelected');
+    console.log(row);
+	//var row =  $('#grid').datagrid('getRows')[index];
     if (row){
         $('#dlg').dialog('open').dialog('setTitle','编辑'+title);
         $('#fm').form('load',row);
+        $('#pname').textbox('setValue',$("#grid").treegrid('getParent',row.id).name);
+        $('#query').combobox('setValue',row.sysFunctionsVO.query);
+        $('#add').combobox('setValue',row.sysFunctionsVO.add);
+        $('#update').combobox('setValue',row.sysFunctionsVO.update);
+        $('#deleted').combobox('setValue',row.sysFunctionsVO.deleted);
+        $('#view').combobox('setValue',row.sysFunctionsVO.view);
+        $('#checked').combobox('setValue',row.sysFunctionsVO.checked);
+        $('#unchecked').combobox('setValue',row.sysFunctionsVO.unchecked);
+        $('#exported').combobox('setValue',row.sysFunctionsVO.exported);
+        $('#upload').combobox('setValue',row.sysFunctionsVO.upload);
+        $('#download').combobox('setValue',row.sysFunctionsVO.download);
         EasyUI.disableForm('fm',false);
     }
 }
@@ -117,7 +127,47 @@ function deleteRows(){
 }
 
 function rowformater(value,row,index){
-	return '<a href="javascript:void(0)" onclick="editRow('+index+')">编辑</a>&nbsp;&nbsp;' +
-	 		'<a href="javascript:void(0)" onclick="deleteRow(\''+row.id+'\')">删除</a>&nbsp;&nbsp;'+
-	 		'<a href="javascript:void(0)" onclick="viewRow('+index+')">查看</a>';
+	return '<a href="javascript:void(0)" onclick="addRow(\''+row.id+'\')">新增</a>&nbsp;&nbsp'+
+	       '<a href="javascript:void(0)" onclick="editRow(\''+row.id+'\')">编辑</a>&nbsp;&nbsp;' +
+	 		'<a href="javascript:void(0)" onclick="deleteRow(\''+row.id+'\')">删除</a>';
 }
+
+function checkboxformater(flag,name){
+	if(flag){
+		return '<input name="chk_"'+name+' value="checked" type="checkbox">';
+	}else{
+		return '<img src="images/icon/close.gif" width="16" height="16"/>';
+	}
+}
+
+function queryformater(value,row,index){ //如果有多列用到value，那么第一次一定要格式化，不然后续格式化都没有效果
+	return checkboxformater(value&&value.query=="1");
+}
+function addformater(value,row,index){
+	return checkboxformater(value.add=="1");
+}
+function updateformater(value,row,index){
+	return checkboxformater(value.update=="1");
+}
+function deletedformater(value,row,index){
+	return checkboxformater(value.deleted=="1");
+}
+function viewformater(value,row,index){
+	return checkboxformater(value.view=="1");
+}
+function checkedformater(value,row,index){
+	return checkboxformater(value.checked=="1");
+}
+function uncheckformater(value,row,index){
+	return checkboxformater(value.unchecked=="1");
+}
+function exportedformater(value,row,index){
+	return checkboxformater(value.exported=="1");
+}
+function uploadformater(value,row,index){
+	return checkboxformater(value.upload=="1");
+}
+function downloadformater(value,row,index){
+	return checkboxformater(value.download=="1");
+}
+
